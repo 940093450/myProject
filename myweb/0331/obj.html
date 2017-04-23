@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Factory(_name){
+        var obj=new Object();
+        obj.name=_name;
+        obj.Msg=function(){
+            console.log("名字是:"+obj.name)
+        }
+    }
+
+    /*class Car{
+        //构造方法，不需要调用，实例化时触发
+        constructor(_color){
+            //触发时把传的值赋给color属性
+            this.color=_color;
+        }
+        getColor(){
+            console.log(this);
+            return "在1231"
+    }
+    }
+    class minCar extends Car{
+        constructor(){
+
+        }
+        Msg(_useranme){
+            console.log("hello:"+_useranme)
+        }
+    }
+
+    var m=new minCar("green");
+    console.log(m.color);
+    console.log(m.getColor());
+    m.Msg("peter");*/
+
+    /*function Car(){
+        this.color="red";
+    }
+    Car.prototype={
+        getInfo:function(){
+            return "hello"+this.color;
+        }
+    };
+    var c=Object.create(Car.prototype);
+    c.color="green";
+    console.log(c.getInfo());*/
+
+
+    /*function lsl(){
+
+    }
+    lsl.prototype.$=function(selector){
+        return document.querySelector(selector);
+    };
+    var s=new lsl();
+    console.log(s.$("body"));*/
+
+    /*function Car(){
+
+    }
+    Car.prototype.color="green";
+    Car.prototype.door=2;
+    Car.prototype.Msg=function(){
+        console.log("Msg")
+    };
+    var c=new Car();
+    console.log(typeof c);
+    console.log(c);
+    c.Msg();*/
+
+
+
+
+
+
+    /*function Car(){
+        this.color="red";
+        this.door=4;
+        this.msg=function(){
+            console.log("msg")
+        }
+    }
+    var c=new Car();
+    console.log(typeof c);
+    console.log(c);
+    c.msg()*/
+
+
+
+    /*var member={
+        "username":"tom",
+        "gender":"male",
+        "info":{
+            'add':"天津路180号",
+            'tel':"8979858"
+        }
+    };
+    document.write(JSON.stringify(member));
+    console.log(typeof member);
+    console.log(member);
+    console.log(member.username);
+    console.log(member.info.tel);*/
+    /*var obj=new Object();
+    obj.color="red";
+    obj.msg=function(){
+        console.log("msg")
+    };
+    console.log(typeof obj);
+    /!*var member=new Array('tom','peter');
+    console.log(typeof member);*!/
+    obj.msg();*/
+</script>
+</body>
+</html>

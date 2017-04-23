@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        window.addEventListener("load",function(){
+            var newWin=window.open("la.html","","width=200, height=200");
+            newWin.addEventListener("load",function(){
+                console.log(newWin.document.querySelector("#ad"));
+            });
+        })
+
+    </script>
+</body>
+</html>

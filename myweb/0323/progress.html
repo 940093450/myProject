@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #progress_dar{
+            margin: 10px 0;
+            padding: 3px;
+            border: 1px solid #000000;
+            font-size: 14px;
+            clear: both;
+            opacity: 0;
+            transition: opacity 1s linear;
+        }
+        #progress_dar.loading{
+            opacity: 1;
+        }
+        #progress_dar .percent{
+            background: red;
+            width: 0;
+            height:auto;
+        }
+    </style>
+</head>
+<body>
+<div id="feedback"></div>
+<input type="file" id="icon"><br>
+<div id="progress_dar">
+    <div class="percent">0%</div>
+</div>
+<progress id="bar" value="0" max="100"></progress>
+<img id="preview">
+<script>
+    var icon=document.querySelector("#icon");
+    var dar=document.querySelector("#progress_dar");
+    var feedback=document.querySelector("#feedback");
+    var preview=document.querySelector("#preview");
+    var fr=new FileReader();
+    var percent=document.querySelector(".percent");
+    icon.addEventListener("change",function(){
+        fr.readAsDataURL(this.files[0]);
+        percent.style.width="0%";
+        fr.addEventListener("progress",function(evt){
+            console.log(evt.lengthComputable);
+            if (evt.lengthComputable){
+                //evt.loaded:已经加载的
+                //evt.total:总共的
+                var percentLoaded=Math.round((evt.loaded/evt.total)*100);
+                dar.value=percentLoaded;
+                if(percentLoaded<=100){
+                    percent.style.width=percentLoaded+"%";
+                }
+            }
+        });
+            //开始加载
+        fr.addEventListener("loadstart",function(){
+            progress_dar.className='loading';
+            //alert(progress_dar);
+        });
+        fr.addEventListener("load",function(){
+            //alert("加载成功");
+            percent.style.width="0%";
+        })
+    })
+</script>
+</body>
+</html>

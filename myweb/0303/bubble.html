@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Tools.js"></script>
+    <style>
+        html{
+            background: gray;
+        }
+        body{
+            background: lightyellow;
+        }
+    </style>
+</head>
+<body>
+<button>按钮</button>
+<script>
+    var btn=document.querySelector("button");
+    //通过evt.stopPropagation(evt);阻止事件冒泡
+    //vevt.cancelBubble=true；ie下阻止冒泡
+    btn.addEventListener("click",function(evt){
+        //阻止事件传播
+        bubble(evt);
+        alert("button");
+    });
+    document.querySelector("body").addEventListener("click",function(evt){
+        bubble(evt);
+        alert("body")
+    });
+    document.querySelector("html").addEventListener("click",function(){
+        alert("html")
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var d=new Date();
+    //console.log(d);
+    //console.log(d.getDate());
+    //d.setDate(d.getDate()+7);
+    //document.cookie="username=tom;expires="+d;
+    document.write(document.cookie);
+    "username=peter;expires=2019-08-24;path=page;domain=http://www.abc.com;secure"
+    function setCookie(_name,_value,_expires,_path,_domain,_secure){
+        var cookieText=_name+"="+_value;
+        //判断 expires是否是如期对象的实例
+        //a instanceof b  a是b的对象实例
+        //var d=new Date（）；d就是Date的实例
+        //if(expires instanceof Date){
+            cookieText+=";expires"+expires;
+       // }
+        return cookieText;
+    }
+    var demo=new Date("2020-10-01");
+    console.log(setCookie("username","amanda",demo))
+</script>
+</body>
+</html>

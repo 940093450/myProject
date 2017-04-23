@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .scroll{
+            width: 245px;
+            height: 300px;
+            margin: 0 auto;
+            margin-top: 200px;
+            border: 1px red solid;
+            overflow: hidden;
+
+        }
+        .loop{
+            width: 245px;
+            position: relative;
+            top: 0;
+            border: 1px solid green;
+        }
+    </style>
+</head>
+<body>
+<div class="scroll">
+    <div class="loop">
+    <img src="1_1.png">
+    <img src="1_2.png">
+    <img src="1_3.png">
+    <img src="1_4.png">
+    <img src="1_5.png">
+    <img src="1_6.png">
+    </div>
+</div>
+<script>
+    var div=document.querySelector(".scroll");
+    var loop=document.querySelector(".loop");
+    var i=0;
+
+   setInterval(function(){
+        i=i-300;
+        loop.style.top=i+"px";
+        loop.style.transition="top 1s";
+        //console.log(div.scrollTop);
+    },2000);
+</script>
+</body>
+</html>

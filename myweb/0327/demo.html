@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #progressBar{
+            width: 0;
+            height: 30px;
+            background: red;
+            transition: width 2s;
+        }
+    </style>
+</head>
+<body>
+<div id="progressBar">0%</div>
+<input type="file" id="icon">
+<label for="icon"></label>
+<div id="preview"></div>
+<script>
+    var icon=document.querySelector("#icon");
+    var preview=document.querySelector("#preview");
+    var progressBar=document.querySelector("#progressBar");
+    var fr=new FileReader();
+    var img=document.createElement("img");
+    icon.addEventListener("change",function(){
+        //读取上传图片的数据
+        fr.readAsDataURL(icon.files[0]);
+        //进度时间
+        fr.addEventListener("progress",function(evt){
+            //判断上传的文件是否是空字节
+            if(evt.lengthComputable){
+                //获取上传文件的百分比
+                //evt.loaded：已上传的字节
+                //evt.total：文件总共的字节数；
+                var percent=Math.round((evt.loaded/evt.total)*100);
+                if(percent<=100){
+                    //console.log(percent);
+                    progressBar.style.width=percent+"%";
+                    progressBar.innerText=percent+"%";
+                }
+            }
+
+        });
+        fr.addEventListener("load",function(){
+            img.src=this.result;
+            document.body.appendChild(img);
+        })
+    })
+</script>
+</body>
+</html>

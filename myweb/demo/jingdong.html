@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            font-size:13px;
+            /*font-family:微软雅黑；*/
+        }
+        .ctn_right{
+            width:190px;
+            height:480px;
+            /*border:1px solid green;*/
+            position:absolute;
+            top:170px;
+            left:990px;
+            font-family:微软雅黑；
+        }
+        ul{
+            list-style:none;
+        }
+        .con{
+            height:114px;
+        }
+        .con1{
+            width:188px;
+            height:60px;
+        }
+        .c1{
+           width:60px;
+            float:left;
+            text-align:center;
+            height:60px;
+            padding-top:10px;
+
+        }
+        .c2{
+            width:124px;
+            height:49px;
+            float:right;
+            text-align:center;
+            padding-top:21px;
+        }
+        .c2 p:nth-child(1){
+            color: rgba(103, 103, 103, 0.74);
+        }
+        .c2 p:nth-child(2){
+            margin-top:8px;
+            padding-bottom:13px;
+        }
+        .con2 li{
+            width:73px;
+            height:21px;
+            text-align:center;
+            line-height:21px;
+            border:2px solid #e01424;
+            color:#e01424;
+        }
+        .c2 p span:hover{
+            color:#e01424;
+        }
+        .con2 li:hover{
+            background: #e01453;
+            color:white;
+        }
+        .con2 li:nth-child(1){
+            float:left;
+            margin-left:10px;
+        }
+        .con2 li:nth-child(2){
+            float:right;
+            margin-right:15px;
+        }
+        #c3{
+            height:25px;
+        }
+        #c3>li{
+            border-top:1px solid #e6e6e6;
+            border-bottom:1px solid #e6e6e6;
+            height:25px;
+            line-height: 25px;
+            text-align:center;
+            float:left;
+            width:32.2%;
+        }
+        #c3>li:nth-child(2){
+            border-left:1px solid #e6e6e6;
+        }
+        .con5 ul{
+            height:120px;
+            line-height:25px;
+            padding-left:8px;
+            padding-top:15px;
+            display:none;
+        }
+        .con5 ul li:hover{
+            color:#e01453;
+        }
+
+        .c6 li{
+          width:23.9%;
+          height:25px;
+            line-height:25px;
+            float:left;
+            text-align:center;
+            border-top:1px solid #eee; }
+        .c6 li:hover{
+            color:#e01453;
+        }
+
+        .c6 li:nth-child(2){
+            border-left:1px solid #eee;
+            border-right:1px solid #eee;
+        }
+        .c6 li:nth-child(3){
+            border-right:1px solid #eee;
+        }
+        .con5 ul.spotlight{
+            display:block;
+        }
+       .con4 #c3 li.active{
+           border-bottom: 2px solid #e01453;
+
+        }
+        .con6 .c6 li.l1{
+            border-top: 2px solid #e01453;
+        }
+     </style>
+</head>
+<body>
+<div class="ctn_right">
+    <div class="con">
+   <div class="con1">
+       <div class="c1"><img src="img/6.png"></div>
+       <div class="c2">
+           <p>Hi,欢迎来到京东!</p>
+           <p><span>登录</span>&nbsp;<span>注册</span></p>
+       </div>
+   </div>
+
+   <div class="con2">
+       <ul>
+       <li>新人福利</li>
+       <li>PLUS会员</li>
+       </ul>
+   </div>
+   </div>
+    <div class="con4">
+            <ul id="c3">
+                <li class="active">促销</li>
+                <li>公告</li>
+                <li>更多</li>
+            </ul>
+        <div class="con5">
+            <ul class="spotlight">
+            <li>女神相机 最高24期免息</li>
+            <li>欧莱雅美妆低至满199减100</li>
+            <li>美妆个护满199减100</li>
+            <li>精品小电2件8.8折</li>
+            </ul>
+        <ul>
+            <li>京东成为中国最大家电零售商</li>
+            <li>京东自营家电清洗服务上线</li>
+            <li>京东帮服务店突破1700家</li>
+            <li>京东售后退换无忧服务上线</li>
+        </ul>
+            <ul>
+                <li>京东成为中国最大家电零售商</li>
+                <li>京东自营家电清洗服务上线</li>
+                <li>京东帮服务店突破1700家</li>
+                <li>京东售后退换无忧服务上线</li>
+            </ul>
+        </div>
+    </div>
+    <div class="con6">
+    <ul class="c6">
+        <li class="l1">话费</li>
+        <li>机票</li>
+        <li>酒店</li>
+        <li>游戏</li>
+    </ul>
+        <div><img src="img/0.png"></div>
+    </div>
+</div>
+<script>
+//    第一行列表关联
+    var lis1=document.querySelectorAll("#c3 li");
+    var uls=document.querySelectorAll(".con5 ul");
+
+    for(i=0;i<lis1.length;i++) {
+        lis1[i].setAttribute("index",i);
+        lis1[i].addEventListener("mouseover",function(){
+            for(j=0;j<lis1.length;j++){
+             lis1[j].className="";
+             uls[j].className="";
+            }
+            this.className="active";
+            uls[this.getAttribute("index")].className="spotlight";
+        })
+    }
+
+
+//    第二行列表关联
+    var lis2=document.querySelectorAll(".c6 li");
+    var demo=document.querySelector(".con6>div");
+console.log(demo);
+     for(f=0;f<lis2.length;f++){
+       lis2[f].setAttribute("index",f);
+         lis2[f].addEventListener("mouseover",function(){
+             for(s=0;s<lis2.length;s++){
+                 lis2[s].className=""
+
+             }
+             var index=this.getAttribute("index");
+             demo.innerHTML="<img src='img/"+index+".png'>";
+             this.className="l1";
+             console.log(index);
+         })
+     }
+
+
+
+
+</script>
+</body>
+</html>

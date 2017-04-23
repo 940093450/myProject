@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .demo{
+            width: 0%;
+            height: 30px;
+            background: paleturquoise;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo"></div>
+    <script>
+        var demo=document.querySelector(".demo");
+        var num=0;
+        var timer=setInterval(function(){
+            num++;
+            demo.style.width=num+"%";
+            if (num==100){
+                num=100;
+                clearInterval(timer);
+            }
+        },10)
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

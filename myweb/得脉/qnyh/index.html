@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.1.1.js"></script>
+    <script src="js/tabjs.js"></script>
+    <link href="css/tabcss.css" rel="stylesheet" type="text/css">
+    <style>
+    *{
+        margin:0;
+        padding:0;
+        list-style:none;
+        font-family:微软雅黑;
+    }
+    body{
+        height:2275px;
+    }
+    .bg img{
+        width:1583px;
+    }
+    .bg img:nth-child(2){
+        height:857px;
+    }
+    .bg img:nth-child(2),.bg img:nth-child(3){
+       margin-top:-4px;
+
+     }
+        .section{
+            width:1252px;
+            height:1290px;
+            border:1px solid black;
+            position:relative;
+            top:-1800px;
+            margin:auto;
+        }
+        .header{
+            position:absolute;
+            top:91px;
+            right:252px;
+        }
+    .section{
+        display:flex;
+    }
+           .section .left{
+            width:172px;
+            height:1290px;
+            /*border:1px solid black;*/
+        }
+    .section .center{
+        width:700px;
+        height:1290px;
+        border:1px solid #02ab02;
+        margin-left:10px;
+        position:relative;
+    }
+    .section .right{
+        width:360px;
+        height:1290px;
+        border:1px solid #ff6830;
+        margin-left:10px;
+    }
+     .left>div{
+         height:382px;
+         border:1px solid #3798dd;
+     }
+    .left-1{height:361px;}
+    .left-2{height:531px;}
+    .left-3{height:383px;}
+    .center>div{
+        width:700px;
+        border:1px solid #dd004e;
+    }
+    .center-1{height:300px;overflow:hidden;background:white;}
+    .center-2{height:300px;background:url(center2/2.png)}
+    .center-3{height:350px;}
+    .center-4{height:310px;position:relative;overflow:hidden}
+
+    .right>div{
+        border:1px solid #dd1588;
+    }
+    .right-1{
+        height:70px;
+        border:1px solid green;
+        background:url(center4/6.png)
+    }
+    .right-2{height:311px;background:white;}
+    .right-3{height:352px;}
+    .right-4{height:211px;}
+    .right-5{height:310px;}
+
+    .left-1,.center-1,.right-1{
+        margin-top:0;
+    }
+    .left>div,.center>div,.right>div{
+        margin-bottom:10px;
+    }
+    .center-1 .scroll_1{
+        width:2800px;
+        height:264px;
+        position: relative;
+
+    }
+    .center-1 .scroll_2{
+        display:none;
+        width:2100px;
+        position:relative;
+    }
+    .center-1 .scroll_1 img,.center-1 .scroll_2 img{
+        width:700px;
+        height:264px;
+    }
+    .center-1 .scroll_1 li,.center-1 .scroll_2 li{
+        float:left;
+    }
+    .center-1 .btn_1,.center-1 .btn_2{
+        width:700px;
+        height:36px;
+        position:relative;
+        top:0;
+    }
+    .center-1 .btn_2{
+        display:none;
+    }
+
+    .center-1 .btn_1 li{
+        width:25%;
+        float:left;
+        height:36px;
+        line-height:36px;
+        text-align:center;
+        font-size:14px;
+        color: #51514f;
+        cursor: pointer;
+    }
+    .center-1 .btn_2 li{
+        width:33.33%;
+        float:left;
+        height:36px;
+        line-height:36px;
+        text-align:center;
+        font-size:14px;
+        color: #51514f;
+        cursor: pointer;
+    }
+    .active{
+        background:#c6af70;
+    }
+     .center .center_1{
+         width:100px;
+         height:30px;
+         position:absolute;
+         z-index:100;
+         right:0;
+         top:0;
+         background: #e5fdff;
+         line-height:30px;
+
+     }
+    .center  .center_1 span{
+        display:inline-block;
+        float:left;
+        width:50px;
+        height:30px;
+        text-align:center;
+        cursor: pointer;
+        background:#fff;
+    }
+    .center .center-1 {
+        overflow: hidden;
+        position:relative;
+    }
+    .center-1 .center_1 .btn0{background:#c6af70;color:white;}
+    .center-1 .center_1 .btn1{color:#c6af70;}
+    .center-1 .center_1 .btn1:hover{background:#c6af70;color:white;
+
+    }
+    .center-2 .center_left{
+        width:562px;
+        height:300px;
+        float:left;
+    }
+    .center_left .left_top,.right_top,.botm_left,.botm_right{
+        width:281px;height:150px;
+        float:left;        font-size:13px;
+    }
+    .center_left .left_top dl{
+        width:90px;
+        height:80px;
+        position:relative;
+       top:70px;
+        float:left;
+        cursor: pointer;
+    }
+    .center_left .left_top dl:hover{
+        top:50px;
+        transition: all 0.5s;
+        cursor: pointer;
+    }
+    .center_left .left_top dt:hover{
+        margin-top:10px;
+        transition: all 0.5s;
+
+
+    }
+    .center_left .left_top dt dd:hover{
+        /*margin-bottom:10px;*/
+        transition: all 0.2s;
+
+    }
+    .center_left .left_top dl dt{
+        text-align: center;
+    }
+    .center_left .left_top dl dd{
+        width:90px;
+        height:30px;
+
+        text-align: center;
+    }
+    .right_top{
+        /*background: #5aff70;*/
+    }
+    .botm_left{
+        /*background: #ff6f98;*/
+    }
+    .botm_right{
+        /*background: #399eff;*/
+    }
+        .active1{
+            background:red;
+        }
+     .right_top ul{
+         width:251px;
+         height:150px;
+         /*border:1px solid red;*/
+         margin:0 auto;
+     }
+    .right_top ul li{
+        position:relative;
+        top:80px;
+    }
+    .right_top ul li,.botm_left ul li,.botm_right ul li{
+        width:33.3%;
+        height:23px;
+        float:left;
+        text-align:center;
+        /*border:1px solid red;*/
+
+    }
+    .botm_left ul,.botm_right ul{
+        width:245px;
+        height:88px;
+        /*border:1px solid red;*/
+        margin:0 auto;
+    }
+    .botm_left ul li,.botm_right ul li{
+        position:relative;
+        top:55px;
+    }
+    .right_top ul li:hover,.botm_left ul li:hover,.botm_right ul li:hover{
+        color: #c6af71;
+        padding-top:2px;
+        transition:all 0.3s;
+        cursor: pointer;
+
+    }
+
+    .center-4 h1{
+        border-bottom:2px solid #d4d2d3;
+    }
+
+    .left-one,.left-two,.left-three{
+        width:500px;
+        height:262px;
+
+        /*border:1px solid red;*/
+        margin-top:-10px;
+        background:white;
+        border-top:1px solid #d4d2d3;
+        /*display:none;*/
+    }
+    .left-one>div,.left-two>div,.left-three>div{
+float:left;
+        /*display:none;*/
+    }
+    .left-one .cen_1{
+        position:absolute;
+        top:25px;
+        left:148px;
+    }
+    .left-one ul{
+        width:400px;
+        height:120px;
+        cursor:pointer;
+        margin-top:10px;
+    }
+     .left-two ul,.left-three ul{
+        width:400px;
+        height:180px;
+        cursor:pointer;
+
+        /*display:inline-block;*/
+    }
+    .cen_1,.cen_2,.cen_3 {
+        font-size:14px;
+    }
+    .cen_2,.cen_3{
+        width:400px;
+        height:180px;
+        /*border:1px solid red;*/
+        font-size:15px;
+        margin-top:40px;
+        /*text-align:center;*/
+    }
+    .cen_2 ul,.cen_3 ul{
+        width:350px;
+        height:180px;
+        /*border:1px solid red;*/
+        margin:0 auto;
+    }
+    .left-one ul li{
+        width:350px;
+        height:30px;
+        line-height:30px;
+        margin-top:5px;
+    }
+    .left-one ul li a:hover,.left-two ul li a:hover,.left-three ul li a:hover{
+        color: #ff4871;
+    }
+    .left-two ul li,.left-three ul li{
+        height:35px;
+        line-height:35px;
+    }
+    .left-one{
+        position:relative;
+        z-index:10;
+
+    }
+
+    .left-two{
+        position:absolute;
+        z-index:11;
+        right:0;
+        top:57px;
+        left:500px;
+        /*border:1px solid #73ddff;*/
+        display:block;
+    }
+    .left-three{
+        position:absolute;
+        z-index:12;
+        top:58px;
+        left:600px;
+        display:block;
+        right:0;
+    }
+    .left_1:hover,.left_2:hover,.left_3:hover{
+        filter:grayscale(0);
+    }
+    .left_1{
+        border-right:1px solid #d4d2d3;
+        cursor:pointer;
+        filter:grayscale(100%);
+    }
+
+    .left_2{
+        border-right:1px solid #d4d2d3;
+        cursor:pointer;
+        filter:grayscale(100%);
+        /*position:relative;*/
+        /*z-index:11;*/
+    }
+    .left_3{
+        border-right:1px solid #d4d2d3;
+        cursor:pointer;
+        filter:grayscale(100%);
+    }
+    .spotlight{
+        filter:grayscale(0);
+    }
+
+        .cen_2 ul li span, .cen_3 ul li span{
+            position:absolute;
+            right:40px;
+        }
+    .cen_1 ul li span{
+        position:absolute;
+        right:72px;
+    }
+    .right-2 .banner{
+        width:360px;
+        height:30px;
+       border-bottom:1px solid #ddd;
+    }
+    .right-2 .banner li{
+        float:left;
+        width:20%;
+        height:30px;
+        line-height:30px;
+        text-align:center;
+    }
+    .right-2 .banner li:hover{
+        border-bottom:2px solid #dd1e4a;
+        cursor: pointer;
+        color: rgba(16, 23, 146, 0.87);
+        font-weight: bold;
+    }
+    .right-2 .advise{
+        width:360px;
+        height:70px;
+        border-bottom:2px solid #dd1e4a;
+    }
+    .right-2 .advise li{
+        width:100%;
+        height:25px;
+        line-height:25px;
+        text-align: center;
+        margin-top:5px;
+        cursor:pointer;
+        font-size:16px;
+        font-weight: bold;
+        color: rgba(221, 30, 74, 0.91);
+        text-decoration:underline;
+    }
+    .right-2 .advise li:nth-child(1){
+        margin-top:12px;
+    }
+    .active5{
+        border-bottom:2px solid #dd1e4a;
+        color: rgba(16, 23, 146, 0.87);
+        font-weight: bold;
+    }
+    .right-2 .advise li:hover,.right-2 .xinwen ul li:hover{
+        color:#dd1e4a;
+        cursor: pointer;
+    }
+    .right-2 .xinwen{
+        width:360px;
+        height:211px;
+    }
+    .right-2 .xinwen ul{
+        width:360px;
+        height:180px;
+        /*border:1px solid black;*/
+        margin-top:10px;
+        display:none;
+        position:absolute;
+
+    }
+    .right-2 .xinwen ul li{
+        height:30px;
+        font-size:15px;
+        text-indent:8px;
+        color: rgba(16, 23, 146, 0.79);
+    }
+
+    .right-2 .xinwen ul li a:hover,.right-2 .advise li a:hover{
+        text-decoration:underline;
+        color: #ff4871;
+    }
+    .right-2 .xinwen>ul.active4{
+        display:block;
+    }
+.right .right-1 input{
+    height:23px;
+    width:297px;
+    position:absolute;
+    top:36px;
+    /*left:2px;*/
+    margin-left:10px;
+    padding-left:12px;
+    outline: none;
+    border:none;
+}
+
+
+    </style>
+</head>
+<body>
+<img src="img/0.png">
+<img src="img/1.png" class="header">
+<div class="bg">
+    <img src="img/1.jpg">
+    <img src="img/2.jpg">
+    <img src="img/3.jpg">
+</div>
+<div class="section">
+    <div class="left">
+        <div class="left-1">left-1</div>
+        <div class="left-2">left-2</div>
+        <div class="left-3">left-3</div>
+    </div>
+    <div class="center">
+        <div class="center-1">
+            <div class="center_1">
+                <span class="btn0">官方</span>
+                <span class="btn1">合作</span>
+            </div>
+            <ul class="scroll_1">
+                <li><img src="scroll0/1.jpg"></li>
+                <li><img src="scroll0/2.jpg"></li>
+                <li><img src="scroll0/3.jpg"></li>
+                <li><img src="scroll0/4.jpg"></li>
+            </ul>
+            <ul class="btn_1">
+                <li class="active">倩女漫画单行本</li>
+                <li>全新梦岛社区</li>
+                <li>全新梦岛同人站</li>
+                <li>公子景真人MV</li>
+            </ul>
+            <ul class="scroll_2">
+                <li><img src="scroll0/5.jpg"></li>
+                <li><img src="scroll0/6.jpg"></li>
+                <li><img src="scroll0/7.jpg"></li>
+            </ul>
+            <ul class="btn_2">
+                <li class="active">夏季爆款榜单</li>
+                <li>苏菲娜新倩女幽魂合作款</li>
+                <li>官方授权画集</li>
+            </ul>
+        </div>
+        <div class="center-2">
+            <div class="center_left">
+            <div class="left_top">
+                <dl>
+                    <dt><img src="center2/3.png"></dt>
+                    <dd>领取礼包</dd>
+                </dl>
+                <dl>
+                    <dt><img src="center2/4.png"></dt>
+                    <dd>探索准备</dd>
+                </dl>
+                <dl>
+                    <dt><img src="center2/5.png"></dt>
+                    <dd>入门指南</dd>
+                </dl>
+            </div>
+            <div class="right_top">
+                <ul>
+                    <li>快速升级</li>
+                    <li>贸易指南</li>
+                    <li>三界伙伴</li>
+                    <li>装备介绍</li>
+                    <li>灵兽系统</li>
+                    <li>坐骑系统</li>
+                </ul>
+            </div>
+            <div class="botm_left">
+                <ul>
+                    <li>帮会联赛</li>
+                    <li>关宁校场</li>
+                    <li>寇岛围攻</li>
+                    <li>镖行天下</li>
+                    <li>宁远觉华</li>
+                    <li>十世镜</li>
+                    <li>京城妖奇谈</li>
+                    <li>京师保卫战</li>
+                </ul>
+            </div>
+            <div class="botm_right">
+                <ul>
+                    <li>婚姻系统</li>
+                    <li>养育系统</li>
+                    <li>家园系统</li>
+                    <li>生活系统</li>
+                    <li>雷峰塔</li>
+                    <li>海陆空领地</li>
+                    <li>主角剧情</li>
+                </ul>
+            </div>
+            </div>
+            <div><img src="center2/1.png"></div>
+        </div>
+        <div class="center-3">
+            <ul class="ct_nav">
+                <li>魅者</li>
+                <li>刀客</li>
+                <li>甲士</li>
+                <li>射手</li>
+                <li>画魂</li>
+                <li>偃师</li>
+                <li>侠客</li>
+                <li>方士</li>
+                <li>医师</li>
+                <li>异人</li>
+            </ul>
+            <div class="ct_tab">
+                <div style="display: block">
+                    <div class="name"></div>
+                    <div class="dingwei">职业定位：远程 / 法术 / 控制</div>
+                    <div class="leibie"></div>
+                    <div class="gender">
+                        <a id="aa" class="male">冷月心</a>
+                        <a id="bb" class="female">风摇筝</a>
+                    </div>
+                </div>
+                <div style="display: none">
+                    <div class="name"></div>
+                    <div class="dingwei">职业定位：近程 / 群攻 / 刺客</div>
+                    <div class="leibie"></div>
+                    <div class="gender">
+                        <a class="male">卓断水</a>
+                        <a class="female">杨梦言</a>
+                    </div>
+                </div>
+                <div style="display: none">
+                    <div class="name"></div>
+                    <div class="dingwei">职业定位：中程 / 物理 / 召唤</div>
+                    <div class="leibie"></div>
+                    <div class="gender">
+                        <a class="male">霍击蒙</a>
+                        <a class="female">石云馨</a>
+                    </div>
+                </div>
+                <div style="display: none">
+                    <div class="name"></div>
+                    <div class="dingwei">职业定位：近程 / 物理 / 高防</div>
+                    <div class="leibie"></div>
+                    <div class="gender">
+                        <a class="male">聂秋鹰</a>
+                        <a class="female">萧若兰</a>
+                    </div>
+                </div>
+                <div style="display: none">
+                    <div class="name"></div>
+                    <div class="dingwei">职业定位：远程 / 物理 / 群攻</div>
+                    <div class="leibie"></div>
+                    <div class="gender">
+                        <a class="male">乔寻影</a>
+                        <a class="female">水凝墨</a>
+                    </div>
+                </div>
+                <div style="display: none">
+                    <div class="name"></div>
+                    <div class="dingwei">职业定位：近程 / 法术 / 单攻</div>
+                    <div class="leibie"></div>
+                    <div class="gender">
+                        <a class="male">檀无心</a>
+                        <a class="female">阮烟罗</a>
+                    </div>
+                </div>
+                <div style="display: none">
+                    <div class="name"></div>
+                    <div class="dingwei">职业定位：近程 / 物理 / 辅助</div>
+                    <div class="leibie"></div>
+                    <div class="gender">
+                        <a class="male">洛昊空</a>
+                        <a class="female">沈傲霜</a>
+                    </div>
+                </div>
+                <div style="display: none">
+                    <div class="name"></div>
+                    <div class="dingwei">职业定位：远程 / 法术 / 群攻</div>
+                    <div class="leibie"></div>
+                    <div class="gender">
+                        <a class="male">莫忘尘</a>
+                        <a class="female">纳兰青</a>
+                    </div>
+                </div>
+                <div style="display: none">
+                    <div class="name"></div>
+                    <div class="dingwei">职业定位：远程 / 法术 / 治疗</div>
+                    <div class="leibie"></div>
+                    <div class="gender">
+                        <a class="male">步临风</a>
+                        <a class="female">殷紫萍</a>
+                    </div>
+                </div>
+                <div style="display: none">
+                    <div class="name"></div>
+                    <div class="dingwei">职业定位：远程 / 法术 / 召唤</div>
+                    <div class="leibie"></div>
+                    <div class="gender">
+                        <a class="male">叶葬花</a>
+                        <a class="female">花渐隐</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="center-4">
+            <h1><img src="center4/5.png"></h1>
+            <div class="left-one">
+                <div class="left_1">
+                    <img src="center4/0.png" alt="">
+                </div>
+                <div class="cen_1">
+                    <img src="center4/4.png" >
+                    <img src="center4/3.png" >
+                    <ul>
+                        <li>[图说] <a title="任性红装，有这样的神队友必出">任性红装，有这样的神队友必出</a><span>[03/16]</span></li>
+                        <li>[愉记]<a title="倩女幽魂真好玩,天然逆天不可修">倩女幽魂真好玩,天然逆天不可修</a><span>[03/14]</span></li>
+                        <li>[任性]<a title=" 7命中神级裤带，5年圆梦挖大"> 7命中神级裤带，5年圆梦挖大</a><span>[03/14]</span></li>
+                    </ul>
+                </div>
+               </div>
+            <div class="left-two">
+                <div class="left_2">
+                    <img src="center4/1.png">
+                </div>
+                <div class="cen_2">
+                    <ul>
+                        <li>[丹青] <a title="藏宝阁精选：最优惠的价格，最精品的侠客">藏宝阁精选：最优惠的价格，最</a><span>[03/16]</span></li>
+                        <li>[丹青] <a title="物理致命 温故第46期 法术躲避">物理致命 温故第46期 法术躲避</a><span>[03/13]</span></li>
+                        <li>[丹青] <a title="刀妹独白：幻想自画像">刀妹独白：幻想自画像</a><span>[03/09]</span></li>
+                        <li>[丹青] <a title="刀妹独白：幻想自画像">悬壶济世</a><span>[03/08]</span></li>
+                        <li>[丹青] <a title="【藏宝阁角色精选】打宝界高">【藏宝阁角色精选】打宝界高</a><span>[03/06]</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="left-three">
+                <div class="left_3">
+                    <img src="center4/2.png">
+                </div>
+                <div class="cen_3">
+                    <ul>
+                        <li>[玩法] <a title="平民抗性养成2：那边的魅者你过来谈下人生">平民抗性养成2：那边的魅者你</a><span>[03/08]</span></li>
+                        <li>[玩法] <a title="帮会系统全解系列1：看完可以指挥联赛啦">帮会系统全解系列1：看完可以</a><span>[02/18] </span></li>
+                        <li>[装备] <a title="平民抗性养成：那边的矮砸你打不动我~ ">平民抗性养成：那边的矮砸你打</a><span>[02/11]</span> </li>
+                        <li>[新手] <a title="千羽大课堂——生活技能（4）工艺篇（下）">千羽大课堂——生活技能</a><span>[01/31]</span> </li>
+                        <li>[玩法] <a title="土木堡攻略上：看瓦剌如何勇夺">土木堡攻略上：看瓦剌如何勇夺</a><span>[01/26]</span></li>
+                    </ul>
+                </div>
+            </div>
+            <!--<div class="right_2">-->
+                <!--<img src="center4/1.png">-->
+                <!--<img src="center4/2.png">-->
+            <!--</div>-->
+        </div>
+  </div>
+    <div class="right">
+        <div class="right-1"><input type="text" placeholder="请输入关键字"></div>
+        <div class="right-2">
+         <ul class="banner">
+             <li class="active5">最新</li>
+             <li>消息</li>
+             <li>公告</li>
+             <li>活动</li>
+             <li>热帖</li>
+         </ul>
+         <ul class="advise">
+             <li><a>【2次元更新】春意如歌 次元入画</a></li>
+             <li><a>《新倩女幽魂》3月16日更新公告</a></li>
+         </ul>
+          <div class="xinwen">
+              <ul class="active4">
+                  <li title="[视频]【一周视频】命运神逆转，从鱼变身输出，观众为赢赌实力卖队友"><a>[视频]【一周视频】命运神逆转，从鱼变身输出</a></li>
+                  <li title="[话题]【机智君防骗指南37】这个小小的举动 为他挽回了差点损失的7000块！"><a>[话题]【机智君防骗指南37】这个小小的举动</a></li>
+                  <li title="[展示]【倩女任性第114期】 帮会怪刷新脸时代/1脚蛮力定乾坤/实用型开书技巧"><a>[展示]【倩女任性第114期】 帮会怪刷新脸时代</a></li>
+                  <li title="[其他]【悬赏币发放公告】倩女茶馆第一期活动结束，3月23日14：00发放"><a>[其他]【悬赏币发放公告】倩女茶馆第一期活动结束</a></li>
+                  <li title="[其他]【深夜密事 说说你是如何入坑的】"><a>[其他]【深夜密事 说说你是如何入坑的】</a></li>
+                  <li title="[新闻] 本周更新【踏浪】 把酒当歌祝东风"><a>[新闻] 本周更新【踏浪】 把酒当歌祝东风</a></li>
+              </ul>
+              <ul>
+                  <li title="[公告] 倩女漫画满堂酒单行本来袭，预售送超萌好礼"><a>[其他]倩女漫画满堂酒单行本来袭</a></li>
+                  <li title="[公告] 相伴天涯路，莫问归处！主角剧情MV催泪上线"><a>[其他]相伴天涯路，莫问归处！</a></li>
+                  <li title="[公告] 本周更新【踏浪】 把酒当歌祝东风"><a>[展示]本周更新【踏浪】 把酒当歌祝东风</a></li>
+                  <li title="[其他]【2次元更新】春意如歌 次元入画"><a>[话题]【2次元更新】春意如歌 次元入画"</a></li>
+                  <li title="[新闻] 本周更新【春色】经典时装齐回归"><a>[其他]本周更新【春色】经典时装齐回归</a></li>
+                  <li title="[三石精选] 不只游戏，睡觉也要花鸟山水中国风"><a>[其他]不只游戏，睡觉也要花鸟山水</a></li>
+
+              </ul>
+              <ul>
+                  <li title="[公告] 《新倩女幽魂》3月23日更新公告"><a>[公告] 《新倩女幽魂》3月23日更新公告</a></li>
+                  <li title="[公告]  开春新服今日燃情开启 入驻享多重特权"><a>[公告] 《开春新服今日燃情开启 入驻享多重特权</a></li>
+                  <li title="[公告] 《新倩女幽魂》3月23日更新公告"><a>[公告]《新倩女幽魂》3月23日更新公告</a></li>
+                  <li title="[公告] 《新倩女幽魂》3月23日更新公告"><a>[公告] 《新倩女幽魂》3月23日更新公告</a></li>
+                  <li title="[新闻] 倩女漫画满堂酒单行本来袭，预售送超萌好礼"><a>[新闻] 倩女漫画满堂酒单行本来袭，预售送超萌好礼</a></li>
+                  <li title="[公告] 《新倩女幽魂》3月23日更新公告"><a>[公告] 《新倩女幽魂》3月23日更新公告</a></li>
+              </ul>
+              <ul>
+                  <li title="[公告] 《新倩女幽魂》3月23日更新公告"><a>[公告] 《新倩女幽魂》3月23日更新公告</a></li>
+                  <li title="[公告]  开春新服今日燃情开启 入驻享多重特权"><a>[公告] 开春新服今日燃情开启 入驻享多重特权</a></li>
+                  <li title="[公告] 《新倩女幽魂》3月23日更新公告"><a>[公告]《新倩女幽魂》3月23日更新公告</a></li>
+                  <li title="[公告] 《新倩女幽魂》3月23日更新公告"><a>[公告] 《新倩女幽魂》3月23日更新公告</a></li>
+                  <li title="[新闻] 倩女漫画满堂酒单行本来袭，预售送超萌好礼"><a>[新闻] 倩女漫画满堂酒单行本来袭，预售送超萌好礼</a></li>
+                  <li title="[公告] 《新倩女幽魂》3月23日更新公告"><a>[公告] 《新倩女幽魂》3月23日更新公告</a></li>
+              </ul>
+              <ul>
+                  <li title="[公告] 《新倩女幽魂》3月23日更新公告"><a>[公告] 《新倩女幽魂》3月23日更新公告</li>
+                  <li title="[公告]  开春新服今日燃情开启 入驻享多重特权"><a>[公告] 开春新服今日燃情开启 入驻享多重特权</li>
+                  <li title="[公告] 《新倩女幽魂》3月23日更新公告"><a>[公告]《新倩女幽魂》3月23日更新公告</li>
+                  <li title="[公告] 《新倩女幽魂》3月23日更新公告"><a>[公告] 《新倩女幽魂》3月23日更新公告</li>
+                  <li title="[新闻] 倩女漫画满堂酒单行本来袭，预售送超萌好礼"><a>[新闻] 倩女漫画满堂酒单行本来袭，预售送超萌好礼</li>
+                  <li title="[公告] 《新倩女幽魂》3月23日更新公告"><a>[公告] 《新倩女幽魂》3月23日更新公告</li>
+              </ul>
+          </div>
+        </div>
+        <div class="right-3">right-3</div>
+        <div class="right-4">right-4</div>
+        <div class="right-5">right-5</div>
+    </div>
+</div>
+<script>
+    $(function(){
+//        右侧tab页
+
+           $(".right-2 .banner li").each(function(index){
+               $(this).mouseover(function(){
+                   $(".right-2 .xinwen>ul").removeClass("active4").eq(index).addClass("active4");
+                   $(".right-2 .banner li").removeClass("active5").eq(index).addClass("active5");
+
+               });
+
+           });
+
+
+//        尾部切换页
+      $(".left-one .left_1").click(function(){
+          $(".left-one .left_1").addClass("spotlight");
+          console.log($(".left-one .left_1"));
+          $(".left-two").animate({"left":"500px"},500);
+          $(".left-three").animate({"left":"600px"},500);
+
+      });
+
+     $(".left-two .left_2").click(function(){
+         $(".left-two .left_2").addClass("spotlight");
+         $(".left-two").animate({"left":"102px"},500);
+         console.log($(".left-two").css("left"));
+         if($(".left-two").css("left")==102+"px"){
+//             $(".left-two").animate({"left":"500px"},500);
+             $(".left-three").animate({"left":"600px"},500);
+         }
+
+     });
+        $(".left-three .left_3").click(function(){
+            $(".left-three .left_3").addClass("spotlight");
+            $(".left-three").animate({"left":"200px"},500);
+            $(".left-two").animate({"left":"102px"},500);
+            if($(".left-three").css("left")==600+"px"){
+                $(".left-three").animate({"left":"200px"},500);
+
+            }
+
+
+        });
+
+
+
+
+
+
+//头部轮播图
+        var num=0;
+        var index1=0;
+        var num1=0;
+        var timer=setInterval(function(){
+            $(".scroll_1").animate({"left":"-"+$(".scroll_1 img").width()+"px"},700,function(){
+                $(this).css({"left":0}).find("li:first").appendTo($(this));
+            });
+            num++;
+            $(".btn_1 li").removeClass("active").eq(num).addClass("active");
+
+            if(num>=$(".btn_1 li").length){
+                num=0;
+            }
+        },2000);
+
+
+        $(".btn_1 li").each(function(index){
+            $(this).hover(function(){
+                clearInterval(timer);
+                $(".scroll_1").animate({"left":"-700px"},700,function(){
+                    $(this).css({"left":0}).find("li:first").appendTo($(".scroll_1"));
+                });
+                $(".btn_1 li").removeClass("active").eq(index).addClass("active");
+
+            },function(){
+              timer=setInterval(function(){
+                    $(".scroll_1").animate({"left":"-"+$(".scroll_1 img").width()+"px"},700,function(){
+                        $(this).css({"left":0}).find("li:first").appendTo($(this));
+                    });
+                    $(".btn_1 li").removeClass("active").eq(index).addClass("active");
+//                    console.log($(".btn_1 li"));
+                    index++;
+                    if(index>=$(".btn_1 li").length){
+                        index=0;
+                    }
+                },2000);
+            });
+        });
+
+
+
+        $(".center-1 .center_1 .btn0").click(function(){
+            $(".scroll_1,.btn_1").css({"display":"block"});
+            $(".scroll_2,.btn_2").css({"display":"none"});
+            clearInterval(timer);
+            var timer1=setInterval(function(){
+                $(".scroll_1").animate({"left":"-"+$(".scroll_1 img").width()+"px"},700,function(){
+                    $(this).css({"left":0}).find("li:first").appendTo($(this));
+                });
+                $(".btn_1 li").removeClass("active").eq(num).addClass("active");
+                num++;
+                if(num>=$(".btn_1 li").length){
+                    num=0;
+                }
+            },2000);
+        });
+
+        $(".center-1 .center_1 .btn1").click(function(){
+            $(".scroll_1,.btn_1").css({"display":"none"});
+            $(".scroll_2,.btn_2").css({"display":"block"});
+            var timer2=setInterval(function(){
+                $(".scroll_2").animate({"left":"-"+$(".scroll_2 img").width()+"px"},700,function(){
+                    $(this).css({"left":0}).find("li:first").appendTo($(".scroll_2"));
+                });
+                $(".btn_2 li").removeClass("active").eq(num1).addClass("active");
+               num1++;
+                if(num1>=$(".scroll_2 img").length){
+                    num1=0;
+                }
+            },2000);
+
+            $(".btn_2 li").each(function(index1){
+                $(this).hover(function(){
+                    clearInterval(timer2);
+                    $(".scroll_2").animate({"left":"-700px"},700,function(){
+                        $(this).css({"left":0}).find("li:first").appendTo($(".scroll_2"));
+                    });
+                    $(".btn_2 li").removeClass("active").eq(index1).addClass("active");
+
+                },function(){
+                    var timer3=setInterval(function(){
+                        $(".scroll_2").animate({"left":"-"+$(".scroll_2 img").width()+"px"},700,function(){
+                            $(this).css({"left":0}).find("li:first").appendTo($(this));
+                        });
+                        index1++;
+                        $(".btn_2 li").removeClass("active").eq(index1).addClass("active");
+                        console.log($(".btn_2 li"));
+
+                        if(index1>=$(".scroll_2 img").length){
+                            index1=0;
+                        }
+                    },2000);
+                });
+            });
+        });
+
+
+
+
+
+
+    });
+</script>
+</body>
+</html>

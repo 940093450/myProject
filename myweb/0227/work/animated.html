@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #demo{
+            position: absolute;
+            top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <img id="demo" src="2.png">
+    <script>
+        var demo=document.querySelector("#demo");
+        var left=demo.style.left||0;
+        var dS=demo.style;
+        var i= 1,j= 1,k=130;
+        var mm=setInterval (function Msg(){
+            left++;
+            if(left<950){
+                dS.marginLeft=left+"px";
+                if(left<200){
+                    i=i-0.004;
+                    dS.opacity=i;
+                }else if(left<600&&left>=200){
+                    j=j+0.5;
+                    i=i+0.004;
+                    dS.opacity=i;
+                    dS.marginTop=j+"px";
+                    dS.transform = "rotate(60deg)";
+                }else {
+                    k=k-0.15;
+                    i=i-0.006;
+                    dS.marginTop=j+"px";
+                    dS.opacity=i;
+                    dS.width=k+"px";
+                    dS.transform = "rotate(360deg)";
+                }
+            }else {
+                clearInterval(mm);
+                //demo.style.display="none";
+            }
+            console.log(i);
+        },100);
+    </script>
+</body>
+</html>

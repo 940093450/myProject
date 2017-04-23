@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .even{
+            background: yellow;
+        }
+        .odd{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<table align="center" width="90%" border="1">
+    <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+
+</table>
+<script>
+    var tab=document.querySelector("table");
+    var odd=document.querySelectorAll("table tr");
+    for(var i=0;i<odd.length;i++){
+        if(i%2==1){
+            odd[i].className="odd"
+        }else{
+            odd[i].className="even"
+        }
+    }
+   // console.log(odd)
+</script>
+</body>
+</html>

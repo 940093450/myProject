@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="tools.js">
+
+
+    </script>
+
+    <style>
+
+        .r-div1{
+            width:93px;
+            height:100%;
+            border-right:5px solid #7b6f6f;
+            position:fixed;
+            right:0;
+            top:0;
+            font-size:12px;
+            font-family:微软雅黑；
+        }
+        .r-div2{
+            width:93px;
+            height:600px;
+            margin-top:150px;
+        }
+        #r-div3{
+            position:fixed;
+            bottom:0;
+        }
+        .r-div1 ul{
+            width:93px;
+            list-style:none;
+
+            height:40px;
+        }
+        .r-div1 ul li{
+
+            height:35px;
+            margin-top:0;
+            border-radius:2px;
+            background:#7b6f6f;
+            text-align:center;
+            position:relative;
+        }
+        .r-div1 ul li:nth-child(1){
+            width:62.5%;
+            line-height:35px;
+            float:left;
+            display:none;
+        }
+
+        .r-div1 ul li:nth-child(2){
+            width:34.5%;
+            line-height:40px;
+            /*border:1px solid #ddd;*/
+            float:right;
+            text-align:center;
+        }
+        .r-div1 ul img{
+            width:65%;
+        }
+        .r-div1 ul li:nth-child(2).active{
+            background:#c81623;
+
+        }
+        .r-div1 ul li:nth-child(1).spotlight{
+            background:#c81623;
+            display:block;
+        }
+        .r-div1 a{
+            color:white;
+            text-decoration: none;
+        }
+body{
+    height:1500px;
+}
+    </style>
+</head>
+<body>
+<div class="r-div1">
+    <div class="r-div2">
+    <ul>
+        <li><a href="https://www.baidu.com/">京东会员</a></li>
+        <li><img src="img2/6.png"></li>
+    </ul>
+    <ul>
+        <li><a href="https://www.baidu.com/">购物车</a></li>
+        <li><img src="img2/7.png"></li>
+    </ul>
+    <ul>
+        <li><a href="https://www.baidu.com/">我的关注</a></li>
+        <li><img src="img2/3.png"></li>
+    </ul>
+    <ul>
+        <li><a href="https://www.baidu.com/">我的足迹</a></li>
+        <li><img src="img2/6.png"></li>
+    </ul>
+    <ul>
+        <li><a href="https://www.baidu.com/">我的消息</a></li>
+        <li><img src="img2/4.png"></li>
+    </ul>
+    <ul>
+        <li><a href="https://www.baidu.com/">咨询JIMI</a></li>
+        <li><img src="img2/6.png"></li>
+    </ul>
+        <div id="r-div3">
+     <ul>
+        <li><a href="">顶部</a></li>
+        <li><img src="img2/4.png"></li>
+        </ul>
+      <ul>
+        <li><a href="https://www.baidu.com/">反馈</a></li>
+        <li><img src="img2/3.png"></li>
+      </ul>
+        </div>
+    </div>
+</div>
+<script>
+    function right_nav(){
+    var lis=document.querySelectorAll("ul li:nth-child(2)");
+    var lis1=document.querySelectorAll("ul li:nth-child(1)");
+    console.log(lis);
+    for(var i=0;i<lis.length;i++){
+        lis[i].setAttribute("index",i);
+        lis[i].addEventListener("mouseover",function(){
+            for(var j=0;j<lis.length;j++){
+                lis[j].className="";
+                lis1[j].className="";
+            }
+           this.className="active";
+           lis1[this.getAttribute("index")].className="spotlight";
+        })
+    }
+    for(var h=0;h<lis.length;h++){
+        lis1[h].setAttribute("index",h);
+        lis1[h].addEventListener("mouseout",function(){
+            this.className="";
+            lis[this.getAttribute("index")].className="";
+        })
+    }
+     var ul=document.querySelectorAll("#r-div3 ul")[0];
+    ul.addEventListener("click",function(){
+        window.scrollTo(0,0);
+
+    })
+    }
+    right_nav();
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            height: 1500px;
+        }
+        button{
+            position: fixed;
+        }
+    </style>
+</head>
+<body>
+<button>Button</button>
+<script>
+    var btn=document.querySelector("button");
+    btn.addEventListener("click",function(){
+        window.scrollBy(0,30);
+    })
+</script>
+</body>
+</html>

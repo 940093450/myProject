@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.1.1.js"></script>
+</head>
+<body>
+<button>按钮</button>
+<h1>hello</h1>
+<script>
+    $("h1").on("changeColor",function(){
+        $(this).css({"color":"red"})
+    });
+    $("button").on("click",function(){
+        $("h1").trigger("changeColor")
+    })
+</script>
+</body>
+</html>

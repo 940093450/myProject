@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .up ul li{
+            width: 80px;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+            float: left;
+            background:paleturquoise;
+            margin-left: 5px;
+        }
+        .up ul li.active{
+            position: relative;
+            top: 5px;
+            border: 1px solid palegreen;
+            border-bottom: none;
+            background: antiquewhite;
+            z-index: 1;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .down>div{
+            width: 250px;
+            height: 250px;
+            background: antiquewhite;
+            border: 1px solid palegreen;
+            position: relative;
+            top: 30px;
+            left: 5px;
+            display: none;
+        }
+        .down>div.block{
+            display: block;
+        }
+        p{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="up">
+        <ul>
+            <li>第一栏</li>
+            <li>第二栏</li>
+            <li>第三栏</li>
+        </ul>
+    </div>
+    <div class="down">
+        <div>
+            <p>深刻的规划空间的规划可视电话</p>
+        </div>
+        <div>
+            <p>诶嘿高科技凯华大哥科技感</p>
+        </div>
+        <div>
+            <p>撒利汞奥斯陆的客观阿勒</p>
+        </div>
+    </div>
+    <script>
+        var lis=document.querySelectorAll(".up li");
+        var divs=document.querySelectorAll(".down>div");
+        for(var i=0;i<lis.length;i++){
+            lis[i].setAttribute("index",i);
+            lis[i].addEventListener("click",function(){
+                for(var j=0;j<lis.length;j++){
+                    lis[j].className="";
+                    divs[j].className="";
+                }
+                this.className="active";
+                var dx=this.getAttribute("index");
+                console.log(dx);
+                divs[dx].className="block"
+            })
+        }
+        console.log(typeof(undefined));
+
+    </script>
+</body>
+</html>

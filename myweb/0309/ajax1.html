@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Tools.js"></script>
+</head>
+<body>
+<div class="demo"></div>
+<script>
+    var demo=document.querySelector(".demo");
+    var xhr=new XMLHttpRequest();
+    xhr.open("post","data.txt");
+    //alert(xhr.readyState);
+    //alert(xhr.readyState)
+    xhr.send(null);
+    xhr.addEventListener("readystatechange",function(){
+        if(xhr.readyState==4){
+            if (xhr.status==200){
+                demo.innerHTML=xhr.responseText
+            }
+        }
+    })
+</script>
+</body>
+</html>

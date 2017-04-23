@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="feedback"></div>
+<input type="text" id="email">
+<script>
+    var email=document.querySelector("#email");
+    var feedback=document.querySelector("#feedback");
+    var pattern=/^[\w]+([\.-][\w]+)?@[\w]+([\-][\w]+)?\.[a-z]{2,5}(\.[a-z]{2,5})?$/i;
+    email.addEventListener("keyup",function(){
+        console.log(pattern.test(this.value))
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .cc{
+            height: 20px;
+            background: green;
+        }
+    </style>
+</head>
+<body>
+<div class="cc" style="width:0"></div>
+<p id="bb">1</p>
+<script>
+    var cc=document.querySelector(".cc");
+    var bb=document.querySelector("#bb");
+    //console.log(cc.style.width);
+    //cc.style.width=200+"px";
+    //aa.innerHTML=123
+    var i= 0,j=0;
+    var aa=setInterval(function(){
+        i+=2;
+        j++;
+        cc.style.width=i+"px";
+        bb.innerHTML=j+"%";
+        if(i>=200){
+            clearInterval(aa)
+        }
+    },20)
+</script>
+</body>
+</html>

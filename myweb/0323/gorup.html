@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str="<span>tom</span>,<span>peter</span>";
+    var pattern=/(<span>(.+?)<\/span>),(<span>(.+?)<\/span>)/g;
+    str.match(pattern);
+    console.log(RegExp.$1);
+    console.log(RegExp.$2);
+    console.log(RegExp.$3);
+    console.log(RegExp.$4);
+    console.log(RegExp.$5)
+</script>
+</body>
+</html>

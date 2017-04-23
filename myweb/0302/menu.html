@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        ul li ul{
+            display: none;
+            position: absolute;
+            left: 120px;
+            top: 0;
+        }
+        ul li{
+            position: relative;
+            border-bottom: 1px solid #fff;
+        }
+        #dropdown{
+            background: red;
+            width: 120px;
+        }
+        ul .active{
+            display: block;
+            background: #369;
+            width: 120px;
+        }
+        li.spotlight{
+            color: crimson;
+            background: aquamarine;
+        }
+    </style>
+</head>
+<body>
+<ul id="dropdown">
+    <li>关于我们
+        <ul>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+        </ul>
+    </li>
+    <li>关于我们
+        <ul>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+        </ul>
+    </li>
+    <li>关于我们
+        <ul>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+        </ul>
+    </li>
+    <li>关于我们
+        <ul>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+        </ul>
+    </li>
+</ul>
+<script>
+    var lis=document.querySelectorAll("#dropdown>li");
+    console.log(lis);
+    var uls=document.querySelectorAll("#dropdown>li>ul");
+    for(var i=0;i<lis.length;i++){
+        lis[i].setAttribute("index",i);
+        lis[i].addEventListener("mouseover",function(){
+            for(var j=0;j<lis.length;j++){
+                lis[j].className="";
+                uls[j].className="";
+            }
+            this.className="spotlight";
+            console.log(this.querySelector("ul"));
+            uls[this.getAttribute("index")].className="active";
+        });
+    }
+</script>
+</body>
+</html>

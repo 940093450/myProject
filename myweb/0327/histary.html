@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button id="btn">后退</button>
+    <button id="addBtn">添加历史记录</button>
+<script>
+    var btn=document.querySelector("#btn");
+    var addBtn=document.querySelector("#addBtn");
+    addBtn.addEventListener("click",function(){
+        history.pushState("username:tom","demo","?page=1");
+    });
+    btn.addEventListener("click",function(){
+        history.go(-1)
+    });
+    //前后后退时触发
+    window.addEventListener("popstate",function(){
+        alert(123)
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Tools.js"></script>
+</head>
+<body>
+<img src="">
+<img src="">
+<img src="">
+<img src="">
+<img src="">
+<img src="">
+<img src="">
+<img src="">
+<script>
+    setInterval(function(){
+        var imgs=document.querySelectorAll("img");
+        var d=new Date();
+        var h=addZero(d.getHours());
+        var m=addZero(d.getMinutes());
+        var s=addZero(d.getSeconds()) ;
+        var now=h+"c"+m+"c"+s;
+        for(var i=0;i<now.length;i++){
+            //console.log(now.charAt(i))
+            if(now.charAt(i)=="c"){
+                imgs[i].src="img1/colon.JPG";
+            }else {
+                imgs[i].src = "img1/" + now.charAt(i) + ".JPG";
+            }
+        }
+    },1000);
+
+</script>
+</body>
+</html>

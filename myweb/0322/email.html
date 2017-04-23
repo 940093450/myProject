@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="feedback"></div>
+<input type="email" id="email" placeholder="url">
+<script>
+    var feedback=document.querySelector("#feedback");
+    var email=document.querySelector("#email");
+    email.addEventListener("blur",function(){
+        console.log(email_validate(this.value))
+    });
+    //var pattern=/^(http|ftp|https):\/\/([a-z]+)\.([a-z]+)\.([a-z]{2,5})(\.[a-z]{2,5})?$/ig;
+    /*var pattern=/^[a-z0-9]+([\._-][a-z0-9]+)?@[a-z0-9]+([_-][a-z0-9]+)?\.[a-z]{2,5}$/i;
+
+    email.addEventListener("blur",function(){
+        console.log(pattern.test(this.value));
+        if(!pattern.test(this.value)){
+            feedback.innerHTML="Email错误";
+        }else{
+            feedback.innerHTML="Email正确";
+        }
+    });*/
+    function email_validate(content){
+        var pattern=/^[a-z0-9]+([\._-][a-z0-9]+)?@[a-z0-9]+([_-][a-z0-9]+)?\.[a-z]{2,5}$/i;
+        if(content){
+            if(!pattern.test(content)){
+                return false
+            }
+        }
+        return true;
+    }
+    /*var str="http";
+    var pattern=/http|https/g;
+    console.log(pattern.test(str));*/
+</script>
+</body>
+</html>

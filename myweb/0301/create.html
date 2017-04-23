@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="foo"></div>
+    <script>
+        var foo=document.querySelector(".foo");
+        var img=document.createElement("img");
+        img.src="1.jpg";
+        //把图片元素追加到body中
+        document.body.appendChild(img);
+        //作为子元素追加到foo中。
+        foo.appendChild(img);
+    </script>
+</body>
+</html>

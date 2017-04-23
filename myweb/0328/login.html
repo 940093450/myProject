@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .login{
+            border: 1px solid green;
+        }
+        .memberDashboard{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<ul class="login">
+    <li class="loginBtn">登录</li>
+    <li>注册</li>
+</ul>
+<ul class="memberDashboard">
+    <li class="username"></li>
+    <li class="logout">注销</li>
+</ul>
+<script>
+    var login=document.querySelector(".login");
+    var logout=document.querySelector(".logout");
+    var memberDashboard=document.querySelector(".memberDashboard");
+    var username=document.querySelector(".username");
+    var loginBtn=document.querySelector(".loginBtn");
+    if(sessionStorage.getItem("username")){
+        login.style.display="none";
+        memberDashboard.style.display="block";
+        username.innerHTML=sessionStorage.getItem("username");
+    }else {
+        login.style.display="block";
+        memberDashboard.style.display="none"
+    }
+    //点击登录
+    loginBtn.addEventListener("click",function(){
+        //添加本地
+        sessionStorage.setItem("username","mike");
+        //console.log(sessionStorage.getItem("username"));
+        //模拟登录后直接跳转
+        login.style.display="none";
+        memberDashboard.style.display="block";
+        username.innerHTML="mike";
+    });
+    //点击注销
+    logout.addEventListener("click",function(){
+        //删除本地
+        sessionStorage.removeItem("username");
+        //模拟注销后直接跳转
+        login.style.display="block";
+        memberDashboard.style.display="none";
+        //username.innerHTML="";
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .tab{
+           /* border: 1px solid green;*/
+            display: block;
+        }
+        .tab:after,.tab ul:after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+        ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        ul li{
+            float: left;
+            width: 100px;
+            height: 20px;
+            border: 1px solid red;
+            margin-left: 5px;
+            text-align: center;
+            cursor: pointer;
+            background:green;
+            color: #fff;
+            position: relative;
+        }
+        .active{
+            background: orange;
+            top: 5px;
+            z-index:10;
+            border: 1px solid green;
+            border-bottom: 0;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+        .tab div{
+            width: 315px;
+            height: 200px;
+            border: 1px solid red;
+            margin-left: 5px;
+            margin-top: 2px;
+            background: #fff;
+            position: relative;
+            display: none;
+        }
+        .tab div.spotlight{
+            border: 1px solid orange;
+            z-index: 1;
+            background: orange;
+            display: block;
+        }
+        body{
+            background: #eee;
+        }
+    </style>
+</head>
+<body>
+    <span class="tab">
+        <ul>
+            <li>No:1</li>
+            <li>No:2</li>
+            <li>No:3</li>
+        </ul>
+        <div>one</div>
+        <div>two</div>
+        <div>three</div>
+    </span>
+    <script>
+        //获取tab下的所有list
+        var lis=document.querySelectorAll("li");
+        //获取tab下的所有DIV
+        var divs=document.querySelectorAll("div");
+        //通过循环为每个list添加click
+        for(var i=0;i<lis.length;i++){
+            //(function(_index){})(i):匿名函数的自触发
+            //匿名函数在这起作用的是闭包
+            (function(_index){
+                lis[i].addEventListener("click",function(){
+                    for(var j=0;j<lis.length;j++){
+                        lis[j].className="";
+                        divs[j].className="";
+                    }
+                    this.className="active";
+                    divs[_index].className="spotlight";
+               })
+            })(i);
+        }
+    </script>
+</body>
+</html>

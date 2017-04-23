@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="id_js.js"></script>
+    <script src="Tools.js"></script>
+</head>
+<style>
+    body{
+        margin: 0 auto;
+        padding: 0;
+    }
+    .header{
+        width: 100%;
+        height: 100px;
+
+    }
+    .content{
+        width: 100%;
+        height: 600px;
+
+    }
+    .foot{
+        width: 100%;
+        height: 100px;
+
+    }
+    #clock{
+        width: 200px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+    }
+    #Tg{
+        width: 200px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+    }
+    #lf{
+        width: 200px;
+        height: 100px;
+        float: left;
+    }
+</style>
+<body>
+    <div>
+        <div class="header">
+            <div id="lf">
+                <div id="clock"></div>
+                <div id="Tg">
+            </div>
+            </div>
+        </div>
+        <div class="content"></div>
+        <div class="foot"></div>
+    </div>
+    <script>
+        var aa=8;
+
+        function clo() {
+            var d = new Date();
+            var y = d.getFullYear();
+            var mo = d.getMonth() + 1;
+            var day = d.getDate();
+            var h = d.getHours();
+            var m = d.getMinutes();
+            var s = d.getSeconds();
+            Msg(clock).innerHTML = y + "年" + addZero(mo) + "月" + addZero(day) +
+                    "日" +addZero(h) + ":" + addZero(m) + ":" + addZero(s);
+            if (h> 6 && h<= 12) {
+                Msg(Tg).innerHTML = "上午好";
+                Msg(lf).style.background='url(1.png)';
+            }
+            else if (h > 12 && h <= 18) {
+                Msg(Tg).innerHTML = "下午好";
+                Msg(lf).style.background='url(2.png)';
+            }
+            else {
+                Msg(Tg).innerHTML = "晚上好";
+                Msg(lf).style.background='url(3.png)';
+           }
+        }
+        clo();
+        setInterval(clo,1000)
+    </script>
+</body>
+</html>

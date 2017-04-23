@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .feedback{
+            width: 100%;
+            height: 30px;
+            border: 1px solid black;
+        }
+        .feedback .loading{
+            height: 30px;
+            background: red;
+            line-height: 30px;
+            transition: width 1s;
+        }
+    </style>
+</head>
+<body>
+<input type="file" id="icon">
+<div class="feedback">
+    <div class="loading">0%</div>
+</div>
+
+<script>
+    //console.log(FileReader);
+    var icon=document.querySelector("#icon");
+    var preview=document.createElement("img");
+    var loading=document.querySelector(".loading");
+    icon.addEventListener("change",function(){
+        var fr=new FileReader();
+        //读取上传文件
+        fr.readAsDataURL(icon.files[0]);
+        //fr加载事件
+        fr.addEventListener("loadend",function(){
+
+            preview.src=this.result;
+            //this.result：filereader 读取的数据
+            document.body.appendChild(preview)
+        })
+    })
+</script>
+</body>
+</html>

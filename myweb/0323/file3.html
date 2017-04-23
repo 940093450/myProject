@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="feedback"></div>
+<input type="file" id="icon" multiple>
+<script>
+    var icon=document.querySelector("#icon");
+    var feedback=document.querySelector("#feedback");
+    icon.addEventListener("change",function(){
+        for(var i=0;i<icon.files.length;i++){
+            if (!/image/.test(icon.files[i].type)){
+                //alert(i+"类型错误");
+                feedback.innerHTML+="第"+(i+1)+"个类型错误<br>"
+            }else{
+                feedback.innerHTML+=icon.files[i].name+"正确<br>"
+            }
+        }
+    });
+</script>
+</body>
+</html>

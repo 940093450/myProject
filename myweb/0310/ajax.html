@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="content"></div>
+<script>
+    var content=document.querySelector("#content");
+    var xhr=new XMLHttpRequest();
+     xhr.open("post","data..html");
+     content.innerHTML="加载中。。。";
+     xhr.send(null);
+     xhr.addEventListener("readystatechange",function(){
+     if(xhr.readyState==4){
+     if (xhr.status==200){
+     //alert(xhr.responseText);
+         content.innerHTML=xhr.responseText;
+     }
+     }
+     });
+    /*var xhr=new XMLHttpRequest();
+    xhr.open("post","data.txt");
+    //alert(xhr.readyState);
+    //alert(xhr.readyState)
+    xhr.send(null);
+    xhr.addEventListener("readystatechange",function(){
+        if(xhr.readyState==4){
+            if (xhr.status==200){
+                console.log(xhr.responseText)
+            }
+        }
+    })*/
+</script>
+</body>
+</html>

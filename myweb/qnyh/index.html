@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.1.1.js"></script>
+    <script src="js/tabjs.js"></script>
+    <link href="css/tabcss.css" rel="stylesheet" type="text/css">
+    <style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    body{
+        height:2275px;
+    }
+    .bg img{
+        width:1583px;
+    }
+    .bg img:nth-child(2){
+        height:857px;
+    }
+    .bg img:nth-child(2),.bg img:nth-child(3){
+       margin-top:-4px;
+
+     }
+        .section{
+            width:1252px;
+            height:1290px;
+            border:1px solid black;
+            position:relative;
+            top:-1800px;
+            margin:auto;
+        }
+        .header{
+            position:absolute;
+            top:91px;
+            right:252px;
+        }
+    .section{
+        display:flex;
+    }
+           .section .left{
+            width:172px;
+            height:1290px;
+            /*border:1px solid black;*/
+        }
+    .section .center{
+        width:700px;
+        height:1290px;
+        margin-left: 10px;
+    }
+    .section .right{
+        width:360px;
+        height:1290px;
+        background:#ddd;
+        margin-left:10px;
+    }
+     .left>div{
+         height:382px;
+         background:#ddd;
+     }
+    .center>div:nth-child(1) {height:300px;}
+    .center>div:nth-child(2) {height:300px;}
+    .center>div:nth-child(3) {height:350px;}
+    .center>div:nth-child(4) {height:310px;}
+    .right>div{
+        height:340px;
+        background:#ddd;
+        border-bottom:1px solid black;
+    }
+    .right>div:nth-child(1){
+        height:63px;
+        background:#ddd;
+    }
+    .right>div:nth-child(2) {height:311px;}
+    .right>div:nth-child(3) {height:352px;}
+    .right>div:nth-child(4) {height:211px;}
+    .right>div:nth-child(5) {height:310px;}
+
+    .left-1,.center-1,.right-1{
+        margin-top:0;
+    }
+    .left>div,.center>div,.right>div{
+        margin-bottom:10px;
+    }
+    .ct_tab>div .gender a.active1{
+        width: 115px;
+        height: 40px;
+        position: relative;
+        right: 0;
+        background: url("img/tabimg/touxiang/male.gif")  no-repeat;
+        font-size: 16px;
+        line-height: 40px;
+        text-indent: 20px;
+    }
+    .ct_tab>div .gender a.active2{
+        width: 115px;
+        height: 40px;
+        position: relative;
+        right: 0;
+        background: url("img/tabimg/touxiang/female.gif")  no-repeat;
+        font-size: 16px;
+        line-height: 40px;
+        text-indent: 20px;
+    }
+    </style>
+</head>
+<body>
+<img src="img/0.png">
+<img src="img/1.png" class="header">
+<div class="bg">
+    <img src="img/1.jpg">
+    <img src="img/2.jpg">
+    <img src="img/3.jpg">
+</div>
+<div class="section">
+    <div class="left">
+        <div class="left-1">left-1</div>
+        <div class="left-2">left-2</div>
+        <div class="left-3">left-3</div>
+    </div>
+    <div class="center">
+        <div class="center-1">center-1</div>
+        <div class="center-2">center-2</div>
+        <div class="center-3">
+            <ul class="ct_nav">
+                <li>魅者</li>
+                <li>刀客</li>
+                <li>甲士</li>
+                <li>射手</li>
+                <li>画魂</li>
+                <li>偃师</li>
+                <li>侠客</li>
+                <li>方士</li>
+                <li>医师</li>
+                <li>异人</li>
+            </ul>
+            <div class="ct_tab">
+                <div style="display: block">
+                    <div class="name"></div>
+                    <div class="dingwei">职业定位：远程 / 法术 / 控制</div>
+                    <div class="leibie"></div>
+                    <div class="gender">
+                        <a id="aa" class="male">冷月心</a>
+                        <a id="bb" class="female">风摇筝</a>
+                    </div>
+                </div>
+                <div style="display: none">
+                    <div class="name"></div>
+                    <div class="dingwei">职业定位：近程 / 群攻 / 刺客</div>
+                    <div class="leibie"></div>
+                    <div class="gender">
+                        <a class="male">卓断水</a>
+                        <a class="female">杨梦言</a>
+                    </div>
+                </div>
+                <div style="display: none">
+                    <div class="name"></div>
+                    <div class="dingwei">职业定位：中程 / 物理 / 召唤</div>
+                    <div class="leibie"></div>
+                    <div class="gender">
+                        <a class="male">霍击蒙</a>
+                        <a class="female">石云馨</a>
+                    </div>
+                </div>
+                <div style="display: none">
+                    <div class="name"></div>
+                    <div class="dingwei">职业定位：近程 / 物理 / 高防</div>
+                    <div class="leibie"></div>
+                    <div class="gender">
+                        <a class="male">聂秋鹰</a>
+                        <a class="female">萧若兰</a>
+                    </div>
+                </div>
+                <div style="display: none">
+                    <div class="name"></div>
+                    <div class="dingwei">职业定位：远程 / 物理 / 群攻</div>
+                    <div class="leibie"></div>
+                    <div class="gender">
+                        <a class="male">乔寻影</a>
+                        <a class="female">水凝墨</a>
+                    </div>
+                </div>
+                <div style="display: none">
+                    <div class="name"></div>
+                    <div class="dingwei">职业定位：近程 / 法术 / 单攻</div>
+                    <div class="leibie"></div>
+                    <div class="gender">
+                        <a class="male">檀无心</a>
+                        <a class="female">阮烟罗</a>
+                    </div>
+                </div>
+                <div style="display: none">
+                    <div class="name"></div>
+                    <div class="dingwei">职业定位：近程 / 物理 / 辅助</div>
+                    <div class="leibie"></div>
+                    <div class="gender">
+                        <a class="male">洛昊空</a>
+                        <a class="female">沈傲霜</a>
+                    </div>
+                </div>
+                <div style="display: none">
+                    <div class="name"></div>
+                    <div class="dingwei">职业定位：远程 / 法术 / 群攻</div>
+                    <div class="leibie"></div>
+                    <div class="gender">
+                        <a class="male">莫忘尘</a>
+                        <a class="female">纳兰青</a>
+                    </div>
+                </div>
+                <div style="display: none">
+                    <div class="name"></div>
+                    <div class="dingwei">职业定位：远程 / 法术 / 治疗</div>
+                    <div class="leibie"></div>
+                    <div class="gender">
+                        <a class="male">步临风</a>
+                        <a class="female">殷紫萍</a>
+                    </div>
+                </div>
+                <div style="display: none">
+                    <div class="name"></div>
+                    <div class="dingwei">职业定位：远程 / 法术 / 召唤</div>
+                    <div class="leibie"></div>
+                    <div class="gender">
+                        <a class="male">叶葬花</a>
+                        <a class="female">花渐隐</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="center-4">center-3</div>
+    </div>
+    <div class="right">
+        <div class="right-1">right-1</div>
+        <div class="right-2">right-2</div>
+        <div class="right-3">right-3</div>
+        <div class="right-3">right-4</div>
+        <div class="right-3">right-5</div>
+    </div>
+
+</div>
+<script>
+
+</script>
+</body>
+</html>

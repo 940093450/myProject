@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Tools.js"></script>
+    <style>
+        .redirect{
+            width: 304px;
+            height: 150px;
+            border: 1px solid #ddd;
+            position: absolute;
+            box-shadow: 0 0 3px #ddd;
+            box-sizing: border-box;
+            z-index: 10000;
+
+        }
+        /*.redirect>div{
+            display: none;
+        }*/
+        .redirect_header{
+            height: 65px;
+
+        }
+        .container{
+            width: 300px;
+            height: 20px;
+            border: 1px solid green;
+            border-radius:8px;
+        }
+        .redirect_body{
+            width: 200px;
+            height: 20px;
+            background: green;
+            border-radius:8px;
+
+        }
+        .redirect_footer{
+            width: 300px;
+            height: 65px;
+        }
+        .redirect_footer #countdown{
+            line-height: 20px;
+            font-size: 12px;
+            font-family: 微软雅黑;
+            text-align: center;
+            margin-left: 120px;
+        }
+        img{
+            position: absolute;
+            top: 65px;
+            left:75px;
+            display: none;
+        }
+        p{
+            height: 20px;
+            line-height: 20px;
+            position: absolute;
+            top: 50px;
+            left: 95px;
+            font-family: 微软雅黑;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="redirect">
+    <img src="2.png" width="20px" height="20px">
+    <p>加载完成，请稍后···</p>
+    <div class="redirect_header"></div>
+    <div class="container"><div class="redirect_body" style="width: 0"></div></div>
+    <div class="redirect_footer"><span id="countdown"></span></div>
+</div>
+<script>
+    var redirect=document.querySelector(".redirect");
+    var redirect_body=document.querySelector(".redirect_body");
+    var countdown=document.querySelector("#countdown");
+    var divs=document.querySelectorAll(".redirect>div");
+    var img=document.querySelector("img");
+    var p=document.querySelector("p");
+    center(redirect);//Tools.js 中的居中函数
+    var i= 0,j=0;
+    var timer=setInterval(function(){
+        i+=3;
+        j++;
+        redirect_body.style.width=i+"px";
+        countdown.innerHTML="以加载"+j+"%";
+        if(i>=300){
+            clearInterval(timer);
+            setTimeout(function(){
+                for(var j=0;j<divs.length;j++){
+                    divs[j].style.display="none";
+                }
+                img.style.display="block";
+                p.style.display="block";
+            },500);
+            setTimeout(function(){
+                redirect.style.display="none";
+                location.href="redirect2.html";
+            },2000);
+
+        }
+    },50)
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button class="btn">按钮</button>
+<img id="img" src="0.JPG">
+<script>
+    var btn=document.querySelector(".btn");
+    var img=document.querySelector("#img");
+    btn.addEventListener("mouseover",function(){
+        btn.innerHTML="123";
+        btn.style.color="red";
+        img.style.display="none";
+    });
+    btn.addEventListener("mouseout",function(){
+        btn.innerHTML="按钮";
+        btn.style.color="";
+        img.style.display="block";
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="" class="jumpTo" target="_blank"></a>
+<select class="jump">
+    <option value="0">选择网站</option>
+    <option value="http://www.baidu.com">百度</option>
+    <option value="http://www.qq.com">腾讯</option>
+</select>
+<script>
+    var jump=document.querySelector(".jump");
+    var jumpTo=document.querySelector(".jumpTo");
+    jump.addEventListener("change",function(){
+        //把select的值赋给a标签的href属性
+        jumpTo.href=this.value;
+        //触发a标签的单击事件
+        jumpTo.click();
+        //alert(this.value);
+        //window.open(this.value)
+    });
+</script>
+</body>
+</html>

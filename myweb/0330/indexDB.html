@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="username"><br>
+<input type="button" id="addBtn" value="添加"><br>
+<button id="deleteBtn">删除数据库</button>
+<script>
+    //创建数据库
+    var db=null;
+    var request=window.indexedDB.open("lsl",3);
+    var addBtn=document.querySelector("#addBtn");
+    var username=document.querySelector("#username");
+    request.addEventListener("error",function(evt){
+     //console.log("数据库创建失败")
+     });
+    request.addEventListener("success",function(evt){
+        console.log("数据库创建成功");
+        console.log(evt.target.result);
+        db=evt.target.result;
+        var transaction=db.transaction(['member'],'readwrite');
+        var objectStore=transaction.objectStore("member");
+        objectStore.openCursor().addEventListener("success",function(){
+
+        })
+     });
+     //版本更新事件
+    request.addEventListener("upgradeneeded",function(evt){
+     //console.log("版本更新");
+        var thisDB=evt.target.result;
+        //判断数据库中是否包含了member表
+        if(!thisDB.objectStoreName.contains("member")){
+            var objectStore=thisDB.createObjectStore("member",{keyPath:'id',autoIncrement:true});
+            objectStore.createIndex("name","name",{unique:false});
+            console.log("表创建成功了");
+        }
+     });
+    addBtn.addEventListener("click",function(){
+        //console.log(username.value)
+        var member_name=[{"username":username.value}];
+        //console.log(db)
+
+        var transaction=db.transaction(['member'],'readwrite');
+        var objectStore=transaction.objectStore("member");
+        objectStore.add(member_name);
+    });
+    ////删除数据库////
+    var deleteBtn=document.querySelector("#deleteBtn");
+    deleteBtn.addEventListener("click",function(){
+        window.indexedDB.deleteDatabase("lsl");
+    });
+
+
+
+
+
+
+
+
+
+    //创建数据库
+    /*var request=window.indexedDB.open("lsl");
+    request.addEventListener("error",function(evt){
+        //console.log("数据库创建失败")
+    });
+    request.addEventListener("success",function(evt){
+        console.log("数据库创建成功");
+        console.log(evt.target.result);a
+    });
+    //版本更新事件
+    request.addEventListener("upgradeneeded",function(){
+        //console.log("版本更新");
+    });*/
+    //console.log(request);
+</script>
+</body>
+</html>

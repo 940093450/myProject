@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="content" contenteditable="true">
+    <li>白日依山尽</li>
+</ul>
+<button id="btn">删除本地存储</button>
+<button id="clearBtn">删除所有本地存储</button>
+<script>
+    var content=document.querySelector("#content");
+    var btn=document.querySelector("#btn");
+    var clearBtn=document.querySelector("#Btn");
+    if (localStorage.getItem("contentEdited")){
+        content.innerHTML=localStorage.getItem("contentEdited")
+    }else {
+        alert("没有值")
+    }
+    //失去焦点时，把content的值存到locaStorage中
+    content.addEventListener("blur",function(){
+        localStorage.setItem("contentEdited",this.innerHTML)
+    });
+    //移除本地存储的值
+    btn.addEventListener("click",function(){
+        localStorage.removeItem("contentEdited")
+    });
+    clearBtn.addEventListener("click",function(){
+        localStorage.clear();
+    })
+</script>
+</body>
+</html>

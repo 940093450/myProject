@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="hello"></div>
+<table border="1" cellpadding="0" cellspacing="0" width="95%" align="center">
+    <tr>
+        <td><a href="la.html" target="main">lala</a></td>
+        <td rowspan="2"><iframe id="demo" src="la.html" name="main" frameborder="0" scrolling="no"></iframe></td>
+    </tr>
+    <tr>
+        <td><a href="2.jpg" target="main">saw</a></td>
+    </tr>
+</table>
+<script>
+    window.addEventListener("load",function(){
+        var demo=document.getElementById("demo").contentWindow;
+        console.log(demo.document.getElementById("ad"));
+    })
+</script>
+</body>
+</html>

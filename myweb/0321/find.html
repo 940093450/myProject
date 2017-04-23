@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.1.1.js"></script>
+</head>
+<body>
+<ul class="foo">
+    <li>
+        one
+        <ul>
+            <li>11</li>
+            <li>11</li>
+            <li>11</li>
+            <li>11</li>
+        </ul>
+    </li>
+    <li>
+        two
+        <ul>
+            <li>11</li>
+            <li>11</li>
+            <li>11</li>
+            <li>11</li>
+        </ul>
+    </li>
+    <li>
+        three
+        <ul>
+            <li>11</li>
+            <li>11</li>
+            <li>11</li>
+            <li>11</li>
+        </ul>
+    </li>
+    <li>
+        four
+        <ul>
+            <li>11</li>
+            <li>11</li>
+            <li>11</li>
+            <li>11</li>
+        </ul>
+    </li>
+</ul>
+<h2>adc</h2>
+<h1 title="demo">hello</h1>
+<script>
+    //console.log($(".foo").children("li").length)
+    //$("h1").append("123123123");
+    //$("h1").append($("h2"));
+   // console.log($(".foo").find("li").length);
+    //$("h1").attr("title","new demo");
+    //$("h1").prepend("morning!,")
+    $("<span>world</span>").prependTo("h1");
+</script>
+</body>
+</html>

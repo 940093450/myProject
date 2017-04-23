@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Tools.js"></script>
+    <style>
+        body{
+            width: 100%;
+            height: 1000px;
+            background: antiquewhite;
+        }
+        #result{
+            max-width: 150px;
+            max-height: 150px;
+            border: 1px solid #ddd;
+            box-shadow: 3px 3px 3px #ddd;
+            position: absolute;
+            padding: 5px;
+            font-size: 12px;
+            overflow: auto;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<p class="content">
+    第四更会深刻的韩国了覅给辅导韩国uskhfg 两款风格和流口水肌肤更十几个
+    十几个大佛寺国家十分感激双方都立刻感觉是覅国家浪费空间更
+    可根据适当放宽价格斯洛伐克价格零售价格
+</p>
+<div class="result" id="result">
+
+</div>
+<script>
+    var content=document.querySelector(".content");
+    var result=document.querySelector("#result");
+    content.addEventListener("mouseup",function(evt){
+            result.innerHTML = getSelectionTxt();
+        if (result.innerHTML) {
+            result.style.left = (evt.pageX) + "px";
+            result.style.top = (evt.pageY + 10) + "px";
+            result.style.display = "block";
+        }else {
+            result.style.display = "none";
+        }
+        /*content.addEventListener("mouseout",function(){
+            document.body.addEventListener("click",function(){
+                result.style.display = "none";
+                alert(111)
+            })
+        })*/
+    });
+
+</script>
+</body>
+</html>

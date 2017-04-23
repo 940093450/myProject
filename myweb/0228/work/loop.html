@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        img{
+            border: 0;
+        }
+        .scroll{
+            width: 300px;
+            height: 76px;
+            margin: 50px auto;
+            border: 1px outset #ddd;
+            position: relative;
+            overflow: hidden;
+        }
+        .scroll .wrap{
+            width: 300px;
+            height: 76px;
+            position: relative;
+        }
+        .scroll ul{
+            position: absolute;
+            top:0;
+            left: 0;
+            /*border: 1px solid green;*/
+            width: 1500px;
+        }
+        .scroll ul li{
+            float: left;
+            width: 100px;
+            height: 76px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="scroll" class="scroll">
+    <div class="wrap">
+        <ul>
+            <li><img src="1.jpg" width="100" height="76" ></li>
+            <li><img src="2.jpg" width="100" height="76" ></li>
+            <li><img src="3.jpg" width="100" height="76" ></li>
+            <li><img src="4.jpg" width="100" height="76" ></li>
+        </ul>
+    </div>
+    <script>
+        var scroll=document.getElementById("scroll");
+        var ul=scroll.querySelector("ul");
+        //把ul自身的内容追加到ul
+        ul.innerHTML+=ul.innerHTML;
+        //获取ul的 left的初始值
+        var left=parseInt(ul.style.left)||0;
+        setInterval(function(){
+            left--;
+            if(left<=-400){
+                left=0;
+            }
+            ul.style.left=left+"px";
+       },10)
+    </script>
+</div>
+</body>
+</html>

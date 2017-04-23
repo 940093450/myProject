@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #scroll{
+            width: 450px;
+            height: 78px;
+            white-space:nowrap;
+            overflow:scroll;
+            margin:0 auto;
+        }
+        img{
+            width: 100px;
+            height: 76.8px;
+        }
+    </style>
+</head>
+<body>
+    <div id="scroll">
+        <img src="1.jpg"><img src="2.jpg"><img src="3.jpg"><img src="4.jpg"><img src="5.jpg"><img src="6.jpg"><img src="1.jpg"><img src="2.jpg"><img src="3.jpg"><img src="4.jpg"><img src="5.jpg"><img src="6.jpg">
+    </div>
+    <script>
+        var oDiv=document.querySelector("#scroll");
+        var imgs=document.querySelectorAll("#scroll img");
+        var i=0;
+        imgs[0].style.marginLeft;
+        function aa(){
+            oDiv.scrollLeft=i++;
+            if (i>(imgs[0].width)*6){
+                i=0;
+            }
+        }
+        stop=setInterval(aa,10);
+
+        //console.log(imgs)
+        //console.log(sp.img)
+    </script>
+</body>
+</html>

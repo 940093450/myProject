@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.1.1.js"></script>
+</head>
+<body>
+<button>按钮</button>
+<script>
+    /*var b=true;
+    $("button").bind("click",function(){
+        if(b=true){
+            $("button").css({"display":"none"});
+            b=false
+        }else if(b=false){
+            $("button").css({"display":"block"});
+            b=true
+        }
+    })*/
+    /*$("button").on("click",function(){
+        console.log(new Date().toLocaleTimeString())
+    })*/
+    $("button").on("mousevoer mouseout",function(){
+        console.log(new Date().toLocaleTimeString())
+    })
+</script>
+</body>
+</html>

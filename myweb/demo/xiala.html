@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style:none ;
+        }
+        .dd{
+            width: 200px;
+            height: 30px;
+            position: absolute;
+            left: 50%;
+            margin-left: -100px;
+            z-index: 2;
+        }
+        .dd>ul{
+            width: 200px;
+            height: 30px;
+        }
+        .dd>ul>li{
+            width: 50px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            float: left;
+            background: red;
+        }
+        .dd>ul>li>ul{
+            display: none;
+        }
+        .dd>ul>li:hover ul{
+            background: green;
+            display: block;
+         }
+        p{
+            position: absolute;
+            top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dd">
+        <ul>
+            <li>111
+                <ul>
+                    <li>1111</li>
+                    <li>2222</li>
+                    <li>3333</li>
+                </ul>
+            </li>
+            <li>222
+                <ul>
+                    <li>4444</li>
+                    <li>5555</li>
+                    <li>6666</li>
+                </ul>
+            </li>
+            <li>333
+                <ul>
+                    <li>7777</li>
+                    <li>8888</li>
+                    <li>9999</li>
+                </ul>
+            </li>
+            <li>444
+                <ul>
+                    <li>aaaa</li>
+                    <li>ssss</li>
+                    <li>dddd</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+<p>1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111</p>
+</body>
+</html>

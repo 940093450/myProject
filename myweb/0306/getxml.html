@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">button</button>
+<script>
+    var xml=new XMLHttpRequest();
+    //连接xml文件
+    xml.open("post","data.xml");
+    //没有向后台发送数据
+    xml.send(null);
+    xml.addEventListener("readystatechange",function(){
+        //状态为4的时候
+        if(xml.readyState==4){
+            //数据交互成功
+            if(xml.status==200){
+                console.log(xml.responseText);
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

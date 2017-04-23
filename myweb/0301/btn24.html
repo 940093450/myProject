@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .up{
+            width: 0px;
+            height: 0px;
+            border: 5px;
+            border-style: solid;
+            border-color:transparent transparent black transparent;
+            display: inline-block;
+        }
+        .down{
+            width: 0px;
+            height: 0px;
+            border: 5px;
+            border-style: solid;
+            border-color:black transparent transparent transparent;
+            display: inline-block;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        .btn{
+            width: 80px;
+            height: 25px;
+        }
+    </style>
+</head>
+<body>
+<button class="btn">
+    <span id="txt">隐藏</span>
+    <div class="down" id="toggle"></div>
+</button>
+<img class="img" src="1.jpg" >
+<script>
+    var btn=document.querySelector(".btn");
+    var img=document.querySelector(".img");
+    var txt=document.querySelector("#txt")
+    var toggle=document.querySelector("#toggle");
+    btn.addEventListener("click",function(){
+        var expression=img.style.display=="none";
+        img.style.display=(expression)?"block":"none";
+        txt.innerHTML=(expression)?"隐藏":"显示";
+        toggle.className=(expression)?"down":"up";
+    });
+
+    console.log(up.style.borderBottomColor)
+
+
+
+</script>
+</body>
+</html>

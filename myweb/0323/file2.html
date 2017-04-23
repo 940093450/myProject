@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="file" id="icon">
+<script>
+    var icon=document.querySelector("#icon");
+    icon.addEventListener("change",function(){
+        console.log(icon);
+        console.log(icon.files);
+        console.log(icon.files[0]);
+        console.log(icon.files[0].name);
+        console.log(icon.files[0].size);
+        console.log(icon.files[0].type);
+        //image/jpeg,image/gif
+        //图片类型验证
+        if(!/image\/(.+?)+/.test(this.files[0].type)){
+            alert("只能上传图片")
+        }
+        //图片大小验证
+        if(this.files[0].size>1024){
+            alert("图片不能大于1M")
+        }
+    });
+</script>
+</body>
+</html>

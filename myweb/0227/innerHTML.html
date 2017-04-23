@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #demo{
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">原来的内容</div>
+    <input id="foo">
+    <script>
+        demo=document.querySelector("#demo");
+        foo=document.querySelector("#foo");
+        demo.innerHTML="<h1>新值</h1><img src='1.jpg'> ";
+        foo
+    </script>
+</body>
+</html>

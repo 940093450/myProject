@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button class="btn">按钮</button>
+<button class="btn2">移除</button>
+<script>
+    /*var btn=document.querySelector(".btn");
+    btn.addEventListener("click",function(){
+        alert("hello")
+    })*/
+    var btn=document.getElementsByTagName("button")[0];
+    function Msg(){
+        alert("IE listener");
+    }
+    var btn2=document.getElementsByTagName("button")[1];
+    btn.attachEvent("onclick",Msg);
+    btn2.attachEvent("onclick",function(){
+        btn.detachEvent("onclick",Msg);
+        alert(333);
+    });
+    /*function Msg(){
+        alert("IE listener");
+    }*/
+    /*btn.onclick=function(){
+        alert("hello")
+    }*/
+</script>
+</body>
+</html>

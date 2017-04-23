@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str="的烧烤反倒是[b]火锅[/b]的恐惧感生当复[b]来[/b]归看见[b]水电费[/b]管理会计水电费管理会计山东管理会计"
+    document.write(str+"<hr>");
+    var pattern=/\[b\](.+?)\[\/b\]/g;
+    //var pattern=/[[b](.+)[\/b]]/g;
+    document.write(str.replace(pattern,"<b>$1</b>"));
+</script>
+</body>
+</html>

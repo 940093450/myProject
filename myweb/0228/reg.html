@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Tools.js"></script>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            height: 1200px;
+        }
+        #reg{
+            width: 450px;
+            height: 250px;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 5px #ddd;
+            position: absolute;
+            background-color: #ffffff;
+        }
+        #mask{
+            position: absolute;
+            background-color: black;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+    <div id="mask"></div>
+    <div id="reg"></div>
+    <img src="1.jpg" width="400px" height="200px">
+    <script>
+        var reg=document.querySelector("#reg");
+        var mask=document.querySelector("#mask");
+        var docWidth=document.body.clientWidth;
+        var docHeight=document.body.clientHeight;
+        mask.style.width=docWidth+"px";
+        mask.style.height=docHeight+"px";
+        center(reg);
+    </script>
+</body>
+</html>

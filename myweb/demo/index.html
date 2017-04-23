@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="tools.js"></script>
+    <link href="css2.css" rel="stylesheet" type="text/css">
+    <style>
+        .tt,.mm,.ss{
+            width: 36px;
+            height: 39px;
+            background:#440016;
+            color: #f90013;
+            text-align: center;
+            line-height: 39px;
+            margin-top: 10px;
+            border-radius: 3px;
+            font-size: 24px;
+            font-family: Arial;
+        }
+        .tt{
+            position: absolute;
+            top: 492px;
+            right: 190px;
+        }
+        .mm{
+            position: absolute;
+            top: 492px;
+            right: 145px;
+        }
+        .ss{
+            position: absolute;
+            top: 492px;
+            right: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="ctn_left">
+        <ul>
+            <li><span>家用电器</span></li>
+            <li><span>手机</span>/<span>运营商</span>/<span>数码</span></li>
+            <li><span>电脑办公</span></li>
+            <li><span>家居</span>/<span>家具</span>/<span>家装</span>/<span>厨具</span></li>
+            <li><span>男装</span>/<span>女装</span>/<span>童装</span>/<span>内衣</span></li>
+            <li><span>个护化妆</span>/<span>清洁用品</span>/<span>宠物</span></li>
+            <li><span>鞋靴</span>/<span>箱包</span>/<span>珠宝</span>/<span>奢侈品</span></li>
+            <li><span>运动</span>/<span>户外</span>/<span>钟表</span></li>
+            <li><span>汽车</span>/<span>汽车用品</span></li>
+            <li><span>母婴</span>/<span>玩具乐器</span></li>
+            <li><span>食品</span>/<span>酒类</span>/<span>生鲜</span>/<span>特产</span></li>
+            <li><span>医药保健</span></li>
+            <li><span>图书</span>/<span>音像</span>/<span>电子书</span></li>
+            <li><span>机票</span>/<span>酒店</span>/<span>旅游</span>/<span>生活</span></li>
+            <li><span>理财</span>/<span>众筹</span>/<span>白条</span>/<span>保险</span></li>
+        </ul>
+    </div>
+
+    <div class="scroll">
+        <img class="left" src="images/1.png">
+        <img class="right" src="images/2.png">
+        <img id="img" src="images/scroll1.jpg">
+        <div class="uli">
+            <ul>
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <img class="po" src="link/link_1.png">
+    <div class="ctn_right">
+        <div class="con">
+            <div class="con1">
+                <div class="c1"><img src="img/6.png"></div>
+                <div class="c2">
+                    <p>Hi,欢迎来到京东!</p>
+                    <p><span>登录</span>&nbsp;<span>注册</span></p>
+                </div>
+            </div>
+
+            <div class="con2">
+                <ul>
+                    <li>新人福利</li>
+                    <li>PLUS会员</li>
+                </ul>
+            </div>
+        </div>
+        <div class="con4">
+            <ul id="c3">
+                <li class="active">促销</li>
+                <li>公告</li>
+                <li>更多</li>
+            </ul>
+            <div class="con5">
+                <ul class="spotlight">
+                    <li>女神相机 最高24期免息</li>
+                    <li>欧莱雅美妆低至满199减100</li>
+                    <li>美妆个护满199减100</li>
+                    <li>精品小电2件8.8折</li>
+                </ul>
+                <ul>
+                    <li>京东成为中国最大家电零售商</li>
+                    <li>京东自营家电清洗服务上线</li>
+                    <li>京东帮服务店突破1700家</li>
+                    <li>京东售后退换无忧服务上线</li>
+                </ul>
+                <ul>
+                    <li>中国最大家电零售商</li>
+                    <li>家电清洗服务上线</li>
+                    <li>京东帮店突破1700家</li>
+                    <li>后退换无忧服务上线</li>
+                </ul>
+            </div>
+        </div>
+        <div class="con6">
+            <ul class="c6">
+                <li class="l1">话费</li>
+                <li>机票</li>
+                <li>酒店</li>
+                <li>游戏</li>
+            </ul>
+            <div><img src="img/0.png"></div>
+        </div>
+    </div>
+    <div class="tt"></div>
+    <div class="mm"></div>
+    <div class="ss"></div>
+</div>
+<script>
+    /*var tt=document.querySelector(".tt");
+    var mm=document.querySelector(".mm");
+    var ss=document.querySelector(".ss");*/
+    setInterval(function(){
+        ShowCountDown(2017,3,8,'.tt','.mm','.ss',14);
+    },1000);
+    /*var t, m, s;
+    time=7200;
+    setInterval(function (){
+        time--;
+        s=time%60;
+        m=Math.floor(time/60%60);
+        t=Math.floor(time/3600) ;
+        console.log(t,m,s);
+        d1.innerHTML=addZero(t);
+        d2.innerHTML=addZero(m);
+        d3.innerHTML=addZero(s);
+    },1000);*/
+    var ul=document.querySelector(".scroll ul");
+    var img=document.querySelector("#img");
+    var left=document.querySelector(".left");
+    var right=document.querySelector(".right");
+    var lis=document.querySelectorAll(".scroll li");
+    var k=1;
+
+    var ctn_lis=document.querySelectorAll(".ctn_left ul li");
+    var spans=document.querySelectorAll("span");
+    var ctn_left=document.querySelector("#ctn_left");
+    var po=document.querySelector(".po");
+    for(var y=0;y<spans.length;y++){
+        spans[y].addEventListener("mouseover",function(){
+            this.style.color="red";
+        });
+        spans[y].addEventListener("mouseout",function(){
+            this.style.color="";
+        });
+    }
+
+    for(var x=0;x<ctn_lis.length;x++){
+        ctn_lis[x].setAttribute("index",x+1);
+
+        ctn_lis[x].addEventListener("mouseover",function(){
+            for(var j=0;j<ctn_lis.length;j++){
+                ctn_lis[j].className="";
+            }
+            this.className="aa";
+            po.src="link/link_"+[this.getAttribute("index")]+".png";
+
+            po.style.display="block";
+        });
+        po.addEventListener("mouseout", function () {
+            for (var j = 0; j < ctn_lis.length; j++) {
+                ctn_lis[j].className = "";
+            }
+            po.style.display = "none";
+        })
+    }
+
+    //函数aa 使图片轮播到最后一张时又从第一张开始
+    function aa(){
+        clean();//清除所有圆圈的样式
+        if(k<8) {//第1-7张时每三秒到下一张
+            k++;
+            lis[k - 1].className = "active";
+            img.src = "images/scroll" + k + ".jpg";
+        }else if(k==8){//第8张时下一张回到第1张
+            k=1;
+            lis[k - 1].className = "active";
+            img.src = "images/scroll" + k + ".jpg";
+        }
+    }
+    //循环函数aa使图片开始轮播
+    var scroll=setInterval(aa,3000);
+
+    block(left,0.7,0.3);//鼠标放到左边时左边透明度0.6右边0.3
+    block(right,0.3,0.7);//鼠标放到右边时右边透明度0.6左边0.3
+    none(left);//鼠标移开左边时两边透明度为0
+    none(right);//鼠标移开右边边时两边透明度为0
+
+    //点击左侧滑动键使图片回到上一张
+    left.addEventListener("click",function(){
+        clean();
+        k--;
+        (k==0)?k=8:"";//判断 当图片到了第一张 下一张跳转到最后一张
+        lis[k-1].className="active";
+        img.src="images/scroll"+k+".jpg";
+    });
+    //点击右侧侧滑动键使图片到下一张
+    right.addEventListener("click",function(){
+        aa();//调用上面的函数aa
+    });
+    //没给个中间的圆圈加上个鼠标事件mouseover
+    for(var i=0;i<lis.length;i++){
+        block(lis[i],0.3,0.3);//鼠标放到圆圈上时左边透明度0.3右边0.3
+        lis[i].setAttribute("index",i+1);//每个圆圈绑定个自定义属性
+        lis[i].addEventListener("mouseover",function(){
+            //在给圆圈加上样式之前 先清空所有圆圈的样式
+            clean();
+            this.className="active";//给指到的圆圈加上样式
+            var src=this.getAttribute("index");//////调用自定义属性
+            img.src="images/scroll"+src+".jpg";////使用自定义属性使图片合圆圈同步
+            clearInterval(scroll);//执行鼠标事件时让自动轮播停止
+            k=parseInt(this.getAttribute("index"));//当结束事件时从新给自动轮播一个起点
+        });
+    }
+    block(ul,0.3,0.3);
+    block(img,0.3,0.3);//鼠标放到图片时左边透明度0.3右边0.3
+    none(img);//鼠标移开图片时透明度为0；
+    rt();
+</script>
+</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .active{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<h1 title="1">点击1</h1>
+<h1 title="2">点击2</h1>
+<h1 title="3">点击3</h1>
+<script>
+    var hs=document.querySelectorAll("h1");
+    for(var i= 0;i<hs.length;i++){
+        //把i赋给每个h1元素。hs[i].title=i;
+        hs[i].setAttribute("aa",i);
+        //为每一个h1添加点击事件
+        hs[i].addEventListener("click",function(){
+            //把所有的h1的样式清空
+            for(var j=0;j<hs.length;j++){
+                hs[j].className="";
+            }
+            //this指的是所点击的h1
+            //alert(this.title);
+            //为当前的h1添加样式
+            this.className="active";
+        })
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img src="1.jpg" style="opacity:0">
+<script>
+    var img=document.querySelector("img");
+    function fade(element,flag,t=10){
+        if(flag=="in"){
+            var num=0;
+            var timer=setInterval(function(){
+                num+=0.001;
+                //标准浏览器
+                if(typeof element.style.opacity=='string'){
+                    element.style.opacity=num;
+                }else{
+                    element.style.filter="alpha(opacity="+num*100+")";
+                }
+                if(num>=1){
+                    clearInterval(timer);
+                }
+                //console.log(num);
+            },t);
+        }else if(flag=="out"){
+            var num=1;
+            var timer=setInterval(function(){
+                num-=0.001;
+                //标准浏览器
+                if(typeof element.style.opacity=='string'){
+                    element.style.opacity=num;
+                }else{
+                    element.style.filter="alpha(opacity="+num*100+")";
+                }
+                if(num<=0){
+                    clearInterval(timer);
+                }
+                //console.log(num);
+            },t);
+        }
+    }
+    fade(img,"in",10);
+
+</script>
+</body>
+</html>

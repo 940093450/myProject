@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .feedback{
+            width: 100%;
+            height: 30px;
+            border: 1px solid black;
+            opacity:0;
+        }
+        .feedback .loading{
+            width: 0;
+            height: 30px;
+            background: red;
+            line-height: 30px;
+            transition: width 1s;
+        }
+    </style>
+
+</head>
+<body>
+<input type="file" id="icon" multiple>
+<div class="feedback">
+    <div class="loading">0%</div>
+</div>
+<div></div>
+<script>
+    var icon=document.querySelector("#icon");
+    //var img=document.createElement("img");
+    var loading=document.querySelector(".loading");
+    var feedback=document.querySelector(".feedback");
+    icon.addEventListener("change",function(){
+       // console.log(icon.files.length);
+        for(var i=0;i<icon.files.length;i++){
+            var fr=new FileReader();
+            fr.readAsDataURL(icon.files[i]);
+            var img=document.createElement("img");
+            fr.addEventListener("load",function(){
+                img.src=fr.result;
+                document.body.appendChild(img)
+            });
+
+            /*fr.addEventListener("load",function(){
+                //console.log(this.result);
+                img.src=this.result;
+                document.body.appendChild(img);
+            });*/
+        }
+        //var fr=new FileReader();
+        //读取文件
+        /*fr.readAsDataURL(icon.files[0]);
+
+        //加载完成
+        fr.addEventListener("load",function(){
+            //console.log(this.result);
+            img.src=this.result;
+            document.body.appendChild(img);
+        });*/
+        //加载中
+        /*fr.addEventListener("progress",function(evt){
+            //只要上传的东西找过1b 就执行下面代码
+            if(evt.lengthComputable){
+                feedback.style.display="block";
+                feedback.style.opacity="1";
+                var jindutiao=Math.round((evt.loaded/evt.total)*100);
+                if(jindutiao<=100){
+                    loading.style.width=jindutiao+"%";
+                    loading.innerText=jindutiao+"%";
+                    setTimeout(function(){
+                        if(jindutiao==100){
+                            feedback.style.display="none"
+                        }
+                    },1000);
+
+                }
+            }
+        });*/
+    })
+</script>
+</body>
+</html>

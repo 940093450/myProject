@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Tools.js"></script>
+    <script src="jquery-3.1.1.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #login{
+            width: 300px;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 8px #ddd;
+            position: absolute;
+            background: white;
+            z-index: 10000;
+            display: none;
+            top: -120px;
+
+        }
+        #login dl{
+            margin: 0;
+        }
+        #login dt{
+            text-align: center;
+            margin: 5px auto;
+            position: relative;
+        }
+        #login dd{
+            margin: 5px;
+            text-align: center;
+        }
+        #close{
+            position: absolute;
+            right: 5px;
+            cursor: pointer;
+
+        }
+        #login dd input{
+            border: 1px solid #ddd;
+        }
+        #mask{
+            /*width: 100%;
+            height: 100%;*/
+            position: absolute;
+            background: #dddddd;
+            z-index: 9999;
+         }
+        #loginBtn{
+            background: white;
+        }
+    </style>
+</head>
+<body>
+<div id="mask"></div>
+<div id="login">
+    <dl>
+        <dt>欢迎登录<span id="close">&times;</span></dt>
+        <dd><input type="text"></dd>
+        <dd><input type="password"></dd>
+        <dd><input id="loginBtn" type="submit" value="登录"></dd>
+    </dl>
+</div>
+<script>
+    $(function(){
+        //设置遮罩
+        $("#mask").css({
+            "width":$(document).width(),
+            "height":$(document).height()
+        });
+        //登录框显示
+        $("#login").css({"display":"block"});
+        var left=($(window).width()-$("#login").width())/2;
+        var top=($(window).height()-$("#login").height())/2;
+        $("#login").animate({
+            "top":top+"px"
+        },1000);
+        //登录框居中
+        center($("#login")[0]);
+        $("#close").click(function(){
+            $("#login").animate({
+                "top":-120+"px"
+            },1000,function(){
+                $("#mask").fadeOut("normal");
+            });
+
+        });
+        //console.log(left,top)
+        $("#loginBtn").click(function(){
+            for(var i=1;i<5;i++){
+                console.log(left-10*i);
+                $("#login").animate({"left":(left-2*i+"px")},150)
+                        .animate({"left":(left+2*i+"px")},150,function(){
+                            //循环执行结束后，再把登录框移动到中间
+                            $("#login").animate({"left":left},150)
+                        })
+            }
+        })
+    })
+</script>
+</body>
+</html>

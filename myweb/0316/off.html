@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.1.1.js"></script>
+</head>
+<body>
+<button>绑定事件</button>
+<button>解除事件</button>
+<div></div>
+<script>
+    $("button:eq(0)").on("click",function(){
+        $("<h1>hello</h1>").appendTo("div");
+    }).on("click",fn2=function(){
+        $("<h1>123</h1>").appendTo("div");
+    });
+    /*$("button:eq(0)").on("mouseout",function(){
+        $("<h1>123</h1>").appendTo("div");
+    });*/
+    $("button:eq(1)").on("click",function(){
+        $("button:eq(0)").off("click",fn2);
+        //$("button:eq(0)").off("mouseout")
+    })
+</script>
+</body>
+</html>

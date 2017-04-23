@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.1.1.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #mask{
+            position: absolute;
+            background: rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+<div id="mask">hello</div>
+<script>
+    $("#mask").css({
+        "width":$(document).width(),
+        "height":$(document).height()
+    });
+    console.log($(document));
+    //var h1=document.querySelector("h1");
+    //h1.css({"color":"red"})
+</script>
+</body>
+</html>

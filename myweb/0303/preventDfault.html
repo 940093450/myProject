@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Tools.js"></script>
+    <style>
+        img{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<a href="ad.html" class="jump">jump</a></br>
+<img src="0.JPG">
+<script>
+    var jump=document.getElementsByTagName("a")[0];
+    var img=document.getElementsByTagName("img")[0];
+    jump.onclick=function(evt){
+        preventDfault(evt);
+//        var evt=window.event;
+//        evt.returnValue=false;
+        img.style.display="block"
+    };
+   /* var img=document.querySelector("img");
+    var jump=document.querySelector(".jump");
+    jump.addEventListener("click",function(evt){
+        evt.preventDefault();
+        img.style.display="block"
+    })*/
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        dialog{
+            border: 1px solid rgba(0,0,0,0.3);
+            border-radius:6px;
+            box-shadow: 0 3px 7px rgba(0,0,0,0.3);
+        }
+        #close{
+            cursor: pointer;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        dialog::backdrop{
+            /*background: rgba(1,100,255,0.3);*/
+            background-image: linear-gradient(yellow,#fff);
+        }
+    </style>
+</head>
+<body>
+<dialog>
+    <form method="dialog">
+        <p>确定要删除吗？</p>
+        <button type="submit" value="yes" id="yes">确定</button>
+        <button type="submit" value="yes" id="no">取消</button>
+    </form>
+    <span id="close">关闭</span>
+</dialog>
+<button class="show">Button</button>
+<script>
+    var btn=document.querySelector(".show");
+    var close=document.querySelector("#close");
+    var dialog=document.querySelector("dialog");
+    btn.addEventListener("click",function(){
+        dialog.showModal();
+    });
+    close.addEventListener("click",function(){
+        var result=document.querySelector("#prompt").value;
+        console.log(result);
+        dialog.close(result);
+    });
+    dialog.addEventListener("close",function(){
+        if(this.returnValue=="yes"){
+            alert("确定");
+        }else if(this.returnValue=="no"){
+            alert("取消")
+        }
+        console.log("dialog关闭了");
+    });
+    dialog.addEventListener("cancel",function(){
+        console.log("dialog取消了");
+    })
+</script>
+</body>
+</html>

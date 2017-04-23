@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="feedback"></div>
+<input type="text" id="zipcode" placeholder="邮编">
+<script>
+    var feedback=document.querySelector("#feedback");
+    var zipcode=document.querySelector("#zipcode");
+    var pattern=/^[1-9][0-9]{5}$/i;
+    zipcode.addEventListener("blur",function(){
+        console.log(pattern.test(this.value));
+        if(pattern.test(this.value)){
+            feedback.innerHTML="邮编正确";
+        }else{
+            feedback.innerHTML="邮编错误";
+        }
+    });
+    /*var str="http";
+    var pattern=/http|https/g;
+    console.log(pattern.test(str));*/
+</script>
+</body>
+</html>

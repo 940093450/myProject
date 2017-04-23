@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="member_username"></div>
+<button id="login">登入</button>
+<button id="logout">注销</button>
+<script>
+    var login=document.querySelector("#login");
+    var logout=document.querySelector("#logout");
+    var member_username=document.querySelector(".member_username");
+    //如果 下面的本地存储有值那么
+    if(sessionStorage.getItem("username")){
+        //给用户名栏赋上存储的值
+        member_username.innerText=sessionStorage.getItem("username");
+        //显示注销页面，关闭登入页面
+        logout.style.display="block";
+        login.style.display="none";
+    }else {
+        //否则 直接关闭注销页面 显示登录页面
+        logout.style.display="none";
+        login.style.display="block";
+    }
+    //点击登录页面把值储存到本地，用于上面判断和调用
+    login.addEventListener("click",function(){
+        //添加本地存储
+        sessionStorage.setItem("username","mike");
+        member_username.innerText="mike";
+        //并且显示已登录页面
+        logout.style.display="block";
+        login.style.display="none";
+    });
+    logout.addEventListener("click",function(){
+        sessionStorage.removeItem("username");
+        logout.style.display="none";
+        login.style.display="block";
+        member_username.innerText="";
+    });
+</script>
+</body>
+</html>

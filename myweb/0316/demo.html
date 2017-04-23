@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul{
+            border: 1px solid red;
+        }
+        ul:after{
+            content: "";
+            clear: both;
+            display: block;
+        }
+        ul li{
+            float: left;
+            margin-left: 10px;
+            width: 40%;
+            height: 35px;
+        }
+    </style>
+    <script src="jquery-3.1.1.js"></script>
+</head>
+<body>
+<button>按钮</button>
+<ul>
+    <li>123</li>
+    <li>123</li>
+    <li>123</li>
+    <li>123</li>
+    <li>123</li>
+    <li>123</li>
+    <li>123</li>
+    <li>123</li>
+    <li>123</li>
+    <li>123</li>
+    <li>123</li>
+    <li>123</li>
+    <li>123</li>
+    <li>123</li>
+    <li>123</li>
+</ul>
+<script>
+    $("ul li:gt(5)").css({"display":"none"});
+    var b=true;
+    $("button").click(function(){
+        if(b){
+            $("ul li").css({"display":"block"});
+            b=false;
+        }else {
+            $("ul li:gt(5)").css({"display":"none"});
+            b=true;
+        }
+
+    })
+</script>
+</body>
+</html>

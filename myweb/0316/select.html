@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.1.1.js"></script>
+    <style>
+        .active{
+            background: red;
+        }
+        .spotlight{
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+<button>button</button>
+<h1>hello</h1>
+<select>
+    <option value="red">红色</option>
+    <option value="green">绿色</option>
+    <option value="blue">蓝色</option>
+</select>
+<script>
+    $("button").click(function(){
+        $("body").addClass("active spotlight")
+    });
+    /*$("select").change(function(){
+        $("body").css({"background":$(this).val()})
+    })*/
+</script>
+</body>
+</html>

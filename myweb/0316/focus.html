@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.1.1.js"></script>
+</head>
+<body>
+<input type="text"><br>
+<input type="text"><br>
+<input type="text"><br>
+<input type="text"><br>
+<input type="text"><br>
+<script>
+    $(":input").focus(function(){
+        $(this).css({"background":"yellow"})
+    })
+    $(":input").blur(function(){
+        $(this).css({"background":"#fff"})
+    })
+</script>
+</body>
+</html>

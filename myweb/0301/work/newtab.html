@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .tab{
+            width: 300px;
+            /*border: 1px solid green;*/
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .tab:after{
+            content: "";
+            clear: both;
+            display: inline-block;
+        }
+        .tab li{
+            float: left;
+            width: 80px;
+            border: 1px solid orange;
+            text-align: center;
+
+            background:beige;
+        }
+        .tab li.active{
+            position: relative;
+            border: 1px solid blue;
+            top: 3px;
+            background: antiquewhite;
+            border-bottom: none;
+            z-index: 4;
+        }
+        .spotlight{
+            width: 300px;
+            height: 250px;
+            border: 1px solid blue;
+            background: antiquewhite;
+            top: 3px;
+        }
+    </style>
+</head>
+<body>
+<ul class="tab">
+    <li class="active">1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+<div class="spotlight"></div>
+</body>
+</html>

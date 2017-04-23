@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.1.1.js"></script>
+    <style>
+        .ad{
+            width: 230px;
+            height: 250px;
+            position: fixed;
+            right: 0;
+            bottom: -250px;
+            font-size: 16px;
+            font-family: 微软雅黑;
+        }
+        .ad_top{
+            width: 100%;
+            height: 20px;
+            position: absolute;
+            top:0;
+            background:orange;
+            color: white;
+        }
+        .ad_top p{
+            position: absolute;
+            top:-16px;
+            cursor: pointer;
+            width: 70px;
+        }
+        .ad_top span{
+            text-align: center;
+            width: 20px;
+            position: absolute;
+            right: 0;
+            cursor: pointer;
+        }
+        .ad_top span:hover{
+            background:red;
+        }
+        .ad img{
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="ad">
+    <ul>
+        <li></li>
+    </ul>
+    <div class="ad_top">
+        <p>晚点再看</p>
+        <span>&times;</span>
+    </div>
+    <div><img src="1.png"></div>
+</div>
+<script>
+    //让广告5秒后出来
+    setTimeout(function(){
+        $(".ad").animate({"bottom":0},1000);
+    },5000);
+    //点击叉之后透明度1秒后到零然后隐藏
+    $(".ad_top span").click(function(){
+        $(".ad").animate({"opacity":0},1000,function(){
+            $(".ad").css({"display":"none"})
+        })
+    });
+    //判断
+    var i=true;
+    $(".ad_top p").click(function(){
+        //点击折叠按钮显示的时候向下折叠
+        if (i){
+            $(".ad").animate({"bottom":-230},1000);
+            i=false;
+            console.log(i);
+            //点击折叠按钮折叠的时候向上显示
+        }else{
+            $(".ad").animate({"bottom":0},1000);
+            i=true;
+            console.log(i);
+        }
+
+    });
+    $("li").each(function(element){
+        console.log(element)
+    })
+</script>
+</body>
+</html>

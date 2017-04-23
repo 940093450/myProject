@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .demo{
+            width: 50px;
+            height: 50px;
+            border:1px solid green;
+            margin: 250px;
+        }
+    </style>
+</head>
+<body>
+<div class="demo"></div>
+<script>
+    var demo=document.querySelector(".demo");
+    var frames=[
+        {transform:"rotate(0deg) translate(80px)","borderRadius":0},
+        {transform:"rotate(360deg) translate(80px)","borderRadius":"50px"}
+    ];
+    var timing={
+        //动画的持续时间
+        duration:3000,
+        //每帧的延迟时间
+        delay:0,
+        //循环的次数Infinity：无限次
+        iterations:Infinity,
+        //方向 alternate折返 nomral：顺时针  reverse：逆时针
+        direction:'alternate',
+        //缓动  ease线性
+        easing:'ease-in-out',
+        //backwards回到第一帧  forwards停留在最后一帧
+        fill:'forwards'
+    };
+    demo.animate(frames,timing);
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.1.1.js"></script>
+    <style>
+        div{
+            width: 100px;
+            height: 200px;
+            background: green;
+        }
+    </style>
+</head>
+<body>
+<button>button</button>
+<div></div>
+<script>
+    $("button").click(function(){
+        //fast,normal,slow
+        //$("div").fadeOut(2000);
+        //$("div").fadeIn(2000);
+        $("div").fadeTo(2000,0.5);
+
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        <li>111</li><li>222</li><li id="trump">333</li></ul><button>Button</button>
+    <script>
+        var ul=document.querySelector("ul");
+        var trump=document.querySelector("#trump");
+        var btn=document.querySelector("button");
+        setInterval(function(){
+            ul.appendChild(ul.firstChild);
+        },100);
+        btn.addEventListener("click",function(){
+
+            //console.log(ul.childNodes);
+            //ul.removeChild(ul.childNodes[0]);
+            //this.previousElementSibling.removeChild(this.previousElementSibling.childNodes)
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .up{
+            width: 800px;
+            height: 85px;
+            border: 1px solid red;
+            float: left;
+        }
+        .down{
+            width: 800px;
+            height: 85px;
+            border: 1px solid red;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="up">
+        <img src="images/1.1.png">
+        <img src="images/1.2.png">
+        <img src="images/1.3.png">
+        <img src="images/1.4.png">
+        <img src="images/1.5.png">
+        <img src="images/1.6.png">
+    </div>
+    <div class="down">
+        <img src="images/2.1.png">
+        <img src="images/2.2.png">
+        <img src="images/2.3.png">
+        <img src="images/2.4.png">
+        <img src="images/2.5.png">
+        <img src="images/2.6.png">
+    </div>
+    <script>
+        setInterval(function(){
+            var imgs=document.querySelectorAll("#up img");
+            var d=new Date();
+            var h=addZero(d.getHours());
+            var m=addZero(d.getMinutes());
+            var s=addZero(d.getSeconds()) ;
+            var now=h+"c"+m+"c"+s;
+            for(var i=0;i<now.length;i++){
+                //console.log(now.charAt(i))
+                if(now.charAt(i)=="c"){
+                    imgs[i].src="img1/colon.JPG";
+                }else {
+                    imgs[i].src = "images/1." + now.charAt(i) + ".JPG";
+                }
+            }
+        },1000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #demo{
+        width: 50px;
+        height: 50px;
+        background-color:green;
+        position: absolute;
+        left: 0px;
+        top: 0;
+        opacity: 0.1;
+    }
+</style>
+<body>
+    <div id="demo"></div>
+    <script>
+        var demo=document.querySelector("#demo");
+        var left=demo.style.left||0;
+        var i=0
+        var mm=setInterval(function(){
+            left++;
+            i+=0.002;
+            if(left<500){
+                demo.style.marginLeft=left+"px";
+                demo.style.opacity=i;
+
+            }else {
+                //demo.style.marginLeft=(1000-left)+"px";
+                clearInterval(mm);
+            }
+            //demo.style.display="none";
+             //clearInterval(mm);
+
+        },10);
+        //console.log(left);
+        /*var h1=document.querySelector("h1");
+        h1.style.color="red";
+        h1.style.fontSize="60px";
+        console.log(h1.style);*/
+    </script>
+</body>
+</html>

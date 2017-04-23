@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0 auto;
+            padding: 0;
+        }
+        .header{
+            width: 80%;
+            height: 32px;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+        .header tr td{
+            margin: 0 auto;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            width: 19%;
+            float: left;
+            border: 1px black solid;
+        }
+        .otb{
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+        .content td.ttd{
+            margin: 0 auto;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+            width: 19%;
+            float: left;
+            border: 1px black solid;
+        }
+    </style>
+</head>
+<body>
+    <div class="table">
+        <table class="header">
+            <tr>
+                <td>姓名</td>
+                <td>班级</td>
+                <td>电话</td>
+                <td>QQ号</td>
+                <td>地址</td>
+            </tr>
+        </table>
+        <div class="content"></div>
+    </div>
+    <script>
+        var main=document.querySelector(".content");
+        var tb="<table class='otb'>";
+        var students=10;
+        for(var i=1;i<=students;i++){
+            tb+="<tr class='ttr'>";
+            for (var j=1;j<=5;j++){
+                tb+="<td class='ttd'>"+1+"</td>"
+            }
+            tb+="</tr>"
+        }
+        tb+="</table>";
+        main.innerHTML=tb;
+    </script>
+</body>
+</html>

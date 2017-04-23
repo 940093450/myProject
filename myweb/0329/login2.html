@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Tools.js"></script>
+    <style>
+        #login_ui{
+            width: 250px;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 5px #ddd;
+            padding: 10px;
+            position:absolute;
+            z-index: 100;
+            background: #fff;
+            display:none;
+        }
+        #login_ui input{
+            width: 80%;
+        }
+        #loginBtn{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="member_username"></div>
+<div id="login_ui">
+    <input type="text" class="username"><br>
+    <input type="button" value="提交" id="loginBtn">
+</div>
+<button id="login">登入</button>
+<button id="logout">注销</button>
+<hr>
+<a href="member.html">跳转</a>
+<script>
+    window.addEventListener("load",function(){
+        var loginBtn=document.querySelector("#loginBtn");
+        var username=document.querySelector(".username");
+        var login_ui=document.querySelector("#login_ui");
+        var login=document.querySelector("#login");
+        var logout=document.querySelector("#logout");
+        var member_username=document.querySelector(".member_username");
+        loginBtn.addEventListener("click",function(){
+
+        });
+
+
+        //如果 下面的本地存储有值那么
+        if(sessionStorage.getItem("username")){
+            //给用户名栏赋上存储的值
+            member_username.innerText=sessionStorage.getItem("username");
+            //显示注销页面，关闭登入页面
+            logout.style.display="block";
+            login.style.display="none";
+        }else {
+            //否则 直接关闭注销页面 显示登录页面
+            logout.style.display="none";
+            login.style.display="block";
+        }
+        center(login_ui);
+        //点击登录页面把值储存到本地，用于上面判断和调用
+        login.addEventListener("click",function(){
+
+            /*//添加本地存储
+             sessionStorage.setItem("username","mike");
+             member_username.innerText="mike";
+             //并且显示已登录页面*/
+            //logout.style.display="block";
+            //login.style.display="none";
+            login_ui.style.display="block";
+        });
+        loginBtn.addEventListener("click",function(){
+            //console.log(trim(username.value).length);
+            if (!trim(username.value)){
+                member_username.innerHTML="用户名不得为空";
+                return false;
+            }else {
+                sessionStorage.setItem("username",username.value);
+                member_username.innerText=username.value;
+                logout.style.display="block";
+                login.style.display="none";
+                login_ui.style.display="none";
+                return true;
+            }
+
+        });
+        logout.addEventListener("click",function(){
+            sessionStorage.removeItem("username");
+            logout.style.display="none";
+            login.style.display="block";
+            member_username.innerText="";
+        });
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Tools.js"></script>
+    <script src="jquery-3.1.1.js"></script>
+    <style>
+        #login{
+            width: 300px;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 8px #ddd;
+            position: absolute;
+        }
+        #login dl{
+            margin: 0;
+        }
+        #login dt{
+            text-align: center;
+            margin: 5px auto;
+        }
+        #login dd{
+            margin: 5px;
+            text-align: center;
+        }
+        #login dd input{
+            border: 1px solid #ddd;
+        }
+
+    </style>
+</head>
+<body>
+<div id="login">
+    <dl>
+        <dt>欢迎登录</dt>
+        <dd><input type="text"></dd>
+        <dd><input type="password"></dd>
+        <dd><input id="loginBtn" type="submit" value="登录"></dd>
+    </dl>
+</div>
+<script>
+    $(function(){
+        center($("#login")[0]);
+        var left=($(window).width()-$("#login").width())/2;
+        var top=($(window).height()-$("#login").height())/2;
+        //console.log(left,top)
+        $("#loginBtn").click(function(){
+            for(var i=1;i<5;i++){
+                console.log(left-10*i);
+                $("#login").animate({"left":(left-2*i+"px")},150)
+                        .animate({"left":(left+2*i+"px")},150,function(){
+                            //循环执行结束后，再把登录框移动到中间
+                            $("#login").animate({"left":left},150)
+                        })
+            }
+        })
+    })
+</script>
+</body>
+</html>

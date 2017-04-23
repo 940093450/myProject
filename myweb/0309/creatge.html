@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>hello</h1>
+<button>button</button>
+<img>
+<script>
+    var btn=document.querySelector("button");
+    var h1=document.querySelector("h1");
+    btn.addEventListener("click",function(){
+        var txt=document.createTextNode("morning");
+        console.log(txt.nodeType);
+        h1.appendChild(txt);
+        console.log(this.parentNode.parentNode);
+        console.log(this.previousElementSibling);
+        console.log(this.nextElementSibling.nextElementSibling)
+    })
+</script>
+</body>
+
+</html>

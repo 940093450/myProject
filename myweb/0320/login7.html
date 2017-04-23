@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Tools.js"></script>
+    <script src="jquery-3.1.1.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        body{
+            height: 1500px;
+        }
+        #login{
+            width: 300px;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 8px #ddd;
+            position: absolute;
+            background: white;
+            z-index: 10000;
+            display: none;
+            top: -120px;
+
+        }
+        #login dl{
+            margin: 0;
+        }
+        #login dt{
+            text-align: center;
+            margin: 5px auto;
+            position: relative;
+        }
+        #login dd{
+            margin: 5px;
+            text-align: center;
+        }
+        #close{
+            position: absolute;
+            right: 0;
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            top: -5px;
+            text-align: center;
+
+        }
+        #close:hover{
+            background: yellow;
+        }
+        #login dd input{
+            border: 1px solid #ddd;
+        }
+        #mask{
+            /*width: 100%;
+            height: 100%;*/
+            position: absolute;
+            opacity: 0.5;
+            background: #dddddd;
+            z-index: 9999;
+         }
+        #loginBtn{
+            background: white;
+        }
+        header{
+            width: 100%;
+            height: 70px;
+            background: #dddddd;
+            position: relative;
+        }
+        .login{
+            background: green;
+            position: absolute;
+            top:0;
+            right: 5px;
+            display: none;
+        }
+        .member{
+            position: absolute;
+            right: 5px;
+            top:0;
+            display: block;
+        }
+        .memberInfo{
+            position: relative;
+            cursor: pointer;
+        }
+        .memberInfo .info_list{
+            position: absolute;
+            right: 0;
+            top: 50px;
+            width: 120px;
+            height: 230px;
+            background: white;
+            border: 1px solid #ddd;
+            box-shadow:0 0 8px #fff;
+            display: none;
+        }
+        .memberInfo .info_list.active{
+            display: block;
+        }
+        .member li{
+            height: 70px;
+            line-height: 70px;
+            list-style: none;
+        }
+        .login li{
+            display: inline-block;
+            height: 70px;
+            line-height: 70px;
+            cursor: pointer;
+        }
+        .popup{
+            width: 300px;
+            height: 200px;
+            border: 1px solid #ddd;
+            position: fixed;
+            right: 5px;
+            bottom: -300px;
+        }
+        .popup_header{
+            height: 30px;
+            line-height: 30px;
+            background: aqua;
+            position: relative;
+        }
+        .popup_close{
+            position:absolute;
+            right: 5px;
+            cursor: pointer;
+        }
+        .fold{
+            cursor: pointer;
+        }
+        nav{
+            background: green;
+            color: #fff;
+        }
+        nav ul{
+            width: 1000px;
+            margin:0 auto;
+        }
+        nav ul:after{
+            content: "";
+            clear: both;
+            display: block;
+        }
+        nav ul>li{
+            float: left;
+            padding: 5px 0;
+            width: 20%;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+        }
+        nav>ul>li:hover{
+            background: red;
+        }
+        nav ul li ul{
+            width: 200px;
+            display: none;
+            position: absolute;
+            top: 30px;
+        }
+        nav ul li ul li{
+            background: #21e1ff;
+            width: 100%;
+            float: left;
+            border-bottom:1px solid #fff;
+        }
+        nav ul li ul li:hover{
+            background: orange;
+        }
+        .frame{
+            width: 1583px;
+            height: 339px;
+            margin:0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .frame img{
+            width: 1583px;
+            height: 339px;
+            display: block;
+        }
+        .frame .btn{
+            position:absolute;
+            bottom: 5px;
+            right: 15px;
+        }
+        .frame .btn li{
+            list-style:none;
+            float: left;
+            width: 15px;
+            height: 15px;
+            background: #fff;
+            margin-left: 15px;
+            border-radius:15px;
+            cursor: pointer;
+        }
+        .frame .btn li.highlight{
+            background: orange;
+        }
+        .slider{
+            position:absolute;
+        }
+        .slider li{
+            position: relative;
+        }
+        .caption{
+            color: #ffffff;
+            background: rgba(0,0,0,0.5 );
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            font-size: 14px;
+            height: 25px;
+            line-height: 25px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="mask"></div>
+<div id="login">
+    <dl>
+        <dt>欢迎登录<span id="close">&times;</span></dt>
+        <dd><input type="text"></dd>
+        <dd><input type="password"></dd>
+        <dd><input id="loginBtn" type="submit" value="登录"></dd>
+    </dl>
+</div>
+<header>
+    <div id="logo">网站logo</div>
+    <div id="banner">Banner</div>
+    <ul class="login">
+        <li class="loginBar">登录</li>
+        <li>注册</li>
+    </ul>
+    <!--用户已登录-->
+    <ul class="member">
+        <li class="memberInfo">TOM
+            <div class="info_list"></div>
+        </li>
+    </ul>
+</header>
+<!--轮播-->
+<div class="frame">
+    <ul class="slider">
+       <li>
+           <img src="images/p1.jpg">
+           <span class="caption">第一张</span>
+       </li>
+       <li>
+           <img src="images/p2.jpg">
+           <span class="caption">第二张</span>
+       </li>
+       <li>
+           <img src="images/p3.jpg">
+           <span class="caption">第三张</span>
+       </li>
+       <li>
+           <img src="images/p4.jpg">
+           <span class="caption">第四张</span>
+       </li>
+    </ul>
+    <ul class="btn">
+        <li class="highlight"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<!--导航-->
+<nav>
+    <ul>
+        <li>主菜单
+            <ul>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>
+        </li>
+        <li>主菜单
+            <ul>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>
+        </li>
+        <li>主菜单
+            <ul>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>
+        </li>
+        <li>主菜单
+            <ul>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>
+        </li>
+        <li>主菜单
+            <ul>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+<!--右下角广告-->
+<div class="popup">
+    <div class="popup_header">
+        <span class="fold">折叠</span><span class="popup_close">&times;</span>
+    </div>
+    <div></div>
+    <div></div>
+</div>
+<script>
+    $(function(){
+        ////轮播/////
+        //changeIMG(2);
+        $(".btn li").each(function(index){
+            $(this).hover(function(){
+                clearInterval(timer1);
+                changeIMG(index)
+            },function(){
+                autoPlay(index+1)
+            })
+        });
+
+        autoPlay(1);
+        function autoPlay(index){
+            timer1=setInterval(function(){
+                if(index>=$(".slider img").length){
+                    index=0;
+                }
+                changeIMG(index);
+                index++;
+            },3000)
+        }
+        function changeIMG(index){
+            var imgHeight=$(".slider img").height();//图片的高度
+            //console.log(imgHeight);
+            $(".slider").animate({"top":"-"+imgHeight*index+""},1000);
+            $(".frame .btn li").removeClass("highlight").eq(index).addClass("highlight")
+        }
+
+
+
+
+        /////下拉菜单////
+        //var mouseOverTimer=[];
+        var tt;
+        $("nav>ul>li").each(function(index){
+            $(this).hover(function(){
+                var activeList=$(this);
+                tt=setTimeout(function(){
+                    activeList.children("ul").slideDown();
+                },300)
+            },function(){
+                var activeList=$(this);
+                clearTimeout(tt);
+                activeList.children("ul").slideUp();
+            })
+        });
+
+
+
+
+        /////////右下角广告///////////
+        setTimeout(function(){
+            $(".popup").animate({"bottom":"5px"},500,function(){
+                setTimeout(function(){
+                    //$(".popup").fadeOut("slow");
+                },3000)
+            })
+        },2000);
+        $(".popup_close").click(function(){
+            $(".popup").fadeOut("slow");
+        });
+        var popupHeight=$(".popup").height();
+        $(".fold").click(function(){
+            if($(".popup").height()==200){
+                $(".popup").animate({"height":$(".popup_header").height()+"px"},500,function(){
+                    $(".fold").html("展开");
+                })
+            }else{
+                $(".popup").animate({"height":popupHeight+"px"},500,function(){
+                    $(".fold").html("折叠");
+                })
+
+            }
+        });
+
+
+
+
+        //////用户已登录时的操作
+        $(".memberInfo").click(function(evt){
+            $(".info_list").toggleClass("active");
+            evt.stopPropagation();
+        });
+        //
+        $("body,html").click(function(){
+            $(".info_list").removeClass("active");
+        });
+
+
+
+        /////用户未登录是的操作
+        $(".loginBar").click(function(){
+            //设置遮罩
+            $("#mask").css({
+                "width":$(document).width(),
+                "height":$(document).height(),
+                "display":"block"
+            });
+            //登录框显示
+            $("#login").css({"display":"block"});
+            var left=($(window).width()-$("#login").width())/2;
+            var top=($(window).height()-$("#login").height())/2;
+            $("#login").animate({
+                "top":top+"px"
+            },1000);
+            //登录框居中
+            center($("#login")[0]);
+            $("#close").click(function(){
+                $("#login").animate({
+                    "top":-120+"px"
+                },1000,function(){
+                    $("#mask").fadeOut("normal");
+                });
+
+            });
+            //console.log(left,top)
+            $("#loginBtn").click(function(){
+                for(var i=1;i<3;i++){
+                    console.log(left-10*i);
+                    $("#login").animate({"left":(left-2*i+"px")},150)
+                            .animate({"left":(left+2*i+"px")},150,function(){
+                                //循环执行结束后，再把登录框移动到中间
+                                $("#login").animate({"left":left},150)
+                            })
+                }
+            })
+        });
+
+    })
+</script>
+</body>
+</html>

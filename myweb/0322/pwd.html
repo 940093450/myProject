@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="feedback"></div>
+<input type="password" id="pwd" placeholder="密码">
+<script>
+    var feedback=document.querySelector("#feedback");
+    var pwd=document.querySelector("#pwd");
+    pwd.addEventListener("keyup",function(){
+        switch (pwd_validate(this.value)){
+            case 4:
+                feedback.innerHTML="密码不得为空";
+                break;
+            case 3:
+                feedback.innerHTML="密码强度低";
+                break;
+            case 2:
+                feedback.innerHTML="密码强度中";
+                break;
+            case 1:
+                feedback.innerHTML="密码强度较高";
+                break;
+            case 0:
+                feedback.innerHTML="密码强度高";
+                break;
+        }
+        /*
+        * 4:密码为空
+        * 3；密码强度低
+        * 2：中
+        * 1：较高
+        * 0：高
+        * */
+    });
+    function pwd_validate(content){
+        var num=0;
+        if(!/[\d]/.test(content)){
+            num+=1;
+        }
+        if(!/[a-z]/.test(content)){
+            num+=1;
+        }
+        if(!/[A-Z]/.test(content)){
+            num+=1;
+        }
+        if(!/[\W]/.test(content)){
+            num+=1;
+        }
+        return num;
+    }
+</script>
+</body>
+</html>

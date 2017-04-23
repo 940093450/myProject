@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <a href="http://www.baidu.com">baidu</a>
+    <select class="foo">
+        <option>选择颜色</option>
+        <option value="http://www.baidu.com">baidu</option>
+        <option value="green">green</option>
+        <option value="blue">blue</option>
+    </select>
+    <script>
+        var foo=document.querySelector(".foo");
+        foo.addEventListener("change",function(){
+            //alert(this.value)
+            document.body.style.background=this.value
+        })
+    </script>
+</body>
+</html>

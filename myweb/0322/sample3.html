@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str="的[color=red]烧烤[/color]反倒是[b]火锅[/b]的恐惧感生当复[b]来[/b]归看见[b][color=red]水电费[/color][color=green]管理[/color][/b]会计水电费管理会计山东管理会计"
+    document.write(str+"<hr>");
+    var pattern=new Array(
+            /\[b\](.+?)\[\/b\]/g,
+            /\[color=(.+?)\](.+?)\[\/color\]/g
+    );
+    var replacement=new Array(
+            "<b>$1</b>","<span style='color:$1'>$2</span>"
+    );
+    for(var i=0;i<pattern.length;i++){
+        str=str.replace(pattern[i],replacement[i])
+    }
+    document.write(str);
+    //var pattern=/\[b\](.+?)\[\/b\]/g;
+    //var pattern=/[[b](.+)[\/b]]/g;
+    //document.write(str.replace(pattern,"<b>$1</b>")+"<hr>");
+    //document.write(str.replace(pattern,"<color=red>$1</color>"));
+</script>
+</body>
+</html>

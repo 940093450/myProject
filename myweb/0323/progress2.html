@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #progress_dar{
+            height: 20px;
+            background: red;
+            width: 0;
+            transition: width 1s ;
+        }
+    </style>
+</head>
+<body>
+<input type="file" id="icon">
+<div id="progress_dar"></div>
+<script>
+    var icon=document.querySelector("#icon");
+    var progress_dar=document.querySelector("#progress_dar");
+    var fr=new FileReader;
+    icon.addEventListener("change",function(){
+        //读取上传的二进制文件
+        fr.readAsBinaryString(this.files[0]);
+        fr.addEventListener("loadstart",function(){
+
+        });
+        fr.addEventListener("progress",function(evt){
+            //alert("progress")
+            if(evt.lengthComputable){
+                var percent=Math.round((evt.loaded/evt.total)*100);
+                //alert(percent);
+                if (percent<=100){
+                    progress_dar.style.width=percent+"%";
+                    progress_dar.textContent=percent+"%";
+                }
+            }
+        });
+        //加载成功
+        fr.addEventListener("load",function(){
+
+        })
+    })
+</script>
+</body>
+</html>

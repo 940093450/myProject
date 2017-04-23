@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Tools.js"></script>
+</head>
+<body>
+<script>
+    function getCookie(_name){
+        _name+="=";
+        var str=document.cookie;
+        var strStart=str.indexOf(_name);
+        var strEnd=str.indexOf(";",strStart);
+        if (strEnd==-1){
+            strEnd=str.length;
+        }
+        return decodeURI(str.substring(strStart+_name.length,strEnd));
+    }
+    setCookie("username","马化腾");
+    console.log(getCookie("username"));
+
+
+
+
+
+
+    /*var bj="beijing";
+    bj=bj+"=";
+    var str="shanghai=one;beijing=two;newYork=three";
+    var strStart=str.indexOf(bj);
+    var strEnd=str.indexOf(";",strStart);
+    if(strEnd==-1){
+        strEnd=str.length;
+    }
+    console.log(strEnd);
+    document.write(str.substring(strStart+bj.length,strEnd)+"<hr>");*/
+
+</script>
+</body>
+</html>

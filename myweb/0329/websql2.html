@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="feedback"></div>
+<input type="text" id="username"><br>
+<button id="submitBtn">提交</button>
+<hr>
+<div id="container"></div>
+<script>
+    var username=document.querySelector("#username");
+    var feedback=document.querySelector("#feedback");
+    var submitBtn=document.querySelector("#submitBtn");
+    var container=document.querySelector("#container");
+    /*var db=openDatabase("only","1.0","member",2*1024*1024,function(){
+        console.log("数据库创建成功");
+    });*/
+    var db=openDatabase("only","1.0","member",2*1024*1024,function(){
+        console.log("数据库创建成功")
+    });
+    db.transaction(function(tx){
+        tx.executeSql("select * form only",[tx],function(tx,results){
+            console.log(tx)
+        })
+    })
+</script>
+</body>
+</html>

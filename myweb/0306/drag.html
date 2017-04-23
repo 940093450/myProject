@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Tools.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #demo{
+            width: 100px;
+            height: 100px;
+            background: green;
+            position:absolute;
+            cursor: pointer;
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="demo"></div>
+<script>
+    var demo=document.querySelector("#demo");
+    //元素两个点之间移动的差
+    var moveX;
+    var moveY;
+    var isDrag=false;
+                            //鼠标按下
+    demo.addEventListener("mousedown",function(evt){
+        //事件发生时，在文档上的坐标，offsetWidth元素的宽带
+        // offsetLeft元素到左边的距离
+        //console.log(evt.clientX,evt.clientY)
+        //console.log(this.offsetLeft);
+        isDrag=true;
+        moveX=evt.clientX-this.offsetLeft;
+        moveY=evt.clientY-this.offsetTop;
+        console.log(moveX);
+        console.log(moveY);
+        console.log(this.offsetTop);
+    });
+    //在文档上触发鼠标移动事件
+    document.addEventListener("mousemove",function(evt){
+        if(isDrag){
+            var ox=evt.clientX-moveX;
+            var oy=evt.clientY-moveY;
+            demo.style.left=ox+"px";
+            demo.style.top=oy+"px";
+        }
+    });
+
+                         //鼠标松开
+    demo.addEventListener("mouseup",function(){
+        isDrag=false;
+    })
+
+</script>
+</body>
+</html>

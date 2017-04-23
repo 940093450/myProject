@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var db=openDatabase("only","1.0","member",2*1024*1024,function(){
+        console.log("数据库创建成功");
+    });
+    db.transaction(function(tx){
+        //te:SQLTransaction {}
+        //console.log(tx);
+        tx.executeSql("create table if not exists only(id,username)");
+        tx.executeSql("insert into only(id,username)values(1,'tom')")
+    })
+</script>
+</body>
+</html>

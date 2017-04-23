@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.1.1.js"></script>
+    <style>
+        .active{
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>111</li>
+    <li>222</li>
+    <li>333</li>
+</ul>
+<div>1</div><div>2</div><div>3</div>
+<script>
+    $("ul li").each(function(index){
+        $(this).click(function(){
+            $("div").removeClass("active");
+            console.log(index);
+            $("div:eq("+index+")").addClass("active")
+        })
+    })
+</script>
+</body>
+</html>

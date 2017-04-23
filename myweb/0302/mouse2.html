@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        ul li{
+            float: left;
+            width: 120px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            background: green;
+            color: #fff;
+            cursor: pointer;
+        }
+        .active{
+            color: red;
+            background: orange;
+        }
+    </style>
+</head>
+<body>
+<ul id="nav">
+    <li>关于我们</li>
+</ul>
+<script>
+    var nav=document.querySelector("#nav");
+    var lis=nav.querySelector("li");
+    lis.addEventListener("mouseover",function(){
+        this.className="active"
+    });
+    lis.addEventListener("mouseout",function(){
+        this.className="";
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        body{
+            background-image: url("img/5.png");
+        }
+        .container{
+            width: 1190px;
+            background: #ffffff;
+            height: 1000px;
+            margin: 0 auto;
+            margin-top: 170px;
+        }
+        .left{
+            width: 190px;
+            height: 500px;
+            background-image: url("img/4.png");
+            float: left;
+        }
+        .left ul{
+            width: 100%;
+            height: 400px;
+            margin-top: 20px;
+        }
+        .left ul li{
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            color: #ffffff;
+        }
+        .active{
+            background:#dddddd;
+        }
+        .center{
+            width: 800px;
+            height: 500px;
+            background: #ffffff;
+            float: left;
+        }
+        .right{
+            width: 190px;
+            height: 500px;
+            background-image: url("img/4.png");
+            float: left;
+            margin-left: 10px;
+        }
+        .po{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="aou">
+    <div class="left">
+        <ul>
+            <li><span>家用电器</span></li>
+            <li><span>手机</span></li>
+            <li><span>电脑办公</span></li>
+            <li><span>家用电器</span></li>
+            <li><span>手机</span></li>
+            <li><span>电脑办公</span></li>
+            <li><span>家用电器</span></li>
+            <li><span>手机</span></li>
+            <li><span>电脑办公</span></li>
+            <li><span>家用电器</span></li>
+            <li><span>手机</span></li>
+            <li><span>电脑办公</span></li>
+            <li><span>电脑办公</span></li>
+            <li><span>电脑办公</span></li>
+            <li><span>电脑办公</span></li>
+        </ul>
+    </div>
+    <div class="center">
+        <img src="img/6.png">
+        <img class="po" src="img/1.png">
+    </div>
+    </div>
+    <div class="right"></div>
+</div>
+<script>
+    var oDiv=document.querySelector(".container");
+    var lis=document.querySelectorAll(".left li");
+    var img=document.querySelector(".center img");
+    var spans=document.querySelectorAll("span");
+    var left=document.querySelector("#left");
+    var center=document.querySelector("#center");
+    var po=document.querySelector(".po");
+    var Arr=[left,center];
+    //console.log(img);
+    var arr=[1,2,3,1,2,3,1,2,3,1,2,3];
+    //console.log(lis.length)
+        for(var i=0;i<lis.length;i++){
+            lis[i].setAttribute("index",i);
+            spans[i].addEventListener("mouseover",function(){
+                this.style.color="red";
+            });
+            spans[i].addEventListener("mouseout",function(){
+                this.style.color="";
+            });
+            lis[i].addEventListener("mouseover",function(){
+                for(var j=0;j<lis.length;j++){
+                    lis[j].className="";
+                }
+                this.className="active";
+                po.src="img/"+arr[this.getAttribute("index")]+".png";
+                img.style.display="none";
+                po.style.display="block";
+            });
+            lis[i].addEventListener("mouseout",function(){
+                this.className="";
+                //img.src="img/6.png";
+                img.style.display="block";
+                po.style.display="none";
+            });
+        }
+
+</script>
+</body>
+</html>

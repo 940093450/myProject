@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="checkbox" id="hobby">选择
+    <hr>
+    <input type="checkbox">体育
+    <hr>
+    <input type="checkbox">体育
+    <hr>
+    <input type="checkbox">体育
+    <hr>
+    <input type="checkbox">体育
+    <hr>
+    <input type="checkbox">体育
+    <hr>
+    <input type="checkbox">体育
+    <script>
+        var hobby=document.querySelector("#hobby");
+        var physics=document.querySelectorAll("input:not(#hobby)");
+        console.log(hobby.checked);
+        hobby.addEventListener("click",function(){
+            for(var i= 0;i<physics.length;i++){
+                //每一个多选的checked属性与上面的checked值相同
+                physics[i].checked=this.checked;
+            }
+            console.log(this.checked)
+        })
+    </script>
+</body>
+</html>

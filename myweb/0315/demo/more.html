@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            font-family: 微软雅黑;
+
+        }
+        div{
+            width: 300px;
+            height: 300px;
+            border: 1px solid red;
+            overflow: scroll;
+            margin: 0 auto;
+        }
+        li{
+            line-height: 30px;
+            list-style: none;
+            margin-left: 20px;
+        }
+        /*p{
+            cursor: pointer;
+            color:#00c1de;
+            text-align: center;
+        }
+        p{
+            cursor: pointer;
+            color:#00c1de;
+            text-align: center;
+            display: none;
+        }*/
+
+    </style>
+    <script src="jquery-3.1.1.js"></script>
+</head>
+<body>
+<div>
+<ul>
+    <li>双方都可将高科技的</li>
+    <li>撒旦合法的价格和四大皆空回复</li>
+    <li>速度快会防守的好看的</li>
+    <li>单身狗i说的话给iu鸟革翚飞</li>
+    <li>电饭锅绿卡色觉好看的身份</li>
+    <li>的说法爱上</li>
+    <li>来看的话给卡上</li>
+    <li>爱哭是发</li>
+    <li>喀什冬瓜阿里斯顿附近</li>
+    <li>奥i舒服i库拉索岛回复</li>
+    <li>俩是的话快乐环岛撒安康</li>
+</ul>
+    <p>显示更多↓</p>
+    <p>收起↑</p>
+</div>
+<script>
+    $("p:first").css({
+        "cursor":"pointer",
+        "color":"#00c1de",
+        "text-align":"center"
+    });
+    $("p:last").css({
+        "cursor":"pointer",
+        "color":"#00c1de",
+        "text-align":"center",
+        "display":"none"
+    });
+    $("li:gt(5)").css({"display":"none"});
+    $("p:first").click(function(){
+        $("li").css({"display":"block"});
+        $("p:first").css({"display":"none"});
+        $("p:last").css({"display":"block"})
+    })
+    $("p:last").click(function(){
+        $("li:gt(5)").css({"display":"none"});
+        $("p:first").css({"display":"block"});
+        $("p:last").css({"display":"none"})
+    })
+</script>
+</body>
+</html>

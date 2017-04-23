@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .bar{
+            height: 25px;
+            border: 1px solid green;
+            width: 85%;
+            margin: auto;
+        }
+        .fill{
+            height: 25px;
+            background: red;
+            width: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="bar">
+    <div class="fill"></div>
+</div>
+<script>
+    var fill=document.querySelector(".fill");
+    var frames=[
+        {width:0},{width:"100%"}
+    ];
+    var timing={
+        duration:5000,
+        delay:0,
+        iterations:1,
+        easing:'linear',
+        fill:'forwards'
+    };
+    fill.animate(frames,timing)
+</script>
+</body>
+</html>

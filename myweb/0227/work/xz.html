@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #demo{
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            position: absolute;
+        }
+        .active{
+
+        }
+    </style>
+</head>
+<body>
+<div id="demo"></div>
+<script>
+    var deg=0;
+    var j=1;
+    var opacity=1;
+    var demo=document.querySelector("#demo");
+    var timer=setInterval(function(){
+        deg++;
+        j=j-0.005;
+        demo.style.transform="scale("+j+") rotate("+deg+"deg)" ;
+        if(opacity<=0){
+            clearInterval(timer);
+        }
+        opacity=opacity-0.01;
+        demo.style.opacity=opacity;
+
+    },50);
+
+</script>
+</body>
+</html>

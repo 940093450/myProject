@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.1.1.js"></script>
+    <style>
+        #feedback{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="feedback"></div>
+<form action="reg.php" method="post">
+    <input type="text" placeholder="用户名" class="username"><br>
+    <input type="password" placeholder="密码" class="pwd"><br>
+    <input type="submit" value="注册" id="regBtn"><br>
+</form>
+<script>
+    $("#regBtn").click(function(){
+        if($.trim($(".username").val()).length==0){
+            $("#feedback").html("用户名不能为空");
+            return false;
+        }
+        if($.trim($(".pwd").val()).length==0){
+            $("#feedback").html("密码不能为空");
+            return false;
+        }
+        else {
+            return true;
+        }
+    });
+    $(".username").focus(function(){
+        $("#feedback").html("");
+    });
+    $(".pwd").focus(function(){
+        $("#feedback").html("");
+    })
+</script>
+</body>
+</html>

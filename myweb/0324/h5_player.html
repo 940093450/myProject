@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .h5_player{
+            border: 1px solid red;
+            width: 100%;
+        }
+        .h5_player .player_footer{
+            height: 60px;
+        }
+        .h5_player .player_footer ul{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .h5_player .player_footer ul li{
+            display: inline-block;
+            text-align: center;
+            line-height: 59px;
+        }
+        .h5_player .player_footer ul li.playerBtn{
+            width: 59px;
+            height: 59px;
+            background: url("control.jpg")150px -9px;
+            /*150 -82停止*/
+            cursor: pointer;
+        }
+        .h5_player .player_footer ul li.stopBtn{
+            width: 59px;
+            height: 59px;
+            background: url("control.jpg")150px -82px;
+            /*150 -82停止*/
+            cursor: pointer;
+        }
+        .h5_player .player_footer ul li.timeTop{
+            height: 59px;
+            width: 59px;
+            text-align: center;
+            line-height: 59px;
+        }
+        .h5_player .dragBtn{
+            background: green;
+            width: 500px;
+        }
+        .h5_player .muted{
+            background: url("muted1.jpg");
+            width: 59px;
+            height: 59px;
+            cursor: pointer;
+            background-size:100% 100%;
+        }
+        .h5_player .mutedB{
+            background: url("aaaa.jpg");
+            width: 59px;
+            height: 59px;
+            cursor: pointer;
+            background-size:100% 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="h5_player">
+    <div class="player_header">
+        <span>音乐</span><span>邓紫棋</span>
+    </div>
+    <div class="player_body">
+        <video class="player" controls>
+            <source src="deng.mp4">
+        </video>
+    </div>
+    <div class="player_footer">
+        <ul>
+            <li class="playerBtn" id="playerBtn"></li>
+            <li class="timeTop"></li>
+            <li><input type="range" class="dragBtn" value="0" min="0" ></li>
+            <li class="muted"></li>
+            <li><input type="range" class="volBtn" value="0" min="0" ></li>
+            <li class="fullScreen">全屏</li>
+            <li></li>
+        </ul>
+    </div>
+</div>
+<script>
+    window.addEventListener("load",function(){
+        var muted=document.querySelector(".muted");
+        var player=document.querySelector(".player");
+        var dragBtn=document.querySelector(".dragBtn");
+        var timeTop=document.querySelector(".timeTop");
+        var playerBtn=document.querySelector("#playerBtn");
+        var volBtn=document.querySelector(".volBtn");
+        var b=true;
+        dragBtn.setAttribute("max",player.duration);
+        playerBtn.addEventListener("click",function(){
+            if (b){
+                player.play();
+                b=false;
+                this.className="stopBtn";
+            }else {
+                player.pause();
+                b=true;
+                this.className="playerBtn";
+            }
+        });
+        player.addEventListener("timeupdate",function(){
+            timeTop.innerHTML=parseInt(player.currentTime)+"/"+parseInt(this.duration);
+            dragBtn.value=parseInt(player.currentTime);
+        });
+
+        var isDrag=true;
+        dragBtn.addEventListener("mousedown",function(){
+            isDrag=true;
+            player.currentTime=this.value;
+        });
+        dragBtn.addEventListener("mousemove",function(){
+            if (isDrag){
+                console.log(this.value);
+                player.currentTime=this.value;
+            }
+        });
+        dragBtn.addEventListener("mouseup",function(){
+            isDrag=false;
+            player.currentTime=this.value;
+        });
+        ///静音切换
+        muted.addEventListener("click",function(){
+            player.muted=(player.muted==true)?false:true;
+            muted.className=(player.muted==true)?"mutedB":"muted"
+        });
+        player.volume=0.6;
+        volBtn.value=60;
+        volBtn.addEventListener("mousemove",function(){
+            player.volume=this.value/100;
+            muted.className=(player.volume==0)?"mutedB":"muted"
+        })
+    });
+    function fullScreen(element){
+        if(element.requestFullscreen){
+            element.requestFullscreen();
+        }else if(element.mozRequestFullscreen){
+            element.mozRequestFullscreen();
+        }else if(element.webkitRequestFullscreen){
+            element.webkitRequestFullscreen();
+        }else if(element){
+
+        }
+    }
+
+
+</script>
+</body>
+</html>

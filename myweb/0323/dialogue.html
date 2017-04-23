@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        dialog{
+            border: 1px solid rgba(0,0,0,0.3);
+            border-radius:6px;
+            box-shadow: 0 3px 7px rgba(0,0,0,0.3);
+        }
+        #close{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<dialog>
+    <span id="close">关闭</span>
+    <h1>Morning</h1>
+</dialog>
+<button>Button</button>
+<script>
+    var btn=document.querySelector("button");
+    var close=document.querySelector("#close");
+    var dialog=document.querySelector("dialog");
+    btn.addEventListener("click",function(){
+        dialog.show();
+    });
+    close.addEventListener("click",function(){
+        dialog.close();
+    })
+</script>
+</body>
+</html>

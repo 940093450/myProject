@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Tools.js"></script>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 1500px;
+        }
+        .nav{
+            width: 100%;
+            height: 60px;
+            background: green;
+        }
+        .active{
+            width: 100%;
+            height: 200px;
+            background: green;
+            position: fixed;
+            top:0;
+            transition:height 2s;
+        }
+        .down{
+            display: none;
+        }
+        .cx{
+            width: 50px;
+            height: 50px;
+            background: #ddd;
+            position: fixed;
+            bottom: 30px;
+            right: 10px;
+            line-height: 50px;
+            text-align: center;
+            display: block;
+        }
+
+
+        #aa{
+            position: absolute;
+            top:0;
+        }
+    </style>
+</head>
+<body>
+<a name="top" id="aa" ></a>
+<div class="nav" id="nav"></div>
+<p>2222</p><hr>
+<p>1111</p><hr>
+<p>1111</p><hr>
+<p>1111</p><hr>
+<p>1111</p><hr>
+<p>1111</p><hr>
+<p>1111</p><hr>
+<p>1111</p><hr>
+<p>1111</p><hr>
+<p>1111</p><hr>
+<p>1111</p><hr>
+<p>1111</p><hr>
+<p>1111</p><hr>
+<p>1111</p><hr>
+<p>1111</p><hr>
+<p>1111</p><hr>
+<p>1111</p><hr>
+<p>1111</p><hr>
+<p>1111</p><hr>
+<p>1111</p><hr>
+<div class="down" id="down">top</div>
+<script>
+    var dd=document.querySelector("#nav");
+    var down=document.querySelector("#down");
+    //滚动条滚动时
+    //scroll窗口的滚动事件
+    window.addEventListener("scroll",function(){
+        var scroll=getScrollSize().top;
+        //下拉超过60px nav固定浮于窗口
+        if (scroll>60){
+            dd.className="active";
+            //小于60时 回到原来的样式
+        }else if(scroll<=60){
+            dd.className="nav"
+        }
+        if (scroll>100){
+            down.className="cx";
+            //down.style.display="block";
+        }else if(scroll<=100){
+            //down.style.display="none";
+            down.className="";
+        }
+        down.addEventListener("click",function(){
+            window.scrollTo(0,0)
+        })
+    });
+
+</script>
+</body>
+</html>

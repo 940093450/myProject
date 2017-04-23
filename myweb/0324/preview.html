@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="file" id="icon">
+<script>
+    var preview=document.createElement("img");
+    var icon=document.querySelector("#icon");
+    icon.addEventListener("change",function(){
+        var fr=new FileReader();
+        fr.readAsDataURL(icon.files[0]);
+        //fr加载事件
+        fr.addEventListener("loadend",function(){
+            preview.src=this.result;
+            //this.result：filereader 读取的数据
+            document.body.appendChild(preview)
+        })
+    })
+</script>
+</body>
+</html>

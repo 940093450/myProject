@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.1.1.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        body{
+            height: 1500px;
+        }
+        #login{
+            width: 300px;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 8px #ddd;
+            position: absolute;
+            background: white;
+            z-index: 10000;
+            display: none;
+            top: -120px;
+
+        }
+        #login dl{
+            margin: 0;
+        }
+        #login dt{
+            text-align: center;
+            margin: 5px auto;
+            position: relative;
+        }
+        #login dd{
+            margin: 5px;
+            text-align: center;
+        }
+        #close{
+            position: absolute;
+            right: 0;
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            top: -5px;
+            text-align: center;
+
+        }
+        #close:hover{
+            background: yellow;
+        }
+        #login dd input{
+            border: 1px solid #ddd;
+        }
+        #mask{
+            /*width: 100%;
+            height: 100%;*/
+            position: absolute;
+            opacity: 0.5;
+            background: #dddddd;
+            z-index: 9999;
+         }
+        #loginBtn{
+            background: white;
+        }
+        header{
+            width: 100%;
+            height: 70px;
+            background: #dddddd;
+            position: relative;
+        }
+        .login{
+            position: absolute;
+            top:0;
+            right: 5px;
+            display: none;
+        }
+        .member{
+            position: absolute;
+            right:0;
+            top:0;
+            display: block;
+            width: 100px;
+        }
+        .member li{
+            float: left;
+            margin-left: 15px;
+            cursor: pointer;
+        }
+        .memberInfo{
+            position: relative;
+            cursor: pointer;
+        }
+        .memberInfo .info_list{
+            position: absolute;
+            right: 0;
+            top: 50px;
+            width: 120px;
+            height: 230px;
+            background: white;
+            border: 1px solid #ddd;
+            box-shadow:0 0 8px #fff;
+            display: none;
+            z-index: 100;
+        }
+        .memberInfo .info_list.active{
+            display: block;
+        }
+        .member li{
+            height: 70px;
+            line-height: 70px;
+            list-style: none;
+        }
+        .login li{
+            display: inline-block;
+            height: 70px;
+            line-height: 70px;
+            cursor: pointer;
+        }
+        .popup{
+            width: 300px;
+            height: 200px;
+            border: 1px solid #ddd;
+            position: fixed;
+            right: 5px;
+            bottom: -300px;
+        }
+        .popup_header{
+            height: 30px;
+            line-height: 30px;
+            background: aqua;
+            position: relative;
+        }
+        .popup_close{
+            position:absolute;
+            right: 5px;
+            cursor: pointer;
+        }
+        .fold{
+            cursor: pointer;
+        }
+        nav{
+            background: green;
+            color: #fff;
+        }
+        nav ul{
+            width: 1000px;
+            margin:0 auto;
+        }
+        nav ul:after{
+            content: "";
+            clear: both;
+            display: block;
+        }
+        nav ul>li{
+            float: left;
+            padding: 5px 0;
+            width: 20%;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+        }
+        nav>ul>li:hover{
+            background: red;
+        }
+        nav ul li ul{
+            width: 200px;
+            display: none;
+            position: absolute;
+            top: 30px;
+        }
+        nav ul li ul li{
+            background: #21e1ff;
+            width: 100%;
+            float: left;
+            border-bottom:1px solid #fff;
+        }
+        nav ul li ul li:hover{
+            background: orange;
+        }
+        .frame{
+            width: 1583px;
+            height: 339px;
+            margin:0 auto;
+            position: relative;
+            overflow: hidden;
+            white-space:nowrap;
+        }
+        .frame img{
+            width: 1583px;
+            height: 339px;
+            display: block;
+        }
+        .frame .btn{
+            position:absolute;
+            bottom: 5px;
+            right: 15px;
+        }
+        .frame .btn li{
+            list-style:none;
+            float: left;
+            width: 15px;
+            height: 15px;
+            background: #fff;
+            margin-left: 15px;
+            border-radius:15px;
+            cursor: pointer;
+        }
+        .frame .btn li.highlight{
+            background: orange;
+        }
+        .slider{
+            position:absolute;
+            width: 6332px;
+        }
+        .slider li{
+            position: relative;
+            float: left;
+        }
+        .caption{
+            color: #ffffff;
+            background: rgba(0,0,0,0.5 );
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            font-size: 14px;
+            height: 25px;
+            line-height: 25px;
+            width: 100%;
+        }
+        .prev{
+            position: absolute;
+            left: 5px;
+            z-index: 1111;
+            font-size: 55px;
+            color: white;
+            top:35%;
+            background: rgba(0,0,0,0.7);
+            cursor: pointer;
+        }
+        .next{
+            position: absolute;
+            right: 5px;
+            z-index: 1111;
+            font-size: 55px;
+            color: white;
+            top:35%;
+            background: rgba(0,0,0,0.7);
+            cursor: pointer;
+        }
+        .back{
+            position: fixed;
+            right: 5px;
+            bottom: 5px;
+            border: 1px solid #ddd;
+            width: 80px;
+            background:#eee;
+        }
+        .back li{
+            padding: 5px 0;
+            text-align: center;
+            border-bottom: 1px solid #dddddd;
+            cursor:pointer;
+        }
+        .back li:hover{
+            background: gray;
+        }
+    </style>
+</head>
+<body>
+<div id="mask"></div>
+<div id="login">
+    <dl>
+        <dt>欢迎登录<span id="close">&times;</span></dt>
+        <dd><input id="username" type="text"></dd>
+        <dd><input id="pwd" type="password"></dd>
+        <dd><input id="loginBtn" type="submit" value="登录"></dd>
+    </dl>
+</div>
+<header>
+    <div id="logo">网站logo</div>
+    <div id="banner">Banner</div>
+    <ul class="login">
+        <li class="loginBar">登录</li>
+        <li>注册</li>
+    </ul>
+    <!--用户已登录-->
+    <ul class="member">
+        <li class="memberInfo"><span id="member_username"></span>
+            <div class="info_list">
+            </div>
+        </li>
+        <li class="memberOut">注销</li>
+    </ul>
+</header>
+<!--轮播-->
+<div class="frame">
+    <span class="prev"><</span>
+    <span class="next">></span>
+    <ul class="slider">
+       <li>
+           <img src="images/p1.jpg">
+           <span class="caption">第一张</span>
+       </li>
+       <li>
+           <img src="images/p2.jpg">
+           <span class="caption">第二张</span>
+       </li>
+       <li>
+           <img src="images/p3.jpg">
+           <span class="caption">第三张</span>
+       </li>
+       <li>
+           <img src="images/p4.jpg">
+           <span class="caption">第四张</span>
+       </li>
+    </ul>
+    <ul class="btn">
+        <li class="highlight"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<!--导航-->
+<nav>
+    <ul>
+        <li>主菜单
+            <ul>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>
+        </li>
+        <li>主菜单
+            <ul>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>
+        </li>
+        <li>主菜单
+            <ul>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>
+        </li>
+        <li>主菜单
+            <ul>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>
+        </li>
+        <li>主菜单
+            <ul>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+<!--右下角广告-->
+<div class="popup">
+    <div class="popup_header">
+        <span class="fold">折叠</span><span class="popup_close">&times;</span>
+    </div>
+    <div class="popup_body"></div>
+    <div class="popup_footer"></div>
+</div>
+<ul class="back">
+    <li>123</li>
+    <li>123</li>
+    <li>123</li>
+</ul>
+<script>
+    var member_username=document.querySelector("#member_username");
+    var mask=document.querySelector("#mask");
+    var login1=document.querySelector("#login");
+    var loginBtn=document.querySelector("#loginBtn");
+    var login=document.querySelector(".login");
+    var member=document.querySelector(".member");
+    var username=document.querySelector("#username");
+    var pwd=document.querySelector("#pwd");
+    var memberInfo=document.querySelector(".memberInfo");
+    var memberOut=document.querySelector(".memberOut");
+    if (sessionStorage.getItem("username")){
+        mask.style.display="none";
+        login1.style.display="none";
+        login.style.display="none";
+        member.style.display="block";
+        member_username.innerText=sessionStorage.getItem("username")
+    }else {
+        login.style.display="block";
+        member.style.display="none";
+    }
+    loginBtn.addEventListener("click",function(){
+        if(username.value){
+            var name=username.value;
+            sessionStorage.setItem("username",name);
+            mask.style.display="none";
+            login1.style.display="none";
+            login.style.display="none";
+            member.style.display="block";
+            member_username.innerText=name;
+        }
+
+    });
+    memberOut.addEventListener("click",function(){
+        sessionStorage.removeItem("username");
+        login.style.display="block";
+        member.style.display="none";
+    })
+</script>
+<script>
+    $(function(){
+        ///点击回到顶部/////
+        //console.log($("body").scrollTop());
+        //var scrollTop=$("body").scrollTop();
+        $(".back li:first").click(function(){
+            $("body").animate({"scrollTop":0},200)
+        });
+
+
+        ////轮播/////
+        var timer;
+        var imgWidth=$(".slider li img:first").width();
+        //封装图片向左轮播
+        var index=0;
+        function leftScroll(){
+            $(".slider").animate({"left":"-"+imgWidth+"px"},1000,function(){
+                $(this).css({"left":0}).find("li:first").appendTo($(".slider"));
+            });
+            index++;
+            if (index>=$(".frame .btn li").length){
+                index=0;
+            }
+            $(".frame .btn li").removeClass("highlight").eq(index).addClass("highlight");
+
+
+        }
+        //封装开始轮播
+        function Set(){
+            timer=setInterval(leftScroll,2000);
+        }
+        //封装停止轮播
+        function stopSet(){
+            clearInterval(timer);
+        }
+        Set();//调用开始轮播
+        $(".prev").hover(function(){
+            stopSet();//调用停止轮播
+        },function(){
+            Set();//调用开始轮播
+        });
+        $(".next").hover(function(){
+            stopSet();//调用停止轮播
+        },function(){
+            timer=setInterval(function(){
+                $(".slider").css({"left": "-" + imgWidth + "px"}).find("li:last").prependTo($(".slider"));
+                $(".slider").animate({"left":0}, 1000);
+                index--;
+                $(".frame .btn li").removeClass("highlight").eq(index).addClass("highlight");
+
+                if (index<=0){
+                    index=4;
+                }
+            },2000);
+        });
+        $(".prev").click(function() {
+            clearTimeout(timer);
+            timer=setTimeout(leftScroll,200);
+        });
+        $(".next").click(function() {
+            clearTimeout(timer);
+            timer=setTimeout(function(){
+                $(".slider").css({"left": "-" + imgWidth + "px"}).find("li:last").prependTo($(".slider"));
+                $(".slider").animate({"left":0}, 1000);
+                if (index<=0){
+                    index=4;
+                }
+                index--;
+                $(".frame .btn li").removeClass("highlight").eq(index).addClass("highlight");
+
+
+            },200);
+        });
+        function changeIMG(index){
+            var imgHeight=$(".slider img").width();//图片的高度
+            //console.log(imgHeight);
+            $(".slider").animate({"top":"-"+imgHeight*index+""},1000);
+            $(".frame .btn li").removeClass("highlight").eq(index).addClass("highlight")
+        }
+        /////下拉菜单////
+        var mouseOverTimer=[];
+        var mouseOutTimer=[];
+        $("nav>ul>li").each(function(index){
+            $(this).hover(function(){
+                var activeList=$(this);
+                // 把setTimeout的id赋给mouseOverTimer[index]数组
+                mouseOverTimer[index]=setTimeout(function(){
+                    //$("nav").children("ul").slideDown()
+                    activeList.children("ul").slideDown();
+                    console.log(mouseOverTimer[index])
+                },300)
+            },function(){
+                var activeList=$(this);
+                clearTimeout(mouseOverTimer[index]);
+                activeList.children("ul").slideUp();
+            })
+        });
+
+        /////////右下角广告///////////
+        setTimeout(function(){
+            $(".popup").animate({"bottom":"5px"},500,function(){
+                setTimeout(function(){
+                    //$(".popup").fadeOut("slow");
+                },3000)
+            })
+        },2000);
+        $(".popup_close").click(function(){
+            $(".popup").fadeOut("slow");
+        });
+        var popupHeight=$(".popup").height();
+        $(".fold").click(function(){
+            if($(".popup").height()==200){
+                $(".popup").animate({"height":$(".popup_header").height()+"px"},500,function(){
+                    $(".fold").html("展开");
+                })
+            }else{
+                $(".popup").animate({"height":popupHeight+"px"},500,function(){
+                    $(".fold").html("折叠");
+                })
+
+            }
+        });
+
+        //////用户已登录时的操作
+        $(".memberInfo").click(function(evt){
+            $(".info_list").toggleClass("active");
+            evt.stopPropagation();
+        });
+        //
+        $("body,html").click(function(){
+            $(".info_list").removeClass("active");
+        });
+
+
+
+        /////用户未登录是的操作
+        $(".loginBar").click(function(){
+            //设置遮罩
+            $("#mask").css({
+                "width":$(document).width(),
+                "height":$(document).height(),
+                "display":"block"
+            });
+            //登录框显示
+            $("#login").css({"display":"block"});
+            var left=($(window).width()-$("#login").width())/2;
+            var top=($(window).height()-$("#login").height())/2;
+            $("#login").animate({
+                "top":top+"px"
+            },1000);
+            //登录框居中
+            center($("#login"));
+            $("#close").click(function(){
+                $("#login").animate({
+                    "top":-120+"px"
+                },1000,function(){
+                    $("#mask").fadeOut("normal");
+                });
+
+            });
+            //console.log(left,top)
+            $("#loginBtn").click(function(){
+                //晃动
+                for(var i=1;i<3;i++){
+                    console.log(left-10*i);
+                    $("#login").animate({"left":(left-2*i+"px")},150)
+                            .animate({"left":(left+2*i+"px")},150,function(){
+                                //循环执行结束后，再把登录框移动到中间
+                                $("#login").animate({"left":left},150)
+                            })
+                }
+            })
+        });
+    });
+    function center(element){
+        element.css({
+            "left":(($(window).width()-element.width())/2+$("body").scrollLeft())+"px",
+            "top":(($(window).height()-element.height())/2+$("body").scrollTop())+"px"
+        })
+    }
+</script>
+</body>
+</html>

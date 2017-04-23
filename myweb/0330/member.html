@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="feedback"></div>
+<input type="text" id="username"><br>
+<input type="text" id="email"><br>
+<input type="button" id="submitBtn" value="添加"><input type="button" id="zhuce" value="注册">
+<hr>
+<div id="content"></div>
+<script>
+    window.addEventListener("load",function(){
+        var username=document.querySelector("#username");
+        var email=document.querySelector("#email");
+        var submitBtn=document.querySelector("#submitBtn");
+        var content=document.querySelector("#content");
+        var feedback=document.querySelector("#feedback");
+        var zhuce=document.querySelector("#zhuce");
+
+        //创建数据库对象
+        var db=openDatabase("member","1.0","haiwen",2*1024*1024,function(){
+            console.log("创建数据库成功")
+        });
+
+        //点击添加按钮，执行sql语句
+        submitBtn.addEventListener("click",function(){
+            db.transaction(function(tx){
+                //创建表
+                tx.executeSql("create table if not exists member(id integer primary key asc,username text,email text)");
+                //把提交的用户名和邮箱通过sql语句，添加到member表中
+                tx.executeSql("insert into member(username,email)values('"+username.value+"','"+email.value+"')");
+                location.reload();
+            });
+        });
+        //显示数据
+        db.transaction(function(tx){
+            tx.executeSql("select * from member order by id desc limit 0,20",[],function(tx,results){
+                username.addEventListener("keyup",function(){
+                    for(var i=0;i<results.rows.length;i++){
+                        if (username.value==results.rows[i].username){
+                            feedback.innerHTML="账号已注册";
+                            break;
+                        }else {
+                            feedback.innerHTML="账号可以注册"
+                        }
+                    }
+                });
+                var str="<ul>";
+                for(var i=0;i<results.rows.length;i++){
+                    str+="<li><a index='"+results.rows[i].id+"'>"+results.rows[i].username+"</a>,"+results.rows[i].email+"&nbsp;<span index='"+results.rows[i].id+"'>删除</span></li>";
+                }
+                str+="</ul>";
+                console.log(results.rows.length);
+                content.innerHTML=str;
+                //获取content中list ‘
+                console.log(document.querySelector("#content ul span"));
+                var spans=document.querySelectorAll("#content ul span");
+                var len=spans.length;
+                for(var j=0;j<len;j++){
+                    //console.log(spans[j])
+                    spans[j].addEventListener("click",function(){
+                        //console.log(this.getAttribute("index"));
+                        var id=this.getAttribute("index");
+                        db.transaction(function(tx){
+                            //?:占位符
+                            tx.executeSql("delete from member where id=?",[id],function(){
+                                console.log("删除成功");
+                                //删除成功在刷新一下
+                                location.reload();
+                            },function(tx,error){
+                                //error是失败对象，message失败对象的信息
+                                console.log(id);
+                                console.log("删除失败"+error.message)
+                            })
+                        })
+                    })
+                }
+                ////////////操作a//////////////
+                var as=document.querySelectorAll("#content ul a");
+                var aslen=as.length;
+                for(var k=0;k<aslen;k++){
+                    as[k].addEventListener("mouseover",function(){
+                        //console.log(this.innerHTML);
+                        //鼠标放上a袁术添加可编辑属性
+                        this.setAttribute("contenteditable",true)
+                    });
+                    as[k].addEventListener("blur",function(){
+                        //alert(this.innerHTML);
+                        //鼠标放上a袁术添加可编辑属性
+                        //this.setAttribute("contenteditable",false)
+                        var id=this.getAttribute("index");
+                        var newValue=this.innerHTML;
+                        //在回调函数中，this指代的是全局变量window
+                        db.transaction(function(tx){
+                            //console.log(this);
+                            tx.executeSql("update member set username='"+newValue+"' where id='"+id+"'",[],function(){
+                                console.log("修改成功");
+                            },function(tx,error){
+                                console.log("修改失败"+error.message)
+                            })
+                        })
+                    })
+                }
+            })
+        })
+    });
+
+</script>
+</body>
+</html>

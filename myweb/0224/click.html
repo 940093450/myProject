@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <img src="1.jpg" height="200px" width="200px"><br/>
+    <img src="2.jpg" height="200px" width="200px"><br/>
+    <img src="3.jpg" height="200px" width="200px"><br/>
+    <img src="4.jpg" height="200px" width="200px"><br/>
+    <script>
+        var imgs=document.getElementsByTagName("img");
+        for(var i=0;i<imgs.length;i++){
+           // console.log(imgs[i])
+            imgs[i].addEventListener("click",function(){
+                this.style.display="none"
+            })
+        }
+    </script>
+</body>
+</html>

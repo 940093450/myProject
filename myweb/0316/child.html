@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.1.1.js"></script>
+    <style>
+        .spotlight{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+<div>
+    父元素
+    <h1>子元素</h1>
+    <button>按钮</button>
+</div>
+<script>
+    /*$("div").on("click",{"username":"lsl"},function(evt){
+        $(this).addClass("spotlight");
+        console.log(evt.data.username)
+    })*/
+    $("button").on("click",function(){
+        $("<p>这是一个插入的文本</p>").insertAfter("button")
+    });
+    $("div").on("click","p",function(){
+        console.log($(this))
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<img src="0.JPG">
+<input type="text" class="username">
+<script>
+    var img=document.querySelector("img");
+    //console.log(img);
+    var username=document.querySelector(".username");
+    var num=0;
+    //松开按键事件
+    document.body.addEventListener("keydown",function(evt){
+        if (evt.keyCode==39){
+            num+=10;
+            img.style.left=num+"px";
+        }else if (evt.keyCode==37){
+            num-=10;
+            img.style.left=num+"px";
+        }
+        //console.log(evt.keyCode);
+        //console.log("松开了键")
+        //console.log(this.value)
+  });
+    //console.log()
+    //获得焦点事件
+    username.addEventListener("focus",function(){
+        this.style.background="lightyellow";
+        //alert("获得焦点")
+    });
+    //失去焦点事件
+    username.addEventListener("blur",function(){
+        this.style.background="white";
+        //alert("失去焦点");
+    })
+</script>
+</body>
+</html>

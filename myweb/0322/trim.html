@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="foo">
+<script>
+    var foo=document.querySelector("#foo");
+    foo.addEventListener("blur",function(){
+        console.log(trim(foo.value).length)
+    });
+    function trim(content){
+         //           空格 内容 空格
+        var pattern=/^\s*(.+?)\s*$/g;
+        content=content.replace(pattern,"$1");
+        return content;
+    }
+</script>
+</body>
+</html>

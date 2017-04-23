@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<marquee behavior="alternate">hello</marquee>
+<script>
+    var str="~~~上海市长宁区中山公园~~~";
+    //str=str.substring(1,str.length)+str.substring(0,1);
+
+    //substring修剪字符串 从第一个参数对应的位置开始到第二个参数对应的数字结束（不包含第二个参数对应的字符）
+    setInterval(function(){
+        str=str.substring(1,str.length)+str.substring(0,1);
+        window.document.title=str;
+        //console.log(str)
+    },100);
+
+</script>
+</body>
+</html>

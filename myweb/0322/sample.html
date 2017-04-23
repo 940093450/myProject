@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str="匹配的http://www.baidu.com规则是先用a在目标字符串http://www.qq.com中查找，如果有结果，然后在http://www.taobao.com结果之后在查找n，以此类推有顺序要求"
+    document.write(str+"<hr>");
+    var pattern=/(http):\/\/(www)\.([a-z0-9]+)\.(com)/g;
+    document.write(str.replace(pattern,"<a href='$1://$2.$3.$4'>$1://$2.$3.$4</a>"));
+</script>
+</body>
+</html>

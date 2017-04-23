@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.1.1.js"></script>
+</head>
+<body>
+<form>
+    <input type="text"><br>
+    <input type="password"><br>
+    <input type="radio" name="gr">男
+    <input type="radio" name="gr">女<br>
+    <input type="checkbox"><br>
+    <input type="text" disabled><br>
+    <input type="text"><br>
+    <select>
+        <option>one</option>
+        <option>two</option>
+        <option selected>three</option>
+        <option>four</option>
+    </select>
+</form>
+<script>
+    console.log($(":selected"));
+    //enabled所有可用的元素
+    $("input:enabled").css({"width":"350px"});
+    $("input:disabled").css({"width":"650px"});
+    $("input[type=radio]").click(function(){
+
+    })
+</script>
+</body>
+</html>

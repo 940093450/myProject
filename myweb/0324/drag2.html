@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container{
+            border: 1px solid green;
+            float: left;
+            margin: 10px;
+            min-height: 100px;
+            padding: 10px;
+            width: 220px;
+        }
+        span{
+            width: 50px;
+            height: 50px;
+            background: green;
+            display: inline-block;
+            border: 1px solid red;
+            cursor: move;
+        }
+        #right{
+            border: 1px solid red;
+            display: inline-block;
+            width: 300px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+<div id="left" class="container">
+    <span id="demo1" draggable="true">可拖动</span>
+    <span id="demo2" draggable="true">可拖动</span>
+    <span id="demo3" draggable="true">不可拖动</span>
+</div>
+<div id="right"></div>
+<script>
+    var left=document.querySelector("#left");
+    var right=document.querySelector("#right");
+
+    left.addEventListener("dragstart",function(evt){
+        //console.log(evt.target.id);
+        var dragID=(evt.target.id);
+        evt.dataTransfer.setData("ids",dragID);
+        console.log(evt.dataTransfer.getData("ids"));
+    });
+    left.addEventListener("drag",function(){
+        this.style.border="1px solid blue";
+    });
+    right.addEventListener("dragenter",function(evt){
+        evt.preventDefault();
+    });
+    right.addEventListener("dragover",function(evt){
+        evt.preventDefault();
+    });
+
+
+    right.addEventListener("drop",function(evt){
+//        获取dataTransFer保存的id
+        var dragID=evt.dataTransfer.getData("ids");
+        console.log(evt.dataTransfer.getData("ids"));
+//        根据ids获取元素
+        var dragElement=document.getElementById(dragID);
+        right.appendChild(dragElement);
+        evt.preventDefault();
+
+    })
+</script>
+</body>
+</html>

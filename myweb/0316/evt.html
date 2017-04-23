@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.1.1.js"></script>
+</head>
+<body>
+<button>button</button>
+<script>
+    $("button").click(function(evt){
+        alert("button");
+        evt.stopPropagation()
+    });
+    $("body").click(function(evt){
+        alert("body")
+    })
+</script>
+</body>
+</html>

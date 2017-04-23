@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.1.1.js"></script>
+</head>
+<body>
+<button>button</button>
+<div>hello</div>
+<script>
+    $("button").click(function(){
+        $("div").html("<h1>world</h1>");
+        console.log($("div").html())
+    })
+</script>
+</body>
+</html>

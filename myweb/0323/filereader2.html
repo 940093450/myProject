@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="feedback"></div>
+<input type="file" id="icon">
+<script>
+    //console.log(FileReader);
+    var feedback=document.querySelector("#feedback");
+    var icon=document.querySelector("#icon");
+    var preview=document.createElement("img");
+    icon.addEventListener("change",function(){
+        if(!/image/.test(this.files[0].type)){
+            feedback.innerHTML="只能上传图片";
+            return false;
+        }
+        var fr=new FileReader();
+        //读取上传文件
+        fr.readAsDataURL(icon.files[0]);
+        //fr加载事件
+        fr.addEventListener("loadstart",function(){
+            feedback.innerHTML="开始加载..."
+        });
+        fr.addEventListener("loadend",function(){
+            feedback.innerHTML="加载完成";
+            preview.src=this.result;
+            //this.result：filereader 读取的数据
+            document.body.appendChild(preview)
+        })
+    })
+</script>
+</body>
+</html>

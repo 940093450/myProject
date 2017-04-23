@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 192px;
+            height: 183px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li><img src="img/0.png"></li>
+    <li><img src="img/1.png"></li>
+    <li><img src="img/2.png"></li>
+    <li><img src="img/3.png"></li>
+</ul>
+<script>
+    var ul=document.querySelector("ul");
+    setInterval(function(){
+        ul.appendChild(ul.firstChild)
+    },500)
+</script>
+</body>
+</html>
