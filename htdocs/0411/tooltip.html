@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+    <script src="js/jquery-3.2.0.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <meta name="viewport" content="width=device-width">
+    <script>
+        $(function(){
+            $("#demo").tooltip("hide");
+        });
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+</head>
+<body>
+<h1>工具提示</h1>
+<button type="button" class="btn btn-default center-block" data-toggle="tooltip" data-palacement="top" title="工具提示的内容" id="demo">工具提示</button>
+<hr>
+<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</button>
+</body>
+</html>

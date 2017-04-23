@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #myCanvas{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas"></canvas>
+<script>
+    var myCanvas=document.querySelector("#myCanvas");
+    var ctx=myCanvas.getContext("2d");
+    ctx.beginPath();
+    ctx.moveTo(10,10);
+    ctx.quadraticCurveTo(188,0,288,150);
+    ctx.lineWidth=1;
+    ctx.strokeStyle="red";
+    ctx.stroke()
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var promise=Promise.resolve(4);
+    promise.then(increment).then(doule).then(output).catch(function(error){
+        console.log(error)
+    });
+    function doule(value){
+        return value*2;
+    }
+    function increment(value){
+        return value+1;
+    }
+    function output(value){
+        console.log(value);
+    }
+</script>
+</body>
+</html>

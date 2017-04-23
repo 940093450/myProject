@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #myCanvas {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas"></canvas>
+<script>
+    var myCanvas = document.querySelector("#myCanvas");
+    var ctx = myCanvas.getContext("2d");
+    ctx.fillStyle="yellow";
+//    ctx.transform(1,0,0,1,30,20);
+    /*ctx.shadowColor="red";
+    ctx.shadowBlur=20;
+    ctx.shadowOffsetX=10;
+    ctx.shadowOffsetY=10;*/
+    ctx.globalAlpha=0.5;
+    ctx.fillRect(10,10,250,100);
+
+
+
+</script>
+</body>
+</html>

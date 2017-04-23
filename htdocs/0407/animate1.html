@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #myCanvas {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas"></canvas><br>
+<button id="start">开始</button><button id="stop">停止</button>
+<script>
+    var myCanvas = document.querySelector("#myCanvas");
+    var ctx = myCanvas.getContext("2d");
+    var start=document.querySelector("#start");
+    var stop=document.querySelector("#stop");
+    var x=0;
+    var y=0;
+    function animate(){
+        timer=setInterval(function(){
+            if(y==0){
+                if(x<250){
+                    x++;
+                }
+            }
+            if(x==250){
+                if(y<100){
+                    y++;
+                }
+            }
+            if(y==100){
+                if(x>0){
+                    x--;
+                }
+            }
+            if(x==0){
+                if(y>0){
+                    y--;
+                }
+            }
+
+            //console.log(x);
+            ctx.clearRect(0,0,300,150);
+            //绘制rect
+            ctx.fillRect(x,y,50,50);
+        },50)
+    }
+    animate();
+</script>
+</body>
+</html>

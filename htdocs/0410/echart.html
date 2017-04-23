@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/echarts.min.js"></script>
+</head>
+<body>
+<div id="main" style="width: 600px;height: 400px;"></div>
+<script>
+    var xData=["张三","李四","王五","赵六"];
+    var yData=["90","60","150","120"];
+    var myChart=echarts.init(document.getElementById("main"));
+    //console.log(myChart)
+    //属性
+    option={
+        color:['#ffaa00'],
+        //工具提示
+        tooltip:{
+            //坐标轴触发
+            trigger:"axis",
+            axisPointer:{
+                type:'shadow'
+            }
+        },
+        toolbox:{
+            show:true,
+            //特性
+            feature:{
+                mark:{show:true},
+                dataView:{show:true,readOnly:false},
+                magicType:{show:true,type:['line','bar']},
+                restore:{show:true},
+                saveAsImage:{show:true},
+                type:"shadow"
+            }
+        },
+        //直角坐标系内绘图
+        grid:{
+            containLabel:true
+        },
+        xAxis:{
+            type:"category",
+            data:xData
+        },
+        yAxis:{
+            type:'value'
+        },
+        series:[
+            {
+                name:"javascript",
+                type:"line",
+                data:yData
+            }
+        ]
+    };
+    //调用图标对象的设置选项方法
+    myChart.setOption(option);
+</script>
+</body>
+</html>

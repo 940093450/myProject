@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #myCanvas{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas"></canvas>
+<!--<img src="gty_4.png" id="pic">-->
+<script>
+    var myCanvas=document.querySelector("#myCanvas");
+    var pic=document.createElement("img");
+    var ctx=myCanvas.getContext("2d");
+    pic.src="gty_4.png";
+    ctx.drawImage(pic,0,0,300,150);
+</script>
+</body>
+</html>

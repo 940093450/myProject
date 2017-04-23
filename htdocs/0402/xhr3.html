@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="feedback"></div>
+<input type="file" id="icon">
+<script>
+    var icon=document.querySelector("#icon");
+    //表单数据对象
+    var fd=new FormData();
+    var feedback=document.querySelector("#feedback");
+    //创建ajax对象
+    var xhr=new XMLHttpRequest();
+    var fr=new FileReader();
+    //上传文件改变事件
+    icon.addEventListener("change",function(){
+        //console.log(icon.files[0]);
+        //链接后台程序,post传值
+        xhr.open("post","data.php");
+        //显示加载中...
+        feedback.innerHTML="加载中...";
+        console.log(icon.files[0].type);
+        //image/png
+        //如果文件类型中不包含image/，并且还有其他内容的话，
+        if(!/image\/(.)+/.test(icon.files[0].type)){
+            feedback.innerHTML="文件类型错误";
+            return false;
+        }
+        //验证不能大于5M
+        if(icon.files[0].size>5*1024*1024){
+            feedback.innerHTML="文件不能大于5M";
+            return false;
+        }
+        //向fd中添加数据
+        fd.append("username","mike");
+        //把上传文件的数据传递到后台
+        fd.append("icon",this.files[0]);
+        //发送数据username=tom,变量是username，变量的值是tom
+        xhr.send(fd);
+        //状态改变事件
+        xhr.addEventListener("readystatechange",function(){
+            //交互完成
+            if(xhr.readyState==4){
+                //数据成功返回
+                if(xhr.status==200){
+                    feedback.innerHTML="上传成功<br>";
+                    fr.readAsDataURL(icon.files[0]);
+                    fr.addEventListener("load",function(){
+                        var img=document.createElement("img");
+                        img.src=this.result;
+                        feedback.appendChild(img);
+                    })
+                }
+            }
+        })
+    })
+    //console.log(xhr);
+</script>
+</body>
+</html>

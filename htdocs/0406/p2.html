@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //实例化 promise对象 并使用resolve方法
+    var promise=new Promise(function(resolve){
+        resolve();
+    });
+    //then 成功时
+    //catch 失败时
+    promise.then(taskA)
+            .then(taskB)
+            .catch(onRejected)
+            .then(finalTask);
+    function taskA(){
+        console.log("Task A"+username)
+    }
+    function taskB(){
+        console.log("Task B")
+    }
+    function onRejected(error){
+        console.log("Task A or B",error);
+    }
+    function finalTask(){
+        console.log("Final Task");
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var promise=new Promise(function(resolve){
+        console.log("内容数据");
+        resolve(333);
+    });
+    promise.then(function(value){
+        console.log(value)
+    });
+    console.log("外部数据")
+</script>
+</body>
+</html>

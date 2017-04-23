@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function getData(url){
+        return new Promise(function(resolve,reject){
+            var xhr=new XMLHttpRequest();
+            xhr.open("post",url);
+            xhr.send(null);
+            xhr.addEventListener("readystatechange",function(){
+                if (xhr.readyState==4){
+                    if(xhr.status==200){
+                        //成功时把xhr.responseText传给then();
+                        resolve(xhr.responseText);
+                    }else {
+                        //失败时把new Error(xhr.statusText)传给catch
+                        reject(new Error(xhr.statusText))
+                    }
+                }
+            })
+        })
+    }
+    getData("a.php").then(function(data){
+        console.log(data);
+    }).catch(function(error){
+        console.log(error);
+    });
+    getData("b.php").then(function(data){
+        console.log(data);
+    }).catch(function(error){
+        console.log(error);
+    })
+</script>
+</body>
+</html>

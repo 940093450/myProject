@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #myCanvas{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas"></canvas>
+<img src="gty_4.png" style="width:50px;height: 50px;" id="pic">
+<script>
+    var myCanvas=document.querySelector("#myCanvas");
+    var pic=document.querySelector("#pic");
+    var ctx=myCanvas.getContext("2d");
+    ctx.rect(0,0,150,100);
+    var bg=ctx.createPattern(pic,"no-repeat");
+    ctx.fillStyle=bg;
+    ctx.fill();
+
+</script>
+</body>
+</html>

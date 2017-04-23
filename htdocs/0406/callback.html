@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function fn1(callback){
+        console.log("fn1");
+        setTimeout(function(){
+            console.log("fn1 第二次");
+            callback();
+        },2000)
+    }
+    function fn2(){
+        console.log("fn2");
+    }
+    function fn3(){
+        console.log("fn3");
+    }
+    fn1(fn2);
+    fn3();
+</script>
+</body>
+</html>

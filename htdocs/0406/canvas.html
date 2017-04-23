@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #myCanvas{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas"></canvas>
+<script>
+    //选择画布元素
+    var myCanvas=document.querySelector("#myCanvas");
+    //console.log(myCanvas)
+    //调用画布的2d渲染引擎
+    var ctx=myCanvas.getContext("2d");
+    //字体样式
+    ctx.font="italic 60px Georgia";
+    //线宽
+    ctx.lineWidth=3;
+    ctx.textAlign="center";
+    ctx.textBaseline="alphabetic";
+    //笔触
+    ctx.strokeStyle="purple";
+    //在画布中写入字体
+    ctx.strokeText("Hello",0,60);
+    //console.log(ctx)
+</script>
+</body>
+</html>

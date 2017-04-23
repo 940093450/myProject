@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function demo(){
+        return new Promise(function(resolve,reject){
+            setTimeout(function(){
+                resolve("resolve的输出值");
+            },1000)
+        })
+    }
+    demo().then(function(value){
+        console.log(value);
+    }).catch(function(error){
+        console.log(error);
+    });
+    //console.log(typeof demo());
+    //console.log(demo());
+    /*var p=new Promise(function(resolve,reject){
+        //resolve("hello");
+        reject("shibai");
+    });
+    p.then(function(value){
+        console.log(value+1)
+    }).catch(function(error){
+        console.log(error)
+    });*/
+//    console.log(p)
+</script>
+</body>
+</html>

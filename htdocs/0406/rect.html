@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #myCanvas{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas"></canvas>
+<script>
+    //选择画布元素
+    var myCanvas=document.querySelector("#myCanvas");
+    //console.log(myCanvas)
+    //调用画布的2d渲染引擎
+    var ctx=myCanvas.getContext("2d");
+    //创建一个线性渐变
+    var gradient=ctx.createLinearGradient(0,0,170,120);
+    gradient.addColorStop("0","red");
+    gradient.addColorStop("0.5","purple");
+    gradient.addColorStop("1","green");
+    ctx.lineWidth=20;
+    ctx.strokeStyle=gradient;
+    //画四边形
+    ctx.strokeRect(100,25,100,100);
+</script>
+</body>
+</html>

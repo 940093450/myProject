@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+    <script src="js/jquery-3.2.0.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <meta name="viewport" content="width=device-width">
+</head>
+<body>
+<span  class="aaa" data-toggle="popover"  data-content="And here's some amazing content. It's very engaging. Right?">点我弹出/隐藏弹出框</span>
+<script>
+
+    $('.aaa').hover(function(){
+        $(this).popover('show')
+    },function(){
+        $(this).popover('hide')
+    })
+</script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #myCanvas {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas"></canvas><br>
+<button id="start">开始</button><button id="stop">停止</button>
+<script>
+    var myCanvas = document.querySelector("#myCanvas");
+    var ctx = myCanvas.getContext("2d");
+    var start=document.querySelector("#start");
+    var stop=document.querySelector("#stop");
+//    var x=0;
+    function animate(){
+        timer=setInterval(function(){
+            //console.log(x);
+            ctx.clearRect(0,0,300,150);
+            for (var i=0;i<shapes.length;i++){
+                var temp=shapes[i];
+                temp.x++;
+                ctx.fillRect(temp.x,temp.y,temp.width,temp.height);
+            }
+        },50);
+    }
+    start.addEventListener("click",function(){
+        animate();
+    });
+    stop.addEventListener("click",function(){
+        clearInterval(timer);
+    });
+    function dimension(_x,_y,_width,_height){
+        this.x=_x;
+        this.y=_y;
+        this.width=_width;
+        this.height=_height;
+    }
+    //新建空数组
+    var shapes=new Array();
+    for(var i=0;i<10;i++){
+        x=Math.random()*250;
+        y=Math.random()*250;
+        width=height=Math.random()*50;
+        //console.log(x+":"+y+":"+width+":"+height)
+        shapes[i]=new dimension(x,y,width,height);
+    }
+</script>
+</body>
+</html>

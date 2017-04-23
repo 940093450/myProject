@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #myCanvas{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas"></canvas>
+<script>
+    //选择画布元素
+    var myCanvas=document.querySelector("#myCanvas");
+    //console.log(myCanvas)
+    //调用画布的2d渲染引擎
+    var ctx=myCanvas.getContext("2d");
+    //开始绘制
+    ctx.beginPath();
+    ctx.setLineDash([5,15,25]);
+    ctx.lineWidth=2;
+    ctx.strokeStyle="red";
+    ctx.moveTo(0,0);
+    ctx.lineTo(300,150);
+    ctx.stroke();
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #myCanvas{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas"></canvas>
+<script>
+    var myCanvas=document.querySelector("#myCanvas");
+    var ctx=myCanvas.getContext("2d");
+//    gradient.addColorStop("0","red");
+    //设置一个矩形
+    ctx.rect(20,20,100,100);
+    //创建一个渐变
+    var gradient=ctx.createRadialGradient(70,70,0,70,70,60);
+    gradient.addColorStop("0","red");
+    gradient.addColorStop("1","green");
+    //设置填充样式
+    ctx.fillStyle=gradient;
+    //
+    ctx.fill();
+    //绘制
+    ctx.stroke();
+</script>
+</body>
+</html>

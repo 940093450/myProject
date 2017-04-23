@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    window.addEventListener("load",function(){
+        console.log("fn2")
+    });
+    function fn1(){
+        console.log("fn1 too");
+        setTimeout(function(){
+            window.addEventListener("load",fn2());
+        },1000)
+    }
+    function fn2(){
+        console.log("fn2")
+    }
+    function fn3(){
+        console.log("fn3")
+    }
+    fn1();
+    fn3();
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="loading"></div>
+<div id="feedback"></div>
+<script>
+    function getData(url){
+        return new Promise(function(resolve,reject){
+            loading=document.querySelector("#loading");
+            var xhr=new XMLHttpRequest();
+            xhr.open("post",url);
+            loading.innerHTML="加载中。。。";
+            xhr.send(null);
+            xhr.addEventListener("readystatechange",function(){
+                if (xhr.readyState==4){
+                    if(xhr.status==200){
+                        //成功时把xhr.responseText传给then();
+                        resolve(xhr.responseText);
+                    }else {
+                        //失败时把new Error(xhr.statusText)传给catch
+                        reject(new Error(xhr.statusText))
+                    }
+                }
+            })
+        })
+    }
+    var request={
+        comment:function getComment(){
+            return getData("a.php").then(JSON.parse);
+        },
+        article:function getArticle(){
+            return getData("b.php").then(JSON.parse);
+        }
+    };
+    function Main(){
+        //all中的promise对象必须都为resolve才可以执行-
+        return Promise.all([request.article(),request.comment()])
+    }
+    var feedback=document.querySelector("#feedback");
+    Main().then(function(value){
+        loading.innerHTML="";
+        console.log(value);
+        for(i in value){
+            feedback.innerHTML+=value[i].username
+        }
+    }).catch(function(value){
+        console.log(value )
+    })
+</script>
+</body>
+</html>

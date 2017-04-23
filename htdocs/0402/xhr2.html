@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="feedback"></div>
+<script>
+    var feedback=document.querySelector("#feedback");
+    //创建ajax对象
+    var xhr=new XMLHttpRequest();
+    //链接后台程序,get传值,在URL传值
+    xhr.open("get","data.php?username=mary&gender='female'");
+    //显示加载中...
+    feedback.innerHTML="加载中...";
+    xhr.send(null);
+    //状态改变事件
+    xhr.addEventListener("readystatechange",function(){
+        //交互完成
+        if(xhr.readyState==4){
+            //数据成功返回
+            if(xhr.status==200){
+                feedback.innerHTML=xhr.responseText;
+                //xhr.responseText：以字符串的形式接收后台返回的数据
+                document.write(xhr.responseText);
+            }
+        }
+    })
+    //console.log(xhr);
+</script>
+</body>
+</html>

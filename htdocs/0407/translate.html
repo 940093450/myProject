@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #myCanvas{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas"></canvas>
+<script>
+    var myCanvas=document.querySelector("#myCanvas");
+    var ctx=myCanvas.getContext("2d");
+
+    ctx.translate(170,0);
+</script>
+</body>
+</html>

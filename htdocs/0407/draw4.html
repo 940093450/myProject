@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #myCanvas{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas"></canvas>
+<button id="controlBtn">停止</button>
+<script>
+    var myCanvas=document.querySelector("#myCanvas");
+    var controlBtn=document.querySelector("#controlBtn");
+    var ctx=myCanvas.getContext("2d");
+    var video=document.createElement("video");
+    video.src="deng.mp4";
+    video.setAttribute("autoplay",true);
+    //document.body.appendChild(video);
+    setInterval(function(){
+        ctx.drawImage(video,0,0,300,150)
+    },30/1000);
+    //ctx.drawImage(video,0,0,300,150)
+    var i=0;
+    controlBtn.addEventListener("click",function(){
+        if(i==0){
+            video.pause();
+            i=1;
+            controlBtn.innerHTML="播放";
+        }else if(i==1){
+            video.play();
+            i=0;
+            controlBtn.innerHTML="停止";
+        }
+    })
+</script>
+</body>
+</html>

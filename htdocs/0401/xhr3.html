@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="feedback"></div>
+<input type="file" id="icon">
+<script>
+    var fd=new FormData();
+    var feedback=document.querySelector("#feedback");
+    var img=document.createElement("img");
+    var icon=document.querySelector("#icon");
+    //创建ajax对象
+    var xhr=new XMLHttpRequest();
+    var fr=new FileReader();
+    icon.addEventListener("change",function(){
+        //链接后台程序
+        xhr.open("post","data.php");
+        //显示加载中...
+        feedback.innerHTML="加载中...";
+        fd.append("username","mike");
+        //如果文件类型中不包含image/，并且还有其他内容的话
+        if(!/image\/(.)+/.test(icon.files[0].type)){
+            feedback.innerHTML="只能上传图片";
+            return false;
+            //验证不能大于5M
+        }else if(icon.files[0].size>1024*1024){
+            feedback.innerHTML="图片不能超过1m";
+            return false
+        }
+        fd.append("icon",icon.files[0]);
+
+
+        //设置让ajax以post方式传的值，可以以header body的形式传到后台去
+        //xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded")
+        //发送数据
+        xhr.send(fd);
+        //状态改变事件
+        xhr.addEventListener("readystatechange",function(){
+            //交互完成
+            if(xhr.readyState==4){
+                //数据成功返回
+                if (xhr.status=200){
+                    if(xhr.responseText=="ok"){
+                        feedback.innerHTML="上传成功";
+                        fr.readAsDataURL(icon.files[0]);
+                        fr.addEventListener("load",function(){
+                            img.src=this.result;
+                            document.body.appendChild(img)
+                        });
+
+                    }else if (xhr.responseText=="failed"){
+                        feedback.innerHTML="上传失败"
+                    }else {
+                        console.log(xhr.responseText);
+                    }
+                    //feedback.innerHTML=xhr.responseText;
+                    //xhr.responseText：以字符串的形式接收后台返回的数据
+                    //document.write(xhr.responseText);
+                }
+            }
+        })
+    });
+
+</script>
+</body>
+</html>

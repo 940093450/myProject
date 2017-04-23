@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网易云课堂</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+    <link href="iconfont/material-icons.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <script src="js/jquery-3.2.0.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/feature.js"></script>
+    <script src="js/Tools.js"></script>
+    <script src="js/ajax.js"></script>
+    <meta name="viewport" content="width=device-width">
+</head>
+<body>
+<!--////////头部导航/////////-->
+<div class="container-fluid header">
+    <div class="row">
+        <!--/////上导航/////-->
+        <div class="col-md-12 header_top">
+            <div class="container">
+                <div class="row" id="nav">
+                    <div class="col-md-2">
+                        <a href="#"><img src="img/logohead.png"></a>
+                    </div>
+                    <div class="col-md-3">
+                            <ul id="nav_left">
+                                <li><a href="#">找课程</a></li>
+                                <li><a href="#">微专业</a></li>
+                                <li><a href="#">下载APP</a></li>
+                            </ul>
+
+                    </div>
+                    <div class="col-md-7">
+                        <div class="col-sm-6" id="so">
+                            <img src="img/so.png" width="34px"><input type="text" id="dropdowninput" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" placeholder="搜索课程">
+                            <ul class="dropdown-menu" aria-labelledby="dropdowninput" id="inputdrop">
+                                <li class="disabled"><a href="#">热门搜索</a></li>
+                                <li><a href="#">日语</a></li>
+                                <li><a href="#">四级</a></li>
+                                <li><a href="#">产品</a></li>
+                                <li><a href="#">mysql</a></li>
+                                <li><a href="#">电路</a></li>
+                            </ul>
+
+                            <div>
+                                <span id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    课程
+                                    <span class="caret" style="font-size: 1px"></span>
+                                </span>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <li><a href="#">提供方</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="wrap">
+                                <a href="#">我的学习</a>
+                                <a href="#">消息</a>
+                                <a href="#">购货车</a>
+                                <a class="wrap_login" style="cursor: pointer" data-target="#msg" data-toggle="modal" id="login_a">登录/注册</a>
+                                <input type="file" id="icon" style="display: none;">
+                                <div id="user" title="点击更换头像" >
+                                    <img src="img/touxiang.jpg">
+                                    <div>
+                                        <div><i class="fa fa-caret-up jiantou" style="font-size: 25px"></i></div>
+                                        <ul id="xinxi">
+                                            <li class="xinxi_username" data-target="#msg" data-toggle="modal">游客，请登录...</li>
+                                            <li>私信</li>
+                                            <li>我的优惠劵<span style="color:#ff9600;float: right">兑换</span></li>
+                                            <li>我的订单</li>
+                                            <li>反馈意见</li>
+                                            <li>设置</li>
+                                            <li class="logout">退出</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <a href="#" class="wrap_username"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--     下导航    -->
+        <div class="col-md-12 header_bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 header_bottom_top">
+                        <ul>
+                            <li><a href="#">首页</a></li>
+                            <li>
+                                <span class="fa fa-angle-right" style="padding: 0 10px;font-size: 17px;color: #999"></span>
+                                <a style="color: #999" href="#">全部课程</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-12 header_bottom_bottom">
+                        <ul>
+                            <li class="active"><a class="active" href="#">全部课程</a></li>
+                            <li><a href="#">编程开发</a></li>
+                            <li><a href="#">办公效率</a></li>
+                            <li><a href="#">产品和设计</a></li>
+                            <li><a href="#">生活方式</a></li>
+                            <li><a href="#">职业发展</a></li>
+                            <li><a href="#">市场营销</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--//////////中间内容/////////-->
+<div class="container body">
+    <div class="row slider">
+        <!--轮播左边-->
+        <div class="col-md-2 text-center slider_left" style="padding: 0;background: white">
+            <img src="img/slider_left1.jpg">
+            <img src="img/slider_left2.jpg">
+        </div>
+        <!--轮播-->
+        <div class="col-md-8 slider_center">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <img src="img/slider_center1.jpg" alt="...">
+                        <div class="carousel-caption">
+                            ...
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="img/slider_center2.jpg" alt="...">
+                        <div class="carousel-caption">
+                            ...
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="img/slider_center3.jpg" alt="...">
+                        <div class="carousel-caption">
+                            ...
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="img/slider_center4.jpg" alt="...">
+                        <div class="carousel-caption">
+                            ...
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <!--轮播右边的排行-->
+        <div class="col-md-2 bg-warning slider_right">
+            <div class="slider_right_header">
+                <a class="active">付费排行</a>
+                <span style="display:inline-block;width: 20px"></span>
+                <a>免费排行</a>
+            </div>
+            <div class="slider_right_page">
+                <div class="slider_right_content page1">
+                    <div>
+                        <div class="active">01</div>
+                        <a href="#" title="跟简七学理财">跟简七学理财</a>
+                    </div>
+                    <div>
+                        <div class="active">02</div>
+                        <a href="#" title="和秋叶一起学PPT--超4.6万付费学员">和秋叶一起学PPT--超4.6万付费学员</a>
+                    </div>
+                    <div>
+                        <div class="active">03</div>
+                        <a href="#" title="修炼设计技法">修炼设计技法</a>
+                    </div>
+                    <div>
+                        <div>04</div>
+                        <a href="#" title="Excel+PPT+Word修炼营小白变高手">Excel+PPT+Word修炼营小白变高手</a>
+                    </div>
+                    <div>
+                        <div>05</div>
+                        <a href="#" title="设计规范与流程">设计规范与流程</a>
+                    </div>
+                    <div>
+                        <div>06</div>
+                        <a href="#" title="和秋叶一起学Excel（超1万人学习）">和秋叶一起学Excel（超1万人学习）</a>
+                    </div>
+                    <div>
+                        <div>07</div>
+                        <a href="#" title="PS 教程超级合辑-Photoshop教程">PS 教程超级合辑-Photoshop教程</a>
+                    </div>
+                    <div>
+                        <div>08</div>
+                        <a href="#" title="文献阅读精读第一期（实验万事屋）">文献阅读精读第一期（实验万事屋）</a>
+                    </div>
+                    <div>
+                        <div>09</div>
+                        <a href="#" title="UI设计概述">UI设计概述</a>
+                    </div>
+                    <div>
+                        <div>10</div>
+                        <a href="#" title="提升用户体验">提升用户体验</a>
+                    </div>
+                </div>
+                <div class="slider_right_content page2">
+                    <div>
+                        <div class="active">01</div>
+                        <a href="#" title="EDP：职业生涯规划不过如此">EDP：职业生涯规划不过如此</a>
+                    </div>
+                    <div>
+                        <div class="active">02</div>
+                        <a href="#" title="Excel高手进阶三十个姿势【免费】">Excel高手进阶三十个姿势【免费】</a>
+                    </div>
+                    <div>
+                        <div class="active">03</div>
+                        <a href="#" title="零基础学编程系列之C语言">零基础学编程系列之C语言</a>
+                    </div>
+                    <div>
+                        <div>04</div>
+                        <a href="#" title="CS5 CS6 CC零基础 PS教程 PS学习">Excel+PPT+CS5 CS6 CC零基础 PS教程 PS学习</a>
+                    </div>
+                    <div>
+                        <div>05</div>
+                        <a href="#" title="如何克服拖延症！">如何克服拖延症！</a>
+                    </div>
+                    <div>
+                        <div>06</div>
+                        <a href="#" title="Java零基础入门教程—包含面向对象">Java零基础入门教程—包含面向对象</a>
+                    </div>
+                    <div>
+                        <div>07</div>
+                        <a href="#" title="《吉他入门标准教程》">《吉他入门标准教程》</a>
+                    </div>
+                    <div>
+                        <div>08</div>
+                        <a href="#" title="零基础入门学习Python">零基础入门学习Python</a>
+                    </div>
+                    <div>
+                        <div>09</div>
+                        <a href="#" title="跟王佩丰学Excel视频教程：Excel实战1800分钟">跟王佩丰学Excel视频教程：Excel实战1800分钟</a>
+                    </div>
+                    <div>
+                        <div>10</div>
+                        <a href="#" title="设计师必学手绘～基础">设计师必学手绘～基础</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--产品信息筛选导航-->
+    <div class="row kecheng_nav" id="kecheng_nav">
+        <div id="mao"></div>
+        <div class="col-md-9 " id="kecheng_left">
+            <ul>
+                <li class="active">全部</li>
+                <li>随到随学</li>
+                <li>正在开课</li>
+                <li>即将开始</li>
+            </ul>
+        </div>
+        <div class="col-md-3" id="kecheng_right" style="padding: 0">
+            <ul>
+                <li class="active">综合</li>
+                <span style="padding: 0 6px">-</span>
+                <li>好评</li>
+                <span style="padding: 0 6px">-</span>
+                <li>最新</li>
+                <li class="jiage">
+                    <span>价格</span>
+                    <i class="fa fa-caret-down"></i>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--产品排列分布-->
+    <div class="row kecheng_content">
+        <div class="tab_page">
+            <div class="tab_img">
+                <img src="img/tab1.png">
+            </div>
+            <div class="tab_wrap">
+                <p>和秋叶一起学PPT--超4.6万付费学员</p>
+            </div>
+            <div class="tab_name">
+                幻方秋叶PPT
+            </div>
+            <div class="tab_xx">
+                <div class="xing">
+                    <span class="material-icons">star</span>
+                    <span class="material-icons">star</span>
+                    <span class="material-icons">star</span>
+                    <span class="material-icons">star</span>
+                    <span class="material-icons">star_half</span>
+                </div>
+                <span>4.7</span>
+                <span>(47240人学过)</span>
+            </div>
+            <div class="tab_money">
+                <span>
+                    ￥
+                </span>
+                <span class="price">
+                    169.00
+                </span>
+            </div>
+
+        </div>
+    </div>
+    <!--产品分页-->
+    <nav class="text-right" aria-label="Page navigation" style="margin-bottom: 100px">
+        <ul class="pagination">
+            <li>
+                <a href="#mao" aria-label="Previous">
+                    <span aria-hidden="true">上一页</span>
+                </a>
+            </li>
+            <li><a href="#mao">1</a></li>
+            <li><a href="#mao">2</a></li>
+            <li><a href="#mao">3</a></li>
+            <li><a href="#mao">4</a></li>
+            <li><a href="#mao">5</a></li>
+            <li><a href="#mao">6</a></li>
+            <li>
+                <a href="#mao" aria-label="Next">
+                    <span aria-hidden="true">下一页</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<!--////////////底部版权等/////////////-->
+<div class="container-fluid footer">
+    <div class="container">
+        <div class="footer_left">
+            <div class="logo">
+                <a href="#"><img src="img/logoFoot.png"></a>
+            </div>
+            <p>网易公司(163.com)旗下实用技能学习平台。与优秀讲师、专业机构、院校合作，为您提供海量优质课程，以及创新的在线学习体验，帮助您获得全新的个人发展和能力提升。</p>
+            <div class="mini list-inline">
+                <span>关注我们：</span>
+                <a href="#" style="background: #f5343a"><i class="fa fa-weibo"></i></a>
+                <a href="#" style="background: #1f7af3"><i class="fa fa-renren"></i></a>
+                <a href="#" style="background: #02b489"><i class="fa fa-opera"></i></a>
+                <a href="#" style="background: #30a41d"><i class="fa fa-weixin"></i></a>
+            </div>
+            <div style="color: #dddddd;font-size: 12px">©<span>1997-2017</span> 网易公司 版权所有</div>
+        </div>
+        <div class="footer_right">
+            <a href="#">关于我们</a>
+            <a href="#">联系我们</a>
+            <a href="#">帮助中心</a>
+            <a href="#">内容招募</a>
+            <a href="#">意见反馈</a>
+            <a href="#">企业服务</a>
+            <a href="#">中国大学MOOC</a>
+            <div class="app">
+                <span>移动App:</span>
+                <a href="#"></a>
+                <a href="#"></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--右侧浮窗回到顶部等-->
+<div class="backTop">
+    <div>
+        <i class="fa fa-commenting-o"></i>
+    </div>
+    <span></span>
+    <div style="line-height: 85px" id="mobile">
+        <i class="fa fa-mobile" style="font-size: 50px"></i>
+        <!--<span>手机课堂</span>-->
+    </div>
+    <span></span>
+    <div id="backup">
+        <!--<i class="active" id="backup">回到顶部</i>-->
+        <i class="fa fa-chevron-circle-up"></i>
+        <!--<span  class="active">回到顶部</span>-->
+    </div>
+</div>
+<!--整个登录注册的模态框-->
+<div class="modal fade" id="msg">
+    <div class="modal-dialog modal-dm">
+        <div id="feedback_container">
+            <div></div>
+            <span id="feedback"></span>
+        </div>
+        <div class="modal-content login">
+            <div class="modal-header"  style="border: 0">
+                <button class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+                <ul class="xuanze">
+                    <li class="modal-title active">手机号登录</li>
+                    <li class="modal-title">网易邮箱登录</li>
+                </ul>
+            </div>
+            <div class="modal-body">
+                <div class="tel-email" style="display: inline-block">
+                    <div class="tel_login">
+                        <form>
+                            <div>
+                                <div class="userImg"></div>
+                                <span style="font-size: 16px;color: #cccccc">&nbsp;+86</span>
+                                <input class="username" type="text" placeholder="请输入手机号">
+                            </div>
+                            <div>
+                                <div class="pwdImg"></div>
+                                <input class="pwd" type="password" placeholder="请输入密码">
+                            </div>
+                            <div>
+                                <div class="login_btn ">登录</div>
+                            </div>
+                            <div class="xuanxiang">
+                                <input class="check" type="checkbox">
+                                <span>十天内免登录</span>
+                                <span>|</span>
+                                <a>忘记密码？</a>
+                                <a class="go_reg">去注册</a>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="email_login" style="display:none">
+                        <form>
+                            <div>
+                                <div class="emailImg"></div>
+                                <input class="email" type="text" placeholder="邮箱账号">
+                            </div>
+                            <div>
+                                <div class="pwdImg"></div>
+                                <input class="pwd" type="password" placeholder="请输入密码">
+                            </div>
+                            <div>
+                                <div class="login_btn">登录</div>
+                            </div>
+                            <div class="xuanxiang">
+                                <input class="check" type="checkbox">
+                                <span>十天内免登录</span>
+                                <span>|</span>
+                                <a>忘记密码？</a>
+                                <a class="go_reg">去注册</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="fengexian">
+                    <div>或</div>
+                </div>
+                <div class="qitadenglu">
+                    <a href="#" class="itm0"></a>
+                    <a href="#" class="itm1"></a>
+                    <a href="#" class="itm2"></a>
+                    <a href="#" class="itm3"></a>
+                    <a href="#" class="itm4"></a>
+                </div>
+            </div>
+            <div class="modal-footer" style="border: 0">
+
+            </div>
+        </div>
+        <div class="modal-content reg"  style="display: none">
+            <div class="modal-header"  style="border: 0">
+                <button class="close" data-dismiss="modal">
+                    <span >&times;</span>
+                </button>
+                <h4 class="modal-title">手机号注册</h4>
+            </div>
+            <div class="modal-body">
+                <div class="reg_container">
+                    <div>
+                        <div class="userImg"></div>
+                        <input class="mobile_number" type="text" placeholder="注册手机号">
+                    </div>
+                    <div>
+                        <div class="input_verification">
+                            <div class="userImg"></div>
+                            <input class="verification" type="text" placeholder="验证码">
+                        </div>
+                        <button class="send_verification" disabled>发送验证码</button>
+                    </div>
+                    <div>
+                        <div class="pwdImg"></div>
+                        <input class="set_pwd" type="text" placeholder="设置密码">
+                    </div>
+                    <div class="reg_feedback">手机号码格式不正确</div>
+                    <div class="ok text-center">完 成</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="text-left">&lt;手机号登录</div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    $(function(){
+        //////////////轮播图右边的导购栏/////////////
+        $(".slider_right_header>a").each(function(index){
+            $(this).click(function(){
+                $(".slider_right_header>a").removeClass("active");
+                $(this).addClass("active");
+                $(".slider_right_page>div").css({"display":"none"}).eq(index).css({"display":"block"});
+            })
+        });
+        ////////课程产品导航右边的 价格 选择////////
+
+
+        ////////////中间的产品栏////////////
+
+        ///产品标题数组//
+        var wrapArr=[
+            "和秋叶一起学PPT--超4.6万付费学员","英语口语革命 送直播 录播 不限时",
+            "PS 教程超级合辑-Photoshop教程","跟简七学理财","和阿文一起学信息图表",
+            "Excel学习的最佳方式——表格之道(专业版)","轻松手绘：用简笔画提升你的竞争力",
+            "手机摄影达人速成","和秋叶一起学Excel（超1万人学习）","AI 教程超级合辑-illustrator 教程",
+            "谈判路线图","Excel+PPT+Word修炼营小白变高手","pmp李先知老师主讲PMP培训送直播",
+            "和秋叶一起学Word（超1万人学习）","零基础项目管理 新增年会项目管理","和秋叶一起学职场技能",
+            "Java零基础入门教程—包含面向对象","牛班明星音乐教室 第一季","计算机二级Office高级应用20天速成",
+            "AxureRP7.0标准教程（美国官方推荐教材）！","和秋叶一起学PPT动画","PS&AI超系统课程【设计必备技法】",
+            "英语口语革命零基础","Meta分析简明教程(实验万事屋）","诉讼可视化","邱晨的设计急诊室",
+            "将英语变成母语","和方骥一起学Excel（图文+视频）","PS+淘宝+平面+网页+设计秘笈+广告",
+            "零基础学编程系列之C语言"
+
+        ];
+        //////作者或者讲师数组//////
+        var nameArr=[
+            "幻方秋叶PPT","李先知","设计软件通官方","简七理财","幻方秋叶PPT",
+            "谷小城", "幻方秋叶PPT","咔图摄影教育中心","幻方秋叶PPT","设计软件通官方",
+            "李力刚", "ExcelPPT李则见","李先知","幻方秋叶PPT","李先知",
+            "幻方秋叶PPT","小码哥教育","牛班明星音乐教室","小黑老师online","原型库",
+            "幻方秋叶PPT","设计湿","李先知","SCI刀笔吏","无讼学院云课堂",
+            "蜂巢设计","HenryLiangFRM","方骥","C课堂","老九学堂"
+        ];
+        ///价格数组////
+        var priceArr=[
+            "169.00","399.00","149.00","398.00","199.00",
+            "99.00","129.00","86.00","169.00","149.00",
+            "49.00","418.00","1998.00","99.00","999.00",
+            "199.00","免费","免费","100.00","149.00",
+            "69.00","免费","299.00","298.00","120.00"
+        ];
+        /////将第一个产品框架克隆29次并追加到所在的容器,就有了30个一样的///////
+        for(var i=0;i<29;i++){
+            $(".tab_page").eq(0).clone().appendTo($(".kecheng_content"));
+        }
+        //////再将每个产品的信息更换/////////
+        for(var j=0;j<30;j++){
+            ///////更换每个产品的图片///////
+            $(".tab_page img").eq(j).attr("src","img/tab"+(j+1)+".png");
+            ////////更换每个产品的标题//////
+            $(".tab_wrap").eq(j).html(wrapArr[j]);
+            ////////更换每个产品的作者或讲师名////////
+            $(".tab_name").eq(j).html(nameArr[j]);
+            /////////更换每个产品的价格///////////
+            $(".price").eq(j).html(priceArr[j]);
+        }
+        $(".tab_page").click(function(){
+            location="index.html"
+        });
+        ///////回到顶部///////
+        /*window.addEventListener("scroll",function(){
+            console.log(document.body.scrollTop);
+        });*/
+        /////窗口滚动条时间
+        $(window).scroll(function(){
+            //判断当滚动条距离顶部60px以上 浮窗显示否则消失
+            if($("body").scrollTop()>60){
+                $(".backTop").css({"display":"block"})
+            }else {
+                $(".backTop").css({"display":"none"})
+            }
+        });
+        //让手机课堂和回到底部 实现文字和字体图标切换
+        $("#backup").click(function(){
+            $("body").animate({"scrollTop":0},200)
+        }).hover(function(){
+            $("#backup").css({"line-height":"20px"});
+            $("#backup>i").removeClass("fa fa-chevron-circle-up").addClass("active").html("返回顶部")
+        },function(){
+            $("#backup").css({"line-height":"70px"});
+            $("#backup>i").removeClass("active").addClass("fa fa-chevron-circle-up").html("")
+        });
+        $("#mobile").hover(function(){
+            $("#mobile").css({"line-height":"20px"});
+            $("#mobile>i").css({"font-size":"14px"}).removeClass("fa fa-mobile").addClass("active").html("手机课堂")
+        },function(){
+            $("#mobile").css({"line-height":"85px"});
+            $("#mobile>i").css({"font-size":"50px"}).removeClass("active").addClass("fa fa fa-mobile").html("")
+        });
+
+
+
+    })
+</script>
+</html>

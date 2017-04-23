@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .login{
+            display: none;
+        }
+        .loginBar{
+            cursor: pointer;
+        }
+        img{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+        .deleteBtn{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="feedback"></div>
+<ul class="login_ui">
+    <li class="loginBar">登录</li>
+    <li><a href="reg.html">注册</a></li>
+</ul>
+<ul class="member_ui">
+    <li class="member_name"></li>
+    <li class="logout">注销</li>
+</ul>
+<!--登录框-->
+<ul class="login">
+    <li><input type="text" class="username"></li>
+    <li><input type="password" class="pwd"></li>
+    <li><button id="loginBtn">登录</button></li>
+</ul>
+<div class="container"></div>
+<script>
+//    document.write(sessionStorage.getItem("username"))
+    var container=document.querySelector(".container");
+    var login_ui=document.querySelector(".login_ui");
+    var login=document.querySelector(".login");
+    var loginBar=document.querySelector(".loginBar");
+    var loginBtn=document.querySelector("#loginBtn");
+    var feedback=document.querySelector("#feedback");
+    var member_ui=document.querySelector(".member_ui");
+    var member_name=document.querySelector(".member_name");
+    var username=document.querySelector(".username");
+    var pwd=document.querySelector(".pwd");
+    var logout=document.querySelector(".logout");
+    var xhr=new XMLHttpRequest();
+    var fd=new FormData();
+    //判断sessionStorage中是否保存了用户名
+    if(sessionStorage.getItem("username")){
+        login_ui.style.display="none";
+        member_ui.style.display="block";
+        member_name.innerHTML=sessionStorage.getItem("username");
+    }else {
+        login_ui.style.display="block";
+        member_ui.style.display="none";
+    }
+    logout.addEventListener("click",function(){
+        sessionStorage.removeItem("username");
+        location.href="index.html"
+    });
+//点击登录显示登录框
+    loginBar.addEventListener("click",function(){
+        login.style.display="block"
+    });
+    //点击提交按钮
+    loginBtn.addEventListener("click",function(){
+        //把用户名和密码传进去
+        //select * form member where username='liu' and pwd=md5('123456')；
+        xhr.open("post","getAll.php");
+        fd.append("username",username.value);
+        fd.append("pwd",pwd.value);
+        xhr.send(fd);
+        xhr.addEventListener("readystatechange",function(){
+            if(xhr.readyState==4){
+                if(xhr.status==200){
+                   if(xhr.responseText=="ok"){
+                       sessionStorage.setItem("username",username.value);
+                       login_ui.style.display="none";
+                       login.style.display="none";
+                       member_ui.style.display="block";
+                       member_name.innerHTML=username.value;
+                       feedback.innerHTML="";
+                   }else if(xhr.responseText="failed"){
+                       feedback.innerHTML="用户名或密码错误";
+                   }else {
+                       feedback.innerHTML="";
+                   }
+                }
+            }
+        })
+
+    });
+    ///////页面一加载就执行获取所有的数据///////
+    xhr.open("post",'alluser.php');
+    xhr.send(null);
+    xhr.addEventListener("readystatechange",function(){
+        if(xhr.readyState==4){
+            if(xhr.status==200){
+                getAll(xhr.responseText);
+
+                /////////////////////
+                var deleteBtn=document.querySelectorAll(".deleteBtn");
+            }
+        }
+    });
+    function deleteRow(id){
+        xhr.open("post","delete.php");
+        //把id传到后台
+        fd.append("id",id);
+        xhr.send(fd);
+        xhr.addEventListener("readystatechange",function(){
+            if(xhr.readyState==4){
+                if(xhr.status==200){
+                    if(xhr.responseText=="ok"){
+                        var xhr2=new XMLHttpRequest();
+                        xhr2.open("post","alluser.php");
+                        xhr2.send(null);
+                        xhr2.addEventListener("readystatechange",function(){
+                            if(xhr2.readyState==4){
+                                if(xhr2.status==200){
+                                    getAll(xhr2.responseText);
+                                }
+                            }
+                        })
+                    }else {
+                        console.log("删除失败")
+                    }
+                }
+            }
+        })
+    }
+    function getAll(data){
+        var str=JSON.parse(data);
+        var content="<table border='1' width='95%' align='center'>";
+        content+="<tr><td>用户名</td><td>邮箱</td><td>头像</td><td>注册时间</td></tr>";
+        for(i in str){
+            /*document.write(str[i].username)*/
+            content+="<tr>";
+            content+="<td>"+str[i].username+"</td>";
+            content+="<td>"+str[i].email+"</td>";
+            content+="<td><img src='uploads/"+str[i].icon+"'></td>";
+            content+="<td>"+str[i].regTime+"</td>";
+            content+="<td><span class='deleteBtn' index='"+str[i].id+"' onclick='deleteRow("+str[i].id+")'>&times;</span></td>";
+            content+="</tr>"
+        }
+        content+="</table>";
+        //console.log(typeof str);
+        container.innerHTML=content;
+    }
+</script>
+</body>
+</html>

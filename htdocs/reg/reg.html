@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #icon{
+            display: none;
+        }
+        #preview{
+            width: 90px;
+            height: 90px;
+            border-radius: 90px;
+        }
+    </style>
+</head>
+<body>
+<div id="feedback"></div>
+<div id="reg">
+    <input type="text" class="username"><br>
+    <input type="password" class="pwd"><br>
+    <input type="password" class="repwd"><br>
+    <input type="text" class="mobile"><br>
+    <img src="icon.jpg" id="preview">
+    <label for="icon">点击上传<input type="file" id="icon"></label><br>
+    <input type="button" id="regBtn" value="注册">
+</div>
+<script>
+    var regBtn=document.querySelector("#regBtn");
+    var feedback=document.querySelector("#feedback");
+    var username=document.querySelector(".username");
+    var pwd=document.querySelector(".pwd");
+    var repwd=document.querySelector(".repwd");
+    var mobile=document.querySelector(".mobile");
+    var icon=document.querySelector("#icon");
+    var preview=document.querySelector("#preview");
+    var fr=new FileReader;
+    var fd=new FormData;
+    //错误情况下赋值，正常情况清空
+    var errorMsg="";
+    icon.addEventListener("change",function(){
+        fr.readAsDataURL(this.files[0]);
+        if(!/image\//.test(this.files[0].type)){
+            feedback.innerHTML="只能上传图片";
+            errorMsg="只能上传图片";
+            return false
+        }else {
+            errorMsg="";
+        }
+        fr.addEventListener("load",function(){
+            preview.src=this.result;
+        })
+    });
+    //失去焦点，验证用户名
+    username.addEventListener("blur",function(){
+        var xhr1=new XMLHttpRequest();
+        xhr1.open("post","reg.php");
+        fd.append("username",this.value);
+        fd.append("flag","checkusername");
+        xhr1.send(fd);
+        xhr1.addEventListener("readystatechange",function(){
+            if(xhr1.readyState==4){
+                if(xhr1.status==200){
+                    //feedback.innerHTML=xhr1.responseText;
+                    if(xhr1.responseText=="taken"){
+                        errorMsg="用户名已占用";
+                        feedback.innerHTML=errorMsg;
+                    }else if(xhr1.responseText=="available"){
+                        //用户名可用
+                        errorMsg="";
+                    }else {
+                        console.log(xhr1.responseText)
+                    }
+                }
+            }
+        })
+    });
+    regBtn.addEventListener("click",function(){
+        if(errorMsg){
+            feedback.innerHTML=errorMsg;
+            return false;
+        }
+        //注册ajax
+        var xhr2=new XMLHttpRequest();
+        xhr2.open("post","reg.php");
+        fd.append("username",username.value);
+        fd.append("username",pwd.value);
+        fd.append("flag","reg");
+        xhr2.send(fd);
+        xhr2.addEventListener("readystatechange",function(){
+            if(xhr2.readyState==4){
+                if(xhr2.status==200){
+                    if(xhr2.responseText=="ok"){
+                        feedback.innerHTML="注册成功";
+                    }else if(xhr2.responseText=="failed"){
+                        feedback.innerHTML="注册失败";
+                    }else {
+                        console.log(xhr2.responseText)
+                    }
+                }
+            }
+        });
+        return true
+    })
+</script>
+</body>
+</html>
